@@ -5,7 +5,7 @@ const Rules = () => {
   return (
     <Layout>
       <div>
-        <h1>قوانین و شراییییییط سایت</h1>
+        <h1>قوانین و شراییییییط sssssssssssssسایت</h1>
       </div>
     </Layout>
   );
