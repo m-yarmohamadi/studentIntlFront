@@ -1,0 +1,30 @@
+[
+  {
+    "id": "01",
+    "groupName": "mobile",
+    "groupTitle": "گوشی موبایل",
+    "groupImageUrl": "/images/01-3.webp",
+    "groupLink": "/mobile"
+  },
+  {
+    "id": "02",
+    "groupName": "cover",
+    "groupTitle": "قاب گوشی",
+    "groupImageUrl": "/images/01-3.webp",
+    "groupLink": "/cover"
+  },
+  {
+    "id": "03",
+    "groupName": "whatch",
+    "groupTitle": "ساعت هوشمند",
+    "groupImageUrl": "/images/01-3.webp",
+    "groupLink": "/whatch"
+  },
+  {
+    "id": "04",
+    "groupName": "headphone",
+    "groupTitle": "هدفون و هندسفری",
+    "groupImageUrl": "/images/01-3.webp",
+    "groupLink": "/headphone"
+  }
+]

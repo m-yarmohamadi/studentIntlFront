@@ -1,0 +1,18 @@
+[
+  {
+    "fName": "مهدی",
+    "lName": "یارمحمدی",
+    "email": "yarmohamadi677@gmail.com",
+    "moile": "09121870617",
+    "password": 123456,
+    "isAdmin": 0
+  },
+  {
+    "fName": "طیبه السادات",
+    "lName": "پیغمبرزاده",
+    "email": "t.peyghambarzadeh@gmail.com",
+    "moile": "09199193826",
+    "password": 1234567,
+    "isAdmin": 0
+  }
+]

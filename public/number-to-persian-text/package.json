@@ -1,0 +1,40 @@
+{
+  "name": "number-to-persian-text",
+  "version": "1.1.2",
+  "description": "convert number(s) to persian(farsi) text.",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "gulp",
+    "watch": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielrajaei/number-to-persian-text.git"
+  },
+  "keywords": [
+    "number",
+    "persian",
+    "farsi",
+    "text",
+    "string",
+    "numberToString",
+    "numberToText",
+    "writtenNumber"
+  ],
+  "author": "Daniel Rajaei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielrajaei/number-to-persian-text/issues"
+  },
+  "homepage": "https://github.com/danielrajaei/number-to-persian-text#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-jsmin": "^0.1.5",
+    "gulp-rename": "^1.4.0",
+    "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "gulp-header": "^2.0.9"
+  }
+}

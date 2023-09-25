@@ -1,0 +1,19 @@
+import React from "react";
+import ReactCrop from "react-image-crop";
+
+function CropDemo({ src }) {
+    const [crop, setCrop] = useState<Crop>()
+    return (
+      <ReactCrop crop={crop} onChange={c => setCrop(c)}>
+        <img src={src} />
+      </ReactCrop>
+    )
+  }
+
+export default crop;
+
+
+
+
+
+

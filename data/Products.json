@@ -1,0 +1,518 @@
+[
+  {
+    "id": "01",
+    "title": "قاب سیلیکونی پاک کنی آیفون ",
+    "name": "RC311",
+    "price": "850000",
+    "slug": "RC311",
+    "cat1": " frames",
+    "cat2": "samsung",
+    "count": 4,
+    "breadcrumbs": [
+      { "id": 1, "name": "قاب موبایل", "href": "#" },
+      { "id": 2, "name": "آیفون", "href": "#" }
+    ],
+
+    "colors": [
+      {
+        "name": "White",
+        "class": "bg-white",
+        "selectedClass": "ring-gray-400"
+      },
+      {
+        "name": "Gray",
+        "class": "bg-gray-200",
+        "selectedClass": "ring-gray-400"
+      },
+      {
+        "name": "Black",
+        "class": "bg-gray-900",
+        "selectedClass": "ring-gray-900"
+      }
+    ],
+
+    "imagesTitle": "/images/01-3.webp",
+
+    "images": [
+      {
+        "src": "/images/01-1.webp",
+        "alt": "Two each of gray, white, and black shirts laying flat."
+      },
+      {
+        "src": "/images/01-2.webp",
+        "alt": "Model wearing plain black basic tee."
+      },
+      {
+        "src": "/images/01-3.webp",
+        "alt": "Model wearing plain gray basic tee."
+      },
+      {
+        "src": "/images/01-4.webp",
+        "alt": "Model wearing plain white basic tee."
+      }
+    ],
+    "sizes": [
+      { "name": "11", "inStock": false },
+      { "name": "11 pro", "inStock": true },
+      { "name": "11 promax", "inStock": true },
+      { "name": "12", "inStock": true },
+      { "name": "12 PRO", "inStock": false },
+      { "name": "12 PROMAX", "inStock": true },
+      { "name": "13", "inStock": true },
+      { "name": "13 PRO", "inStock": true },
+      { "name": "13 PROMAX", "inStock": true },
+      { "name": "14 PRO", "inStock": true },
+      { "name": "14 PROMAX", "inStock": false },
+      { "name": "5S", "inStock": true },
+      { "name": "5", "inStock": false },
+      { "name": "SE", "inStock": true },
+      { "name": "6S", "inStock": true },
+      { "name": "6", "inStock": false },
+      { "name": "6S PLUS", "inStock": true },
+      { "name": "7", "inStock": true },
+      { "name": "8", "inStock": true },
+      { "name": "SE 2", "inStock": true },
+      { "name": "8 PLUS", "inStock": true },
+      { "name": "X", "inStock": true },
+      { "name": "XS MAX", "inStock": true }
+    ],
+    "description": "این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. ",
+    "highlights": [
+      "جنس: سیلیکون",
+      "پوشش دور تا دور گوشي",
+      "پوشش کامل دکمه ها",
+      "داراي پارچه مخمل داخل قاب جهت جلوگيري از ورود گرد و غبار به پشت گوشي و ضربه گيري بهتر قاب",
+      "کيفيت رنگ بسيار بالای قاب گوشی"
+    ],
+    "details": "در مدل های 5 و 5 اس و اس ای ، پایین قاب باز است."
+  },
+  {
+    "id": "02",
+    "title": "قاب آکواریومی اکلیل متحرک ",
+    "name": "RC225",
+    "price": "530000",
+    "slug": "RC225",
+    "cat1": " frames",
+    "cat2": "samsung",
+    "count": 15,
+    "breadcrumbs": [
+      { "id": 1, "name": "قاب موبایل", "href": "#" },
+      { "id": 2, "name": "سامسونگ", "href": "#" }
+    ],
+
+    "colors": [
+      {
+        "name": "White",
+        "class": "bg-white",
+        "selectedClass": "ring-gray-400"
+      },
+      {
+        "name": "Gray",
+        "class": "bg-gray-200",
+        "selectedClass": "ring-gray-400"
+      },
+      {
+        "name": "Black",
+        "class": "bg-gray-900",
+        "selectedClass": "ring-gray-900"
+      }
+    ],
+
+    "imagesTitle": "/images/02-3.webp",
+
+    "images": [
+      {
+        "src": "/images/02-1.webp",
+        "alt": "Two each of gray, white, and black shirts laying flat."
+      },
+      {
+        "src": "/images/02-2.webp",
+        "alt": "Model wearing plain black basic tee."
+      },
+      {
+        "src": "/images/02-3.webp",
+        "alt": "Model wearing plain gray basic tee."
+      },
+      {
+        "src": "/images/02-4.webp",
+        "alt": "Model wearing plain white basic tee."
+      }
+    ],
+    "sizes": [
+      { "name": "11", "inStock": false },
+      { "name": "11 pro", "inStock": true },
+      { "name": "11 promax", "inStock": true },
+      { "name": "12", "inStock": true },
+      { "name": "12 PRO", "inStock": false },
+      { "name": "12 PROMAX", "inStock": true },
+      { "name": "13", "inStock": true },
+      { "name": "13 PRO", "inStock": true },
+      { "name": "13 PROMAX", "inStock": true },
+      { "name": "14 PRO", "inStock": true },
+      { "name": "14 PROMAX", "inStock": false },
+      { "name": "5S", "inStock": true },
+      { "name": "5", "inStock": false },
+      { "name": "SE", "inStock": true },
+      { "name": "6S", "inStock": true },
+      { "name": "6", "inStock": false },
+      { "name": "6S PLUS", "inStock": true },
+      { "name": "7", "inStock": true },
+      { "name": "8", "inStock": true },
+      { "name": "SE 2", "inStock": true },
+      { "name": "8 PLUS", "inStock": true },
+      { "name": "X", "inStock": true },
+      { "name": "XS MAX", "inStock": true }
+    ],
+    "description": "این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. ",
+    "highlights": [
+      "دور ژله ای",
+      "پوشش دور تا دور بدنه توسط قاب گوشي",
+      "پوشش کامل دکمه ها"
+    ],
+    "details": "برند: آیفون – IPHONE, سامسونگ – SAMSUNG, شیائومی – XIAOMI, هواوی – HUAWEI"
+  },
+  {
+    "id": "03",
+    "title": "قاب سیلیکونی پاک کنی آیفون ",
+    "name": "RC311",
+    "price": "850000",
+    "slug": "RC311",
+    "cat1": " frames",
+    "cat2": "samsung",
+    "count": 10,
+    "breadcrumbs": [
+      { "id": 1, "name": "قاب موبایل", "href": "#" },
+      { "id": 2, "name": "آیفون", "href": "#" }
+    ],
+
+    "colors": [
+      {
+        "name": "White",
+        "class": "bg-white",
+        "selectedClass": "ring-gray-400"
+      },
+      {
+        "name": "Gray",
+        "class": "bg-gray-200",
+        "selectedClass": "ring-gray-400"
+      },
+      {
+        "name": "Black",
+        "class": "bg-gray-900",
+        "selectedClass": "ring-gray-900"
+      }
+    ],
+
+    "imagesTitle": "/images/01-3.webp",
+
+    "images": [
+      {
+        "src": "/images/01-1.webp",
+        "alt": "Two each of gray, white, and black shirts laying flat."
+      },
+      {
+        "src": "/images/01-2.webp",
+        "alt": "Model wearing plain black basic tee."
+      },
+      {
+        "src": "/images/01-3.webp",
+        "alt": "Model wearing plain gray basic tee."
+      },
+      {
+        "src": "/images/01-4.webp",
+        "alt": "Model wearing plain white basic tee."
+      }
+    ],
+    "sizes": [
+      { "name": "11", "inStock": false },
+      { "name": "11 pro", "inStock": true },
+      { "name": "11 promax", "inStock": true },
+      { "name": "12", "inStock": true },
+      { "name": "12 PRO", "inStock": false },
+      { "name": "12 PROMAX", "inStock": true },
+      { "name": "13", "inStock": true },
+      { "name": "13 PRO", "inStock": true },
+      { "name": "13 PROMAX", "inStock": true },
+      { "name": "14 PRO", "inStock": true },
+      { "name": "14 PROMAX", "inStock": false },
+      { "name": "5S", "inStock": true },
+      { "name": "5", "inStock": false },
+      { "name": "SE", "inStock": true },
+      { "name": "6S", "inStock": true },
+      { "name": "6", "inStock": false },
+      { "name": "6S PLUS", "inStock": true },
+      { "name": "7", "inStock": true },
+      { "name": "8", "inStock": true },
+      { "name": "SE 2", "inStock": true },
+      { "name": "8 PLUS", "inStock": true },
+      { "name": "X", "inStock": true },
+      { "name": "XS MAX", "inStock": true }
+    ],
+    "description": "این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. ",
+    "highlights": [
+      "جنس: سیلیکون",
+      "پوشش دور تا دور گوشي",
+      "پوشش کامل دکمه ها",
+      "داراي پارچه مخمل داخل قاب جهت جلوگيري از ورود گرد و غبار به پشت گوشي و ضربه گيري بهتر قاب",
+      "کيفيت رنگ بسيار بالای قاب گوشی"
+    ],
+    "details": "در مدل های 5 و 5 اس و اس ای ، پایین قاب باز است."
+  },
+  {
+    "id": "04",
+    "title": "قاب آکواریومی اکلیل متحرک ",
+    "name": "RC225",
+    "price": "530000",
+    "slug": "RC225",
+    "cat1": " frames",
+    "cat2": "samsung",
+    "count": 15,
+    "breadcrumbs": [
+      { "id": 1, "name": "قاب موبایل", "href": "#" },
+      { "id": 2, "name": "سامسونگ", "href": "#" }
+    ],
+
+    "colors": [
+      {
+        "name": "White",
+        "class": "bg-white",
+        "selectedClass": "ring-gray-400"
+      },
+      {
+        "name": "Gray",
+        "class": "bg-gray-200",
+        "selectedClass": "ring-gray-400"
+      },
+      {
+        "name": "Black",
+        "class": "bg-gray-900",
+        "selectedClass": "ring-gray-900"
+      }
+    ],
+
+    "imagesTitle": "/images/02-3.webp",
+
+    "images": [
+      {
+        "src": "/images/02-1.webp",
+        "alt": "Two each of gray, white, and black shirts laying flat."
+      },
+      {
+        "src": "/images/02-2.webp",
+        "alt": "Model wearing plain black basic tee."
+      },
+      {
+        "src": "/images/02-3.webp",
+        "alt": "Model wearing plain gray basic tee."
+      },
+      {
+        "src": "/images/02-4.webp",
+        "alt": "Model wearing plain white basic tee."
+      }
+    ],
+    "sizes": [
+      { "name": "11", "inStock": false },
+      { "name": "11 pro", "inStock": true },
+      { "name": "11 promax", "inStock": true },
+      { "name": "12", "inStock": true },
+      { "name": "12 PRO", "inStock": false },
+      { "name": "12 PROMAX", "inStock": true },
+      { "name": "13", "inStock": true },
+      { "name": "13 PRO", "inStock": true },
+      { "name": "13 PROMAX", "inStock": true },
+      { "name": "14 PRO", "inStock": true },
+      { "name": "14 PROMAX", "inStock": false },
+      { "name": "5S", "inStock": true },
+      { "name": "5", "inStock": false },
+      { "name": "SE", "inStock": true },
+      { "name": "6S", "inStock": true },
+      { "name": "6", "inStock": false },
+      { "name": "6S PLUS", "inStock": true },
+      { "name": "7", "inStock": true },
+      { "name": "8", "inStock": true },
+      { "name": "SE 2", "inStock": true },
+      { "name": "8 PLUS", "inStock": true },
+      { "name": "X", "inStock": true },
+      { "name": "XS MAX", "inStock": true }
+    ],
+    "description": "این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. ",
+    "highlights": [
+      "دور ژله ای",
+      "پوشش دور تا دور بدنه توسط قاب گوشي",
+      "پوشش کامل دکمه ها"
+    ],
+    "details": "برند: آیفون – IPHONE, سامسونگ – SAMSUNG, شیائومی – XIAOMI, هواوی – HUAWEI"
+  },
+  {
+    "id": "05",
+    "title": "قاب سیلیکونی پاک کنی آیفون ",
+    "name": "RC311",
+    "price": "850000",
+    "slug": "RC311",
+    "cat1": " frames",
+    "cat2": "samsung",
+    "count": 0,
+    "breadcrumbs": [
+      { "id": 1, "name": "قاب موبایل", "href": "#" },
+      { "id": 2, "name": "آیفون", "href": "#" }
+    ],
+
+    "colors": [
+      {
+        "name": "White",
+        "class": "bg-white",
+        "selectedClass": "ring-gray-400"
+      },
+      {
+        "name": "Gray",
+        "class": "bg-gray-200",
+        "selectedClass": "ring-gray-400"
+      },
+      {
+        "name": "Black",
+        "class": "bg-gray-900",
+        "selectedClass": "ring-gray-900"
+      }
+    ],
+
+    "imagesTitle": "/images/01-3.webp",
+
+    "images": [
+      {
+        "src": "/images/01-1.webp",
+        "alt": "Two each of gray, white, and black shirts laying flat."
+      },
+      {
+        "src": "/images/01-2.webp",
+        "alt": "Model wearing plain black basic tee."
+      },
+      {
+        "src": "/images/01-3.webp",
+        "alt": "Model wearing plain gray basic tee."
+      },
+      {
+        "src": "/images/01-4.webp",
+        "alt": "Model wearing plain white basic tee."
+      }
+    ],
+    "sizes": [
+      { "name": "11", "inStock": false },
+      { "name": "11 pro", "inStock": true },
+      { "name": "11 promax", "inStock": true },
+      { "name": "12", "inStock": true },
+      { "name": "12 PRO", "inStock": false },
+      { "name": "12 PROMAX", "inStock": true },
+      { "name": "13", "inStock": true },
+      { "name": "13 PRO", "inStock": true },
+      { "name": "13 PROMAX", "inStock": true },
+      { "name": "14 PRO", "inStock": true },
+      { "name": "14 PROMAX", "inStock": false },
+      { "name": "5S", "inStock": true },
+      { "name": "5", "inStock": false },
+      { "name": "SE", "inStock": true },
+      { "name": "6S", "inStock": true },
+      { "name": "6", "inStock": false },
+      { "name": "6S PLUS", "inStock": true },
+      { "name": "7", "inStock": true },
+      { "name": "8", "inStock": true },
+      { "name": "SE 2", "inStock": true },
+      { "name": "8 PLUS", "inStock": true },
+      { "name": "X", "inStock": true },
+      { "name": "XS MAX", "inStock": true }
+    ],
+    "description": "این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. ",
+    "highlights": [
+      "جنس: سیلیکون",
+      "پوشش دور تا دور گوشي",
+      "پوشش کامل دکمه ها",
+      "داراي پارچه مخمل داخل قاب جهت جلوگيري از ورود گرد و غبار به پشت گوشي و ضربه گيري بهتر قاب",
+      "کيفيت رنگ بسيار بالای قاب گوشی"
+    ],
+    "details": "در مدل های 5 و 5 اس و اس ای ، پایین قاب باز است."
+  },
+  {
+    "id": "06",
+    "title": "قاب آکواریومی اکلیل متحرک ",
+    "name": "RC225",
+    "price": "530000",
+    "slug": "RC225",
+    "cat1": " frames",
+    "cat2": "samsung",
+    "count": 15,
+    "breadcrumbs": [
+      { "id": 1, "name": "قاب موبایل", "href": "#" },
+      { "id": 2, "name": "سامسونگ", "href": "#" }
+    ],
+
+    "colors": [
+      {
+        "name": "White",
+        "class": "bg-white",
+        "selectedClass": "ring-gray-400"
+      },
+      {
+        "name": "Gray",
+        "class": "bg-gray-200",
+        "selectedClass": "ring-gray-400"
+      },
+      {
+        "name": "Black",
+        "class": "bg-gray-900",
+        "selectedClass": "ring-gray-900"
+      }
+    ],
+
+    "imagesTitle": "/images/02-3.webp",
+
+    "images": [
+      {
+        "src": "/images/02-1.webp",
+        "alt": "Two each of gray, white, and black shirts laying flat."
+      },
+      {
+        "src": "/images/02-2.webp",
+        "alt": "Model wearing plain black basic tee."
+      },
+      {
+        "src": "/images/02-3.webp",
+        "alt": "Model wearing plain gray basic tee."
+      },
+      {
+        "src": "/images/02-4.webp",
+        "alt": "Model wearing plain white basic tee."
+      }
+    ],
+    "sizes": [
+      { "name": "11", "inStock": false },
+      { "name": "11 pro", "inStock": true },
+      { "name": "11 promax", "inStock": true },
+      { "name": "12", "inStock": true },
+      { "name": "12 PRO", "inStock": false },
+      { "name": "12 PROMAX", "inStock": true },
+      { "name": "13", "inStock": true },
+      { "name": "13 PRO", "inStock": true },
+      { "name": "13 PROMAX", "inStock": true },
+      { "name": "14 PRO", "inStock": true },
+      { "name": "14 PROMAX", "inStock": false },
+      { "name": "5S", "inStock": true },
+      { "name": "5", "inStock": false },
+      { "name": "SE", "inStock": true },
+      { "name": "6S", "inStock": true },
+      { "name": "6", "inStock": false },
+      { "name": "6S PLUS", "inStock": true },
+      { "name": "7", "inStock": true },
+      { "name": "8", "inStock": true },
+      { "name": "SE 2", "inStock": true },
+      { "name": "8 PLUS", "inStock": true },
+      { "name": "X", "inStock": true },
+      { "name": "XS MAX", "inStock": true }
+    ],
+    "description": "این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. این یک متن تستی برای دیسکریپشن می باشد. ",
+    "highlights": [
+      "دور ژله ای",
+      "پوشش دور تا دور بدنه توسط قاب گوشي",
+      "پوشش کامل دکمه ها"
+    ],
+    "details": "برند: آیفون – IPHONE, سامسونگ – SAMSUNG, شیائومی – XIAOMI, هواوی – HUAWEI"
+  }
+]
