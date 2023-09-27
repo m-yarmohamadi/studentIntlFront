@@ -24,5 +24,10 @@ export const popupSlice = createSlice({
   },
 });
 
-export const { toggleLoginPopup, toggleRegisterPopup, toggleVerifyCodePopup, toggleLoginToRegisterPopup } = popupSlice.actions;
+export const {
+  toggleLoginPopup,
+  toggleRegisterPopup,
+  toggleVerifyCodePopup,
+  toggleLoginToRegisterPopup,
+} = popupSlice.actions;
 export default popupSlice.reducer;

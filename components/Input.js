@@ -5,7 +5,7 @@ const Input = ({ label, name, formik, type = "text" }) => {
     <div className=" h-20">
       <label
         htmlFor={name}
-        className="block mb-2 text-sm font-bold text-indigo-900 dark:text-white"
+        className="block mb-2 text-sm font-bold text-indigo-600 dark:text-white"
       >
         {label}
       </label>

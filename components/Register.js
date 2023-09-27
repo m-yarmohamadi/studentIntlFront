@@ -12,6 +12,7 @@ import {
 import * as Yup from "yup";
 import Input from "../components/Input";
 import TitleComponent from "./TitleComponent";
+import { toggleverifyCode } from "@/fuchers/resCode/resCodeSlice";
 const initialValues = {
   firstname: "",
   lastname: "",
@@ -36,7 +37,8 @@ const Register = () => {
       .then((res) => {
         console.log(res.data.code);
         if (res.data.code) {
-          openPapupVerifyCode;
+          dispatch(toggleVerifyCodePopup());
+          dispatch(toggleverifyCode(res.data.code));
         }
       })
       .catch((err) => console.log(err));

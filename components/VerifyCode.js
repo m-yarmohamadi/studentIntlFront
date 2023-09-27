@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 
 import * as Yup from "yup";
 import TitleComponent from "./TitleComponent";
+import Input from "../components/Input";
 
 const initialValuesVerify = {
   verifyCode: "",
@@ -36,7 +37,7 @@ const VerifyCode = () => {
   });
 
   return (
-    <div className=" justify-center  flex  overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+    <div className="fade-in justify-center  flex  overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-lg">
       <div className="relative w-auto  ">
         {/*body*/}
 
@@ -52,11 +53,11 @@ const VerifyCode = () => {
                 className="space-y-4 md:space-y-6"
                 onSubmit={formikVerify.handleSubmit}
               >
-                <div className="flex justify-between gap-2">
+                <div className="flex justify-between gap-2 ">
                   <Input
                     formik={formikVerify}
                     name="verifyCode"
-                    label={<TitleComponent I={"mobile"} />}
+                    label="لطفا کد 6 رقمی ارسال شده به تلفن همراه یا ایمیلتان را درج نمایید."
                   />
                 </div>
 

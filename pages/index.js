@@ -62,9 +62,7 @@ const index = () => {
       {showRegister && <Register />}
 
       {/* پاپ اپ وریفای کد */}
-      {showVerifyCode && (
-        <VerifyCode openPapupVerifyCode={openPapupVerifyCode} />
-      )}
+      {showVerifyCode && <VerifyCode />}
     </Layout>
   );
 };
