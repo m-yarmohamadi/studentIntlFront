@@ -4,7 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
 import { english, persian, arabic } from "@/fuchers/language/languageSlice";
-import { FaCogs, FaHome, FaFileContract, FaPowerOff } from "react-icons/fa";
+import {
+  FaCogs,
+  FaHome,
+  FaFileContract,
+  FaPowerOff,
+  FaCaretDown,
+} from "react-icons/fa";
 const Layout = ({ title, children }) => {
   const router = useRouter();
 
@@ -23,14 +29,15 @@ const Layout = ({ title, children }) => {
       <Head>
         <title>{`${title}-studentIntl`}</title>
       </Head>
-      <div className=" ttt md:py-12 fexl items-center ">
-        <div className=" h-full w-full bg-indigo-200 shadow-lg max-w-full  bg-opacity-70   ">
+      <div className="ttt  md:py-12 fexl items-center ">
+        <div className="h-full  w-full bg-indigo-200 shadow-lg max-w-full  bg-opacity-70   ">
           <div className="p-2 text-indigo-50  flex  justify-between  bg-indigo-950 w-full h-10    text-center font-black ">
             <div className=" font-extrabold flex justify-start">
               <FaPowerOff className=" me-2 h-6 w-6 " aria-hidden="true" />
               <h1>Mahdi Yarmohamadi</h1>
+              <FaCaretDown className=" me-2 h-6 w-6 " aria-hidden="true" />
             </div>
-            <div className=" text-indigo-950 flex gap-1">
+            <div className=" text-indigo-950 flex gap-2 ">
               {lang !== "persian" && (
                 <button
                   className="bg-indigo-200 hover:bg-indigo-300 font-bold p-1 text-sm rounded-sm"
@@ -76,9 +83,7 @@ const Layout = ({ title, children }) => {
             </div>
           </div>
 
-          <main className="pb-10 h-full w-full max-h-max  text-center  ">
-            {children}
-          </main>
+          <main className="pb-10 h-full w-full   text-center">{children}</main>
         </div>
       </div>
     </div>

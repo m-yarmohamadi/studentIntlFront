@@ -4,7 +4,7 @@ import InputSteps from "./InputSteps";
 const Step02 = () => {
   return (
     <div className="fade-in  h-full w-full">
-      <div className="rounded-md m-1 p-8 text-center bg-indigo-900 bg-opacity-60 h-full">
+      <div className="vh70  rounded-md m-1 p-8 text-center bg-indigo-900 bg-opacity-60 h-full">
         <div className=" py-4 text-3xl text-white font-black">
           <TitleComponent I={"titleStep02"} />
         </div>

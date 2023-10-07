@@ -21,10 +21,12 @@ const inputForm = () => {
   const [color, setColor] = useState("indigo");
   return (
     <Layout title="فرم ثبت نام">
-      <div className={`fade-in h-full flex flex-col justify-between`}>
+      <div
+        className={`h-full max-h-full fade-in l flex flex-col justify-between`}
+      >
         <div className={` w-full max-w-full `}>
           <div
-            className={` font-normal max-w-full grid grid-cols-3 md:grid-cols-10 gap-1 p-1`}
+            className={` font-normal max-w-full grid grid-cols-3 md:grid-cols-11 gap-1 p-1`}
           >
             <ButtonStep step={1} titleStep={"titleStep01"} Step={"Step"} />
             <ButtonStep step={2} titleStep={"titleStep02"} Step={"Step"} />
@@ -35,7 +37,7 @@ const inputForm = () => {
             <ButtonStep step={7} titleStep={"titleStep07"} Step={"Step"} />
             <ButtonStep step={8} titleStep={"titleStep08"} Step={"Step"} />
             <ButtonStep step={9} titleStep={"titleStep09"} Step={"Step"} />
-            <ButtonStep step={10} titleStep={"titleStep010"} Step={"Step"} />
+            <ButtonStep step={10} titleStep={"titleStep10"} Step={"Step"} />
           </div>
           <div>
             {stepform === 1 && (
@@ -70,7 +72,7 @@ const inputForm = () => {
             )}
           </div>
         </div>
-        <div className={`flex items-center justify-center w-full`}>
+        <div className={` flex items-center justify-center w-full`}>
           {stepform !== 1 && (
             <button
               onClick={() => {

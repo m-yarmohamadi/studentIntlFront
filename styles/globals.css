@@ -125,6 +125,9 @@ body {
 .ttt {
   height: 100vh;
 }
+.vh70 {
+  height: 67vh;
+}
 button:disabled {
   cursor: not-allowed;
   background: #bfbdff;

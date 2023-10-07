@@ -5,7 +5,7 @@ import TitleComponent from "../TitleComponent";
 const Step04 = () => {
   return (
     <div className="fade-in  h-full w-full">
-      <div className="rounded-md m-1 p-8 text-center bg-indigo-900 bg-opacity-60">
+      <div className="vh70 rounded-md m-1 p-8 text-center bg-indigo-900 bg-opacity-60">
         <div className=" py-4 text-3xl text-white font-black">
           <TitleComponent I={"titleStep04"} />
         </div>

@@ -14,7 +14,7 @@ export const Title2 = [
     id: nanoid(),
     name: "titleStep01",
     english: "Identity card/passport information",
-    persian: "اطلاعات کارت شناسایی/گذرنامه",
+    persian: "اطلاعات شخصی",
     arabic: "بطاقة الهوية / بيانات جواز السفر",
   },
   {
@@ -70,7 +70,7 @@ export const Title2 = [
     id: nanoid(),
     name: "titleStep02",
     english: "Previous education information",
-    persian: "اطلاعات تحصیلی قبلی",
+    persian: "انتخاب اولویت های تحصیلی",
     arabic: "معلومات التعليم السابق",
   },
   {
@@ -105,7 +105,7 @@ export const Title2 = [
     id: nanoid(),
     name: "titleStep03",
     english: "New academic course information",
-    persian: "اطلاعات جدید دروس دانشگاهی",
+    persian: "اطلاعات سوابق تحصیلی",
     arabic: "معلومات الدورة الأكاديمية الجديدة",
   },
   {
@@ -140,7 +140,7 @@ export const Title2 = [
     id: nanoid(),
     name: "titleStep04",
     english: "Required supplementary course information",
-    persian: "اطلاعات دوره تکمیلی مورد نیاز",
+    persian: "میزان تسلط بر انواع زبان ها",
     arabic: "مطلوب معلومات الدورة التكميلية",
   },
   {
@@ -168,7 +168,7 @@ export const Title2 = [
     id: nanoid(),
     name: "titleStep05",
     english: "Applicant's contact information",
-    persian: "اطلاعات تماس متقاضی",
+    persian: "اطلاعات داور (در صورت وجود)",
     arabic: "معلومات الاتصال لمقدم الطلب",
   },
   {
@@ -210,8 +210,36 @@ export const Title2 = [
     id: nanoid(),
     name: "titleStep06",
     english: "Upload documents",
-    persian: "بارگزاری مدارک",
+    persian: "مقاله، کتاب و ...",
     arabic: "تحميل الوثائق",
+  },
+  {
+    id: nanoid(),
+    name: "titleStep07",
+    english: "",
+    persian: "اطلاعات آشنایان ایرانی",
+    arabic: "",
+  },
+  {
+    id: nanoid(),
+    name: "titleStep08",
+    english: "",
+    persian: "اطلاعات خانواده",
+    arabic: "",
+  },
+  {
+    id: nanoid(),
+    name: "titleStep09",
+    english: "",
+    persian: "آپلود فایل ها",
+    arabic: "",
+  },
+  {
+    id: nanoid(),
+    name: "titleStep10",
+    english: "",
+    persian: "پیش نمایش",
+    arabic: "",
   },
   {
     id: nanoid(),
