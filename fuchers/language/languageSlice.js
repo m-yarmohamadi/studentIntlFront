@@ -5,6 +5,13 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 export const Title2 = [
   {
     id: nanoid(),
+    name: "Step",
+    english: "Step ",
+    persian: "گام",
+    arabic: "مرحله",
+  },
+  {
+    id: nanoid(),
     name: "titleStep01",
     english: "Identity card/passport information",
     persian: "اطلاعات کارت شناسایی/گذرنامه",
