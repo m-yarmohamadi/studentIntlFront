@@ -7,7 +7,7 @@ export const Title2 = [
     id: nanoid(),
     name: "Step",
     english: "Step ",
-    persian: "گام",
+    persian: "گــام",
     arabic: "مرحله",
   },
   {

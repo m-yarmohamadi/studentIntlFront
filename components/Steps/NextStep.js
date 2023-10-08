@@ -1,4 +1,8 @@
-import { TbArrowBigLeftFilled, TbArrowBigLeftLinesFilled, TbArrowBigRightLinesFilled } from "react-icons/tb";
+import {
+  TbArrowBigLeftFilled,
+  TbArrowBigLeftLinesFilled,
+  TbArrowBigRightLinesFilled,
+} from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import TitleComponent from "../TitleComponent";
 import { toggleStep } from "@/fuchers/steps/StepSlice";
@@ -6,19 +10,16 @@ import { toggleStep } from "@/fuchers/steps/StepSlice";
 const NextStep = () => {
   const dispatch = useDispatch();
 
-    const stepform = useSelector((state) => state.stepReducer.step);
-    const lang = useSelector((state) => state.languageReducer.value.languageName);
-
+  const stepform = useSelector((state) => state.stepReducer.step);
+  const lang = useSelector((state) => state.languageReducer.value.languageName);
 
   return (
-    <div>
-      <div className={` flex items-center justify-center w-full`}>
+    <div className="flex  flex-row justify-between w-full ">
+      <div>
+        {stepform > 1 && (
           <button
-            // onClick={() => {
-            //   stepform > 1 && (() => dispatch(toggleStep(stepform - 1)));
-            // }}
             onClick={() => dispatch(toggleStep(stepform - 1))}
-            className={` w-36 m-2 px-2 py-2 bg-indigo-900 hover:bg-indigo-800 rounded-md text-indigo-50`}
+            className={`border border-1 border-indigo-50 shadow-md hover:border-0 w-36 m-2 px-2 py-2 bg-indigo-900 hover:bg-indigo-800 rounded-md text-indigo-50`}
             type=""
           >
             <div className="flex justify-between">
@@ -40,12 +41,13 @@ const NextStep = () => {
               </div>
             </div>
           </button>
-
+        )}
+      </div>
+      <div>
+        {stepform < 10 && (
           <button
-            onClick={() => {
-              stepform < 10 && (() => dispatch(toggleStep(stepform + 1)));
-            }}
-            className={` w-36 m-2 px-2 py-2 bg-indigo-900 hover:bg-indigo-800 rounded-md text-indigo-50`}
+            onClick={() => dispatch(toggleStep(stepform + 1))}
+            className={`border border-1 border-indigo-50 shadow-md hover:border-0 w-36 m-2 px-2 py-2 bg-indigo-900 hover:bg-indigo-800 rounded-md text-indigo-50`}
             type=""
           >
             <div className="flex justify-between">
@@ -67,8 +69,8 @@ const NextStep = () => {
               </div>
             </div>
           </button>
+        )}
       </div>
-      
     </div>
   );
 };

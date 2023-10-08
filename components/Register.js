@@ -9,10 +9,10 @@ import {
   toggleLoginToRegisterPopup,
 } from "../fuchers/popup/popupSlice";
 
-import * as Yup from "yup";
 import Input from "../components/Input";
 import TitleComponent from "./TitleComponent";
 import { toggleverifyCode } from "@/fuchers/resCode/resCodeSlice";
+import { validationSchema } from "@/Validation/Validate";
 const initialValues = {
   firstname: "",
   lastname: "",
@@ -43,29 +43,7 @@ const Register = () => {
       })
       .catch((err) => console.log(err));
   };
-  const validationSchema = Yup.object({
-    firstname: Yup.string()
-      .required("Firstname is Required")
-      .min(3, "The length of this field should not be less than 3 characters")
-      .matches(/^[A-Za-z ]*$/, "Please type English"),
-    lastname: Yup.string()
-      .required("Lastname is Required")
-      .min(3, "The length of this field should not be less than 3 characters")
-      .matches(/^[A-Za-z ]*$/, "Please type English"),
-    email: Yup.string()
-      .email("Invalid Email Format")
-      .required("Email is Required"),
-    mobile: Yup.string()
-      .required("Mobile is Required")
-      .matches(/^[0-9]{11}$/, "Invalid Mobile"),
-    password: Yup.string().required("Password is Required"),
-    confirmPassword: Yup.string()
-      .required("confirmPassword is Required")
-      .oneOf(
-        [Yup.ref("password"), null],
-        "The password and its repetition must be the same "
-      ),
-  });
+
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -145,6 +123,7 @@ const Register = () => {
                     <input
                       id="accept"
                       aria-describedby="accept"
+                      name="checkbox"
                       type="checkbox"
                       className="w-4 h-4 border border-indigo-300 rounded bg-indigo-50 focus:ring-3 focus:ring-primary-300 dark:bg-indigo-700 dark:border-indigo-600 dark:focus:ring-primary-600 dark:ring-offset-indigo-800"
                     />

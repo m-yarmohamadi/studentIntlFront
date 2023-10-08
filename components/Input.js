@@ -6,10 +6,10 @@ const Input = ({ label, name, formik, type = "text" }) => {
     <div className=" h-20">
       <label
         htmlFor={name}
-        className="block mb-2 text-sm font-bold text-indigo-600 dark:text-white"
+        className=" flex justify-between text-sm font-bold text-indigo-600 dark:text-white"
       >
         {label}
-        <FaQuestionCircle  className="bg-white me-2 h-6 w-6 "/>4444
+        <FaQuestionCircle className="text-indigo-200" />
       </label>
       <input
         id={name}

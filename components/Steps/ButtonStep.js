@@ -17,13 +17,12 @@ const ButtonStep = ({ step, titleStep, Step }) => {
           : " font-extrabold shadow-lg py-1 bg-indigo-100  rounded-md text-indigo-700 w-full flex flex-col justify-between"
       }
     >
-        <div className="font-extrabold">
-          <TitleComponent I={Step} />
-          {""} {step}:
-        </div>
-        <div className={stepform !== step ? " text-xs p-0 m-0" : " font-bold"}>
-          <TitleComponent I={titleStep} />
-        </div>
+      <div className="font-extrabold">
+        <TitleComponent I={Step} /> {step}:
+      </div>
+      <div className={stepform !== step ? " text-xs p-0 m-0" : " font-bold"}>
+        <TitleComponent I={titleStep} />
+      </div>
     </button>
   );
 };
