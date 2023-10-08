@@ -168,7 +168,7 @@ export const Title2 = [
     id: nanoid(),
     name: "titleStep05",
     english: "Applicant's contact information",
-    persian: "اطلاعات داور (در صورت وجود)",
+    persian: "اطلاعات داور (درصورت وجود)",
     arabic: "معلومات الاتصال لمقدم الطلب",
   },
   {

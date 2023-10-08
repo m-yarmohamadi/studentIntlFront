@@ -13,17 +13,17 @@ const ButtonStep = ({ step, titleStep, Step }) => {
       onClick={() => dispatch(toggleStep(step))}
       className={
         stepform === step
-          ? "col-span-2 shadow-lg font-extrabold  p-1  bg-indigo-900 hover:bg-indigo-800 rounded-md text-indigo-50 w-full"
-          : " font-extrabold shadow-lg py-1 bg-indigo-100  rounded-md text-indigo-700 w-full"
+          ? "col-span-2 shadow-lg font-extrabold  p-1  bg-indigo-900 hover:bg-indigo-800 rounded-md text-indigo-50 w-full flex flex-col justify-between"
+          : " font-extrabold shadow-lg py-1 bg-indigo-100  rounded-md text-indigo-700 w-full flex flex-col justify-between"
       }
     >
-      <TitleComponent I={Step} />
-      {""} {step}:
-      <br />
-      {/* {stepform === step && <TitleComponent I={titleStep} />} */}
-      <div className={stepform !== step ? " text-xs p-0 m-0" : " font-bold"}>
-        <TitleComponent I={titleStep} />
-      </div>
+        <div className="font-extrabold">
+          <TitleComponent I={Step} />
+          {""} {step}:
+        </div>
+        <div className={stepform !== step ? " text-xs p-0 m-0" : " font-bold"}>
+          <TitleComponent I={titleStep} />
+        </div>
     </button>
   );
 };

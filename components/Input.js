@@ -1,4 +1,5 @@
 import React from "react";
+import { FaQuestionCircle } from "react-icons/fa";
 
 const Input = ({ label, name, formik, type = "text" }) => {
   return (
@@ -8,6 +9,7 @@ const Input = ({ label, name, formik, type = "text" }) => {
         className="block mb-2 text-sm font-bold text-indigo-600 dark:text-white"
       >
         {label}
+        <FaQuestionCircle  className="bg-white me-2 h-6 w-6 "/>4444
       </label>
       <input
         id={name}

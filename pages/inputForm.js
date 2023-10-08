@@ -72,65 +72,6 @@ const inputForm = () => {
             )}
           </div>
         </div>
-        <div className={` flex items-center justify-center w-full`}>
-          {stepform !== 1 && (
-            <button
-              onClick={() => {
-                stepform > 1 && (() => dispatch(toggleStep(stepform - 1)));
-              }}
-              className={` w-36 m-2 px-2 py-2 bg-${color}-900 hover:bg-${color}-800 rounded-md text-${color}-50`}
-              type=""
-            >
-              <div className="flex justify-between">
-                <div>
-                  {lang === "english" ? (
-                    <TbArrowBigLeftLinesFilled
-                      className="h-6 w-6 "
-                      aria-hidden="true"
-                    />
-                  ) : (
-                    <TbArrowBigRightLinesFilled
-                      className="h-6 w-6 "
-                      aria-hidden="true"
-                    />
-                  )}
-                </div>
-                <div className=" font-bold">
-                  <TitleComponent I={"previusStep"} />
-                </div>
-              </div>
-            </button>
-          )}
-
-          {stepform !== 10 && (
-            <button
-              onClick={() => {
-                stepform < 10 && (() => dispatch(toggleStep(stepform + 1)));
-              }}
-              className={` w-36 m-2 px-2 py-2 bg-${color}-900 hover:bg-${color}-800 rounded-md text-${color}-50`}
-              type=""
-            >
-              <div className="flex justify-between">
-                <div className=" font-bold">
-                  <TitleComponent I={"nextStep"} />
-                </div>
-                <div>
-                  {lang !== "english" ? (
-                    <TbArrowBigLeftLinesFilled
-                      className="h-6 w-6 "
-                      aria-hidden="true"
-                    />
-                  ) : (
-                    <TbArrowBigRightLinesFilled
-                      className="h-6 w-6 "
-                      aria-hidden="true"
-                    />
-                  )}
-                </div>
-              </div>
-            </button>
-          )}
-        </div>
       </div>
     </Layout>
   );
