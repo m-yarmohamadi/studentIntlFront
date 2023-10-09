@@ -13,6 +13,10 @@ import {
 } from "react-icons/tb";
 import TitleComponent from "@/components/TitleComponent";
 import ButtonStep from "@/components/Steps/ButtonStep";
+import Step07 from "@/components/Steps/Step07";
+import Step08 from "@/components/Steps/Step08";
+import Step09 from "@/components/Steps/Step09";
+import Step10 from "@/components/Steps/Step10";
 
 const inputForm = () => {
   const lang = useSelector((state) => state.languageReducer.value.languageName);
@@ -68,6 +72,26 @@ const inputForm = () => {
             {stepform === 6 && (
               <div>
                 <Step06 />
+              </div>
+            )}
+            {stepform === 7 && (
+              <div>
+                <Step07 />
+              </div>
+            )}
+            {stepform === 8 && (
+              <div>
+                <Step08 />
+              </div>
+            )}
+            {stepform === 9 && (
+              <div>
+                <Step09 />
+              </div>
+            )}
+            {stepform === 10 && (
+              <div>
+                <Step10 />
               </div>
             )}
           </div>
