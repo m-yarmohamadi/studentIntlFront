@@ -11,6 +11,7 @@ import {
   FaPowerOff,
   FaCaretDown,
 } from "react-icons/fa";
+import Menuuser from "./Menuuser";
 const Layout = ({ title, children }) => {
   const router = useRouter();
 
@@ -34,8 +35,9 @@ const Layout = ({ title, children }) => {
           <div className="p-2 text-indigo-50  flex  justify-between  bg-indigo-950 w-full h-10    text-center font-black ">
             <div className=" font-extrabold flex justify-start">
               <FaPowerOff className=" me-2 h-6 w-6 " aria-hidden="true" />
-              <h1>Mahdi Yarmohamadi</h1>
-              <FaCaretDown className=" me-2 h-6 w-6 " aria-hidden="true" />
+              {/* <h1>Mahdi Yarmohamadi</h1>
+              <FaCaretDown className=" me-2 h-6 w-6 " aria-hidden="true" /> */}
+              <Menuuser />
             </div>
             <div className=" text-indigo-950 flex gap-2 ">
               {lang !== "persian" && (
