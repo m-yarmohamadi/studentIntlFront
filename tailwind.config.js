@@ -12,7 +12,10 @@ export const theme = {
       "gradient-conic":
         "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
     },
-
+    height: {
+      108: "27rem",
+    },
   },
 };
+
 export const plugins = [];

@@ -12,7 +12,7 @@ import {
 import Input from "../components/Input";
 import TitleComponent from "./TitleComponent";
 import { toggleverifyCode } from "@/fuchers/resCode/resCodeSlice";
-import { validationSchema } from "@/Validation/Validate";
+import { validationSchema } from "@/Validation/Reg&LoginValidate";
 const initialValues = {
   firstname: "",
   lastname: "",

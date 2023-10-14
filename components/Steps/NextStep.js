@@ -19,7 +19,7 @@ const NextStep = () => {
         {stepform > 1 && (
           <button
             onClick={() => dispatch(toggleStep(stepform - 1))}
-            className={`border border-1 border-indigo-50 shadow-md hover:border-0 w-36 m-2 px-2 py-2 bg-indigo-900 hover:bg-indigo-800 rounded-md text-indigo-50`}
+            className={`border border-1 border-indigo-50 shadow-md hover:border-indigo-900 w-36 m-2 px-2 py-2 bg-indigo-900 hover:bg-indigo-800 rounded-md text-indigo-50`}
             type=""
           >
             <div className="flex justify-between">
@@ -47,7 +47,7 @@ const NextStep = () => {
         {stepform < 10 && (
           <button
             onClick={() => dispatch(toggleStep(stepform + 1))}
-            className={`border border-1 border-indigo-50 shadow-md hover:border-0 w-36 m-2 px-2 py-2 bg-indigo-900 hover:bg-indigo-800 rounded-md text-indigo-50`}
+            className={`border border-1 border-indigo-50 shadow-md hover:border-indigo-900 w-36 m-2 px-2 py-2 bg-indigo-900 hover:bg-indigo-800 rounded-md text-indigo-50`}
             type=""
           >
             <div className="flex justify-between">
