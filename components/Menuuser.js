@@ -38,7 +38,7 @@ export default function Menuuser() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-b-md bg-indigo-950 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-b-md bg-indigo-950 bg-opacity-95 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             {MenuItems.map((item) => (
               <Menu.Item>
@@ -47,7 +47,7 @@ export default function Menuuser() {
                     href="#"
                     className={classNames(
                       active
-                        ? "bg-indigo-900 text-indigo-50"
+                        ? "bg-indigo-900 text-indigo-50  "
                         : " text-indigo-100 font-medium",
                       "block px-4 py-2 text-sm"
                     )}
