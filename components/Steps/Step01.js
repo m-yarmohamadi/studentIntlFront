@@ -1,9 +1,11 @@
 import SelectSteps from "./SelectSteps";
-import TitleComponent from "../TitleComponent";
 import NextStep from "./NextStep";
 import { useFormik } from "formik";
 import { validationSchema } from "@/Validation/formValidate";
 import InputSteps from "./InputSteps";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+
 const initialValues = {
   firstname: "",
   lastname: "",
@@ -14,6 +16,7 @@ const initialValues = {
 };
 
 const Step01 = () => {
+  const { t } = useTranslation();
   const onSubmit = (values) => {
     axios
       .post("http://127.0.0.1:5000/students/step01", {
@@ -40,7 +43,8 @@ const Step01 = () => {
     <div className="fade-in  h-full w-full">
       <div className="vh70  rounded-md m-1 px-4  bg-indigo-900 bg-opacity-60 flex flex-col justify-between">
         <div className=" py-4 text-3xl text-white font-black">
-          <TitleComponent I={"titleStep01"} />
+          {t("titleStep01")}
+          {t("firstname")}
         </div>
         <form onSubmit={formik.handleSubmit} className="  ">
           <div className="overflow-y-auto h-108 p-2 border  border-indigo-50 border-opacity-60 bg-indigo-950 bg-opacity-20 ">

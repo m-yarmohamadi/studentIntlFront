@@ -1,7 +1,5 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
-// import Title from "/data/studentData.json";
-// const x = JSON.parse(Title);
 export const Title2 = [
   {
     id: nanoid(),
@@ -26,10 +24,31 @@ export const Title2 = [
   },
   {
     id: nanoid(),
-    name: "firstnameIsRequired",
-    english: "Firstname is Required",
-    persian: "نام اجباری می باشد",
-    arabic: " الاسم الأول الاجبار",
+    name: "completionOfThisItemIsMandatory",
+    english: "Completion of this item is mandatory",
+    persian: "تکمیل این مورد الزامی می باشد",
+    arabic: " إكمال هذا البند إلزامي",
+  },
+  {
+    id: nanoid(),
+    name: "TheLengthOfThisFieldShouldNotBeLessThan3Characters",
+    english: "The length of this field should not be less than 3 characters",
+    persian: "طول این فیلد نباید کمتر از 3 کاراکتر باشد",
+    arabic: " يجب ألا يقل طول هذا الحقل عن 3 أحرف",
+  },
+  {
+    id: nanoid(),
+    name: "PleaseTypeEnglish",
+    english: "Please type English",
+    persian: "لطفا انگلیسی تایپ کنید",
+    arabic: " الرجاء كتابة اللغة الإنجليزية",
+  },
+  {
+    id: nanoid(),
+    name: "TheLengthOfThisFieldShouldNotExceed30Characters",
+    english: "The length of this field should not exceed 30 characters",
+    persian: "طول این فیلد نباید بیشتر از 30 کاراکتر باشد",
+    arabic: " يجب ألا يتجاوز طول هذا الحقل 30 حرفًا",
   },
   {
     id: nanoid(),
@@ -784,35 +803,31 @@ export const languageSlice = createSlice({
   name: "language",
   initialState: {
     value: {
-      languageName: "english",
+      languageName: "en",
       direction: "ltr",
       font: "Arial",
-      title: Title2.map((item) => item.english),
     },
   },
   reducers: {
     english: (state) => {
       state.value = {
-        languageName: "english",
+        languageName: "en",
         direction: "ltr",
         font: "Vazir",
-        title: Title2.map((item) => item.english),
       };
     },
     persian: (state) => {
       state.value = {
-        languageName: "persian",
+        languageName: "fa",
         direction: "rtl",
         font: "IRANSans",
-        title: Title2.map((item) => item.persian),
       };
     },
     arabic: (state) => {
       state.value = {
-        languageName: "arabic",
+        languageName: "ar",
         direction: "rtl",
         font: "Arial",
-        title: Title2.map((item) => item.arabic),
       };
     },
   },

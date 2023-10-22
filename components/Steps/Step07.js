@@ -1,13 +1,15 @@
 import InputSteps from "./InputSteps";
-import TitleComponent from "../TitleComponent";
 import NextStep from "./NextStep";
+import { useTranslation } from "react-i18next";
 
 const Step07 = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="fade-in  h-full w-full">
       <div className="vh70 rounded-md m-1 px-8 text-center bg-indigo-900 bg-opacity-60 flex flex-col justify-between">
         <div className=" py-4 text-3xl text-white font-black">
-          <TitleComponent I={"titleStep07"} />
+          {t("titleStep07")}
         </div>
         <form className="  grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 ">
           <div className=" mb-2">
@@ -25,5 +27,4 @@ const Step07 = () => {
     </div>
   );
 };
-
 export default Step07;

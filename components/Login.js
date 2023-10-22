@@ -8,18 +8,20 @@ import {
   toggleVerifyCodePopup,
   toggleLoginToRegisterPopup,
 } from "../fuchers/popup/popupSlice";
+import { useTranslation } from "react-i18next";
 
 import { setShowVerifyCode } from "@/fuchers/popup/popupSlice";
 
 import * as Yup from "yup";
 import Input from "../components/Input";
-import TitleComponent from "./TitleComponent";
 const initialValues = {
   email: "",
   password: "",
 };
 
 const Login = () => {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
@@ -68,7 +70,7 @@ const Login = () => {
             <div className="  p-1 space-y-4 md:space-y-6 sm:p-8">
               <div className="text-center">
                 <h1 className=" uppercase text-xl font-bold leading-tight tracking-tight text-indigo-900 md:text-2xl dark:text-white ">
-                  <TitleComponent I={"login"} />
+                  {"login"}
                 </h1>
               </div>
               <form
@@ -76,18 +78,14 @@ const Login = () => {
                 onSubmit={formik.handleSubmit}
               >
                 <div>
-                  <Input
-                    formik={formik}
-                    name="email"
-                    label={<TitleComponent I={"email"} />}
-                  />
+                  <Input formik={formik} name="email" label={t("email")} />
                 </div>
 
                 <div>
                   <Input
                     formik={formik}
                     name="password"
-                    label={<TitleComponent I={"password"} />}
+                    label={t("password")}
                     type="password"
                   />
                 </div>
@@ -107,7 +105,7 @@ const Login = () => {
                         htmlFor="remember"
                         className="text-indigo-500 dark:text-indigo-300"
                       >
-                        <TitleComponent I={"rememberMe"} />{" "}
+                        {t("rememberMe")}
                       </label>
                     </div>
                   </div>
@@ -115,7 +113,7 @@ const Login = () => {
                     href="/forgetPassword"
                     className="text-sm font-bold text-indigo-900 hover:underline dark:text-indigo-500"
                   >
-                    <TitleComponent I={"iForgotMyPassword"} />
+                    {t("iForgotMyPassword")}
                   </Link>
                 </div>
                 <button
@@ -123,15 +121,15 @@ const Login = () => {
                   disabled={!formik.isValid}
                   className="w-full text-white bg-indigo-900 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
                 >
-                  <TitleComponent I={"login"} />
+                  {t("login")}
                 </button>
                 <p className="text-sm font-light text-indigo-500 dark:text-indigo-400">
-                  <TitleComponent I={"dontHaveAnAccount"} />
+                  {t("dontHaveAnAccount")}
                   <button
                     className="font-bold text-indigo-900 hover:underline dark:text-indigo-500"
                     onClick={() => dispatch(toggleLoginToRegisterPopup())}
                   >
-                    <TitleComponent I={"register"} />
+                    {t("register")}
                   </button>
                 </p>
               </form>

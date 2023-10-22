@@ -11,7 +11,6 @@ import {
   TbArrowBigLeftLinesFilled,
   TbArrowBigRightLinesFilled,
 } from "react-icons/tb";
-import TitleComponent from "@/components/TitleComponent";
 import ButtonStep from "@/components/Steps/ButtonStep";
 import Step07 from "@/components/Steps/Step07";
 import Step08 from "@/components/Steps/Step08";

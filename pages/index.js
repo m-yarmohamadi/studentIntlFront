@@ -8,14 +8,16 @@ import Logo from "@/components/Logo";
 import Login from "@/components/Login";
 import RegistrationNotices from "@/components/RegistrationNotices";
 import VerifyCode from "@/components/VerifyCode";
-import TitleComponent from "@/components/TitleComponent";
 import {
   toggleLoginPopup,
   toggleRegisterPopup,
   toggleVerifyCodePopup,
 } from "../fuchers/popup/popupSlice";
+import { useTranslation } from "react-i18next";
 
 const index = () => {
+  const { t } = useTranslation();
+
   const showLogin = useSelector((state) => state.popupReducer.loginPopup);
   const showRegister = useSelector((state) => state.popupReducer.registerPopup);
   const showVerifyCode = useSelector(
@@ -29,7 +31,7 @@ const index = () => {
         {/* عنوان سایت */}
         <div className="flex justify-center">
           <p className="font-black text-3xl text-indigo-950">
-            <TitleComponent I={"RegistrationSystemForForeignStudents"} />
+            {t("RegistrationSystemForForeignStudents")}
           </p>
         </div>
 
@@ -40,14 +42,14 @@ const index = () => {
             onClick={() => dispatch(toggleLoginPopup())}
             className="  hover:cursor-pointer text-2xl font-black shadow-lg shadow-indigo-950  hover:shadow-indigo-900 text-indigo-100  my-6 mx-1 bg-indigo-900 hover:bg-indigo-800 border border-1 border-indigo-50 rounded-md px-8 py-2"
           >
-            <TitleComponent I={"login"} />
+            {t("login")}
           </button>
           <button
             type="button"
             onClick={() => dispatch(toggleRegisterPopup())}
             className="hover:cursor-pointer text-2xl font-black shadow-lg shadow-indigo-950  hover:shadow-indigo-900 text-indigo-100  my-6 mx-1 bg-indigo-900 hover:bg-indigo-800 border border-1 border-indigo-50 rounded-md px-8 py-2"
           >
-            <TitleComponent I={"register"} />
+            {t("register")}
           </button>
         </div>
         {/* اطلاعیه های ثبت نام */}

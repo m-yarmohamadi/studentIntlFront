@@ -1,10 +1,10 @@
-import TitleComponent from "@/components/TitleComponent";
 import * as Yup from "yup";
 
 export const validationSchema = Yup.object({
   firstname: Yup.string()
-    .required(<TitleComponent I={"firstnameIsRequired"} />)
-    .min(3, "The length of this field should not be less than 3 characters")
+    .required("completionOfThisItemIsMandatory")
+    .min(3, "completionOfThisItemIsMandatory")
+    .max(30, "completionOfThisItemIsMandatory")
     .matches(/^[A-Za-z ]*$/, "Please type English"),
   lastname: Yup.string()
     .required("Lastname is Required")

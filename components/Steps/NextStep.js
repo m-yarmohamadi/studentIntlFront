@@ -4,10 +4,12 @@ import {
   TbArrowBigRightLinesFilled,
 } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
-import TitleComponent from "../TitleComponent";
 import { toggleStep } from "@/fuchers/steps/StepSlice";
+import { useTranslation } from "react-i18next";
 
 const NextStep = () => {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
 
   const stepform = useSelector((state) => state.stepReducer.step);
@@ -36,9 +38,7 @@ const NextStep = () => {
                   />
                 )}
               </div>
-              <div className=" font-bold">
-                <TitleComponent I={"previusStep"} />
-              </div>
+              <div className=" font-bold">{t("previusStep")}</div>
             </div>
           </button>
         )}
@@ -51,9 +51,7 @@ const NextStep = () => {
             type=""
           >
             <div className="flex justify-between">
-              <div className=" font-bold">
-                <TitleComponent I={"nextStep"} />
-              </div>
+              <div className=" font-bold">{t("nextStep")}</div>
               <div>
                 {lang !== "english" ? (
                   <TbArrowBigLeftLinesFilled

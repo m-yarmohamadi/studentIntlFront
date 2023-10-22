@@ -1,12 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import TitleComponent from "../TitleComponent";
 import { toggleStep } from "@/fuchers/steps/StepSlice";
+import { useTranslation } from "react-i18next";
 
 const ButtonStep = ({ step, titleStep, Step }) => {
   const dispatch = useDispatch();
   const stepform = useSelector((state) => state.stepReducer.step);
+  const { t } = useTranslation();
 
   return (
     <button
@@ -18,10 +19,10 @@ const ButtonStep = ({ step, titleStep, Step }) => {
       }
     >
       <div className="font-extrabold">
-        <TitleComponent I={Step} /> {step}:
+        {t(Step)} {step}:
       </div>
       <div className={stepform !== step ? " text-xs p-0 m-0" : " font-bold"}>
-        <TitleComponent I={titleStep} />
+        {t(titleStep)}
       </div>
     </button>
   );

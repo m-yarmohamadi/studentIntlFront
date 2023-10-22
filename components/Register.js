@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FaRegTimesCircle } from "react-icons/fa";
-import axios from "axios";
+import axios, { toFormData } from "axios";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -8,11 +8,13 @@ import {
   toggleVerifyCodePopup,
   toggleLoginToRegisterPopup,
 } from "../fuchers/popup/popupSlice";
+import { useTranslation } from "react-i18next";
 
 import Input from "../components/Input";
-import TitleComponent from "./TitleComponent";
+
 import { toggleverifyCode } from "@/fuchers/resCode/resCodeSlice";
 import { validationSchema } from "@/Validation/Reg&LoginValidate";
+import { textarea } from "@material-tailwind/react";
 const initialValues = {
   firstname: "",
   lastname: "",
@@ -23,6 +25,8 @@ const initialValues = {
 };
 
 const Register = () => {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
@@ -70,7 +74,7 @@ const Register = () => {
             <div className="  p-1 space-y-4 md:space-y-6 sm:p-8">
               <div className="text-center">
                 <h1 className=" uppercase text-xl font-bold leading-tight tracking-tight text-indigo-900 md:text-2xl dark:text-white ">
-                  <TitleComponent I={"register"} />
+                  {t("register")}
                 </h1>
               </div>
               <form
@@ -81,40 +85,32 @@ const Register = () => {
                   <Input
                     formik={formik}
                     name="firstname"
-                    label={<TitleComponent I={"firstname"} />}
+                    label={t("firstname")}
                   />
                   <Input
                     formik={formik}
                     name="lastname"
-                    label={<TitleComponent I={"lastname"} />}
+                    label={t("lastname")}
                   />
                 </div>
 
                 <div className="flex justify-between gap-2">
-                  <Input
-                    formik={formik}
-                    name="mobile"
-                    label={<TitleComponent I={"mobile"} />}
-                  />
+                  <Input formik={formik} name="mobile" label={t("mobile")} />
 
-                  <Input
-                    formik={formik}
-                    name="email"
-                    label={<TitleComponent I={"email"} />}
-                  />
+                  <Input formik={formik} name="email" label={t("email")} />
                 </div>
 
                 <div className="flex justify-between gap-2">
                   <Input
                     formik={formik}
                     name="password"
-                    label={<TitleComponent I={"password"} />}
+                    label={t("password")}
                     type="password"
                   />
                   <Input
                     formik={formik}
                     name="confirmPassword"
-                    label={<TitleComponent I={"confirmPassword"} />}
+                    label={t("confirmPassword")}
                     type="password"
                   />
                 </div>
@@ -137,9 +133,7 @@ const Register = () => {
                         className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                         href="/Rules"
                       >
-                        <TitleComponent
-                          I={"iAcceptTheTermsAndConditionsOfTheSite"}
-                        />
+                        {t("iAcceptTheTermsAndConditionsOfTheSite")}
                       </Link>
                     </label>
                   </div>
@@ -149,16 +143,16 @@ const Register = () => {
                   disabled={!formik.isValid}
                   className="w-full text-white bg-indigo-900 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
                 >
-                  <TitleComponent I={"register"} />
+                  {t("register")}
                 </button>
                 <p className="text-sm font-light text-indigo-500 dark:text-indigo-400">
-                  <TitleComponent I={"alreadyRegistered"} />
+                  {t("alreadyRegistered")}
 
                   <button
                     className=" font-bold text-indigo-900 hover:underline dark:text-indigo-500"
                     onClick={() => dispatch(toggleLoginToRegisterPopup())}
                   >
-                    <TitleComponent I={"login"} />
+                    {t("login")}
                   </button>
                 </p>
               </form>
