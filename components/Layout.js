@@ -1,9 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/router";
 
-import { english, persian, arabic } from "@/fuchers/language/languageSlice";
 import {
   FaCogs,
   FaHome,
@@ -12,16 +10,24 @@ import {
   FaCaretDown,
 } from "react-icons/fa";
 import Menuuser from "./Menuuser";
+import { useTranslation } from "react-i18next";
 const Layout = ({ title, children }) => {
-  const router = useRouter();
+  const dispatch = useDispatch();
 
   const lang = useSelector((state) => state.languageReducer.value.languageName);
+
+  const { i18n } = useTranslation();
+  function handleChange(event) {
+    const lang2 = event.target.value;
+    i18n.changeLanguage(lang2);
+    dispatch({ type: `language/${lang2}` });
+  }
+
   const direction = useSelector(
     (state) => state.languageReducer.value.direction
   );
   const font = useSelector((state) => state.languageReducer.value.font);
 
-  const dispatch = useDispatch();
   return (
     <div
       style={{ direction: direction, fontFamily: font }}
@@ -35,35 +41,18 @@ const Layout = ({ title, children }) => {
           <div className="p-2 text-indigo-50  flex  justify-between  bg-indigo-950 w-full h-10    text-center font-black ">
             <div className=" font-extrabold flex justify-start">
               <FaPowerOff className=" me-2 h-6 w-6 " aria-hidden="true" />
-              {/* <h1>Mahdi Yarmohamadi</h1>
-              <FaCaretDown className=" me-2 h-6 w-6 " aria-hidden="true" /> */}
               <Menuuser />
             </div>
             <div className=" text-indigo-950 flex gap-2 ">
-              {lang !== "persian" && (
-                <button
-                  className="bg-indigo-200 hover:bg-indigo-300 font-bold p-1 text-sm rounded-sm"
-                  onClick={() => dispatch(persian())}
-                >
-                  FA
-                </button>
-              )}
-              {lang !== "english" && (
-                <button
-                  className="bg-indigo-200 hover:bg-indigo-300 font-bold p-1 text-sm rounded-sm"
-                  onClick={() => dispatch(english())}
-                >
-                  EN
-                </button>
-              )}
-              {lang !== "arabic" && (
-                <button
-                  className="bg-indigo-200 hover:bg-indigo-300 font-bold p-1 text-sm rounded-sm"
-                  onClick={() => dispatch(arabic())}
-                >
-                  AR
-                </button>
-              )}
+              <select
+                defaultValue={"english"}
+                className="bg-indigo-200 hover:bg-indigo-300 font-bold p-1 text-sm rounded-sm"
+                onChange={handleChange}
+              >
+                <option value="persian">فارسی</option>
+                <option value="arabic">العربیه</option>
+                <option value="english">english</option>
+              </select>
               <Link href="/dictionary">
                 <FaFileContract
                   className="text-indigo-50 hover:text-indigo-100 ms-5 h-6 w-6 "

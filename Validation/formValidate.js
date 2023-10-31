@@ -2,25 +2,125 @@ import * as Yup from "yup";
 
 export const validationSchema = Yup.object({
   firstname: Yup.string()
-    .required("completionOfThisItemIsMandatory")
-    .min(3, "completionOfThisItemIsMandatory")
-    .max(30, "completionOfThisItemIsMandatory")
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  middlename: Yup.string()
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
     .matches(/^[A-Za-z ]*$/, "Please type English"),
   lastname: Yup.string()
-    .required("Lastname is Required")
-    .min(3, "The length of this field should not be less than 3 characters")
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
     .matches(/^[A-Za-z ]*$/, "Please type English"),
+  firstnamepersian: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[\u0600-\u06FF\s]+$/, "Please type Persian"),
+  middlenamepersian: Yup.string()
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[\u0600-\u06FF\s]+$/, "Please type Persian"),
+  lastnamepersian: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[\u0600-\u06FF\s]+$/, "Please type Persian"),
+  fathername: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  mothername: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  dateOfBirth: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  country: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  city: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  sex: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  maritalstatus: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  numOfChildren: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  religion: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  passportNumber: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[0-9]*$/, "Please type Number"),
+  dateOfIssue: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  dateOfExpire: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  placeOfIssue: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  nationalities: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  address: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  tel: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[0-9]*$/, "Please type Number"),
   email: Yup.string()
     .email("Invalid Email Format")
-    .required("Email is Required"),
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z0-9@. ]*$/, "Please type English"),
+  fax: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[0-9]*$/, "Please type Number"),
   mobile: Yup.string()
-    .required("Mobile is Required")
+    .required("This field is required")
     .matches(/^[0-9]{11}$/, "Invalid Mobile"),
-  password: Yup.string().required("Password is Required"),
-  confirmPassword: Yup.string()
-    .required("confirmPassword is Required")
-    .oneOf(
-      [Yup.ref("password"), null],
-      "The password and its repetition must be the same "
-    ),
 });

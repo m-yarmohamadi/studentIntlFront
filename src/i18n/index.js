@@ -3,9 +3,6 @@ import { initReactI18next } from "react-i18next";
 import english from "./en";
 import persian from "./fa";
 import arabic from "./ar";
-import { useDispatch, useSelector } from "react-redux";
-
-const lang = useSelector((state) => state.languageReducer.value.languageName);
 
 const resources = {
   english: {
@@ -21,7 +18,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: { lang },
+  lng: "english",
   keySeparator: false,
   interpolation: {
     escapeValue: false,

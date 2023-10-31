@@ -1,5 +1,5 @@
+import i18n from "@/src/i18n";
 import { createSlice, nanoid } from "@reduxjs/toolkit";
-
 export const Title2 = [
   {
     id: nanoid(),
@@ -803,7 +803,7 @@ export const languageSlice = createSlice({
   name: "language",
   initialState: {
     value: {
-      languageName: "en",
+      languageName: "english",
       direction: "ltr",
       font: "Arial",
     },
@@ -811,21 +811,21 @@ export const languageSlice = createSlice({
   reducers: {
     english: (state) => {
       state.value = {
-        languageName: "en",
+        languageName: "english",
         direction: "ltr",
         font: "Vazir",
       };
     },
     persian: (state) => {
       state.value = {
-        languageName: "fa",
+        languageName: "persian",
         direction: "rtl",
         font: "IRANSans",
       };
     },
     arabic: (state) => {
       state.value = {
-        languageName: "ar",
+        languageName: "arabic",
         direction: "rtl",
         font: "Arial",
       };

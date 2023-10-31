@@ -1,9 +1,30 @@
+import SelectSteps from "./SelectSteps";
+import { useFormik } from "formik";
+import { validationSchema } from "@/Validation/formValidate";
 import InputSteps from "./InputSteps";
 import NextStep from "./NextStep";
 import { useTranslation } from "react-i18next";
+const initialValues = {};
 
 const Step07 = () => {
   const { t } = useTranslation();
+  const onSubmit = (values) => {
+    axios
+      .post("http://127.0.0.1:5000/students/step01", {
+        values,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema,
+    validateOnMount: true,
+  });
 
   return (
     <div className="fade-in  h-full w-full">
@@ -13,13 +34,21 @@ const Step07 = () => {
         </div>
         <form className="  grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 ">
           <div className=" mb-2">
-            <InputSteps name={"uploadAPhoto"} type={"file"} />
+            <InputSteps formik={formik} name={"uploadAPhoto"} type={"file"} />
           </div>
           <div className=" mb-2">
-            <InputSteps name={"passportPicture"} type={"file"} />
+            <InputSteps
+              formik={formik}
+              name={"passportPicture"}
+              type={"file"}
+            />
           </div>
           <div className=" mb-2">
-            <InputSteps name={"imageOfThePreviousDegree"} type={"file"} />
+            <InputSteps
+              formik={formik}
+              name={"imageOfThePreviousDegree"}
+              type={"file"}
+            />
           </div>
         </form>
         <NextStep />

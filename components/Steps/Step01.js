@@ -1,18 +1,36 @@
 import SelectSteps from "./SelectSteps";
-import NextStep from "./NextStep";
 import { useFormik } from "formik";
 import { validationSchema } from "@/Validation/formValidate";
 import InputSteps from "./InputSteps";
-import { useState } from "react";
+import NextStep from "./NextStep";
 import { useTranslation } from "react-i18next";
 
 const initialValues = {
   firstname: "",
+  middlename: "",
   lastname: "",
-  mobile: "",
+  firstnamepersian: "",
+  middlenamepersian: "",
+  lastnamepersian: "",
+  fathername: "",
+  mothername: "",
+  dateOfBirth: "",
+  country: "",
+  city: "",
+  sex: "",
+  maritalstatus: "",
+  numOfChildren: "",
+  religion: "",
+  passportNumber: "",
+  dateOfIssue: "",
+  dateOfExpire: "",
+  placeOfIssue: "",
+  nationalities: "",
+  address: "",
+  tel: "",
   email: "",
-  password: "",
-  confirmPassword: "",
+  fax: "",
+  mobile: "",
 };
 
 const Step01 = () => {
@@ -23,11 +41,7 @@ const Step01 = () => {
         values,
       })
       .then((res) => {
-        console.log(res.data.code);
-        if (res.data.code) {
-          dispatch(toggleVerifyCodePopup());
-          dispatch(toggleverifyCode(res.data.code));
-        }
+        console.log(res.data);
       })
       .catch((err) => console.log(err));
   };
@@ -44,17 +58,16 @@ const Step01 = () => {
       <div className="vh70  rounded-md m-1 px-4  bg-indigo-900 bg-opacity-60 flex flex-col justify-between">
         <div className=" py-4 text-3xl text-white font-black">
           {t("titleStep01")}
-          {t("firstname")}
         </div>
         <form onSubmit={formik.handleSubmit} className="  ">
-          <div className="overflow-y-auto h-108 p-2 border  border-indigo-50 border-opacity-60 bg-indigo-950 bg-opacity-20 ">
+          <div className="overflow-y-auto h-108 p-2 border  border-indigo-50  bg-indigo-950 bg-opacity-20 ">
             <div className=" grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 ">
               <div className="grid grid-cols-3 gap-2  ">
                 <InputSteps formik={formik} name={"firstname"} type={"text"} />
                 <InputSteps formik={formik} name={"middlename"} type={"text"} />
                 <InputSteps formik={formik} name={"lastname"} type={"text"} />
               </div>
-              <div className=" text-sm tracking-tight border border-1 border-white px-2 py-5 bg-indigo-900 bg-opacity-75 grid grid-cols-3 gap-2  mb-4">
+              <div className="pt-5 pb-2 text-sm tracking-tight border border-1 border-white px-2  bg-indigo-900 bg-opacity-75 grid grid-cols-3 gap-2  mb-4">
                 <InputSteps
                   formik={formik}
                   name={"firstnamepersian"}
@@ -91,14 +104,14 @@ const Step01 = () => {
                 <SelectSteps
                   formik={formik}
                   name={"country"}
-                  value={["man", "woman"]}
+                  value={["Iran", "Iraq"]}
                 />
               </div>
               <div className=" mb-2">
                 <SelectSteps
                   formik={formik}
                   name={"city"}
-                  value={["man", "woman"]}
+                  value={["Tehran", "Ahvaz"]}
                 />
               </div>
               <div className=" mb-2">
@@ -108,7 +121,7 @@ const Step01 = () => {
                   value={["man", "woman"]}
                 />
               </div>
-              <div className="tracking-tight px-2 py-5 grid grid-cols-2 gap-2 mb-2">
+              <div className="tracking-tight px-2  grid grid-cols-2 gap-2 mb-2">
                 <SelectSteps
                   formik={formik}
                   name={"maritalstatus"}

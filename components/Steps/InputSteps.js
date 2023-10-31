@@ -3,24 +3,11 @@ import { useTranslation } from "react-i18next";
 const InputSteps = ({ type, name, formik }) => {
   const { t } = useTranslation();
 
-  const [isValid, setIsValid] = useState(false);
-  const validenglish = (event) => {
-    const newValue = event.target.value;
-    const regex = /^[A-Za-z]+$/;
-    const valid = regex.test(newValue);
-    if (valid) {
-      setIsValid(true);
-    }
-    console.log(isValid);
-    if (!isValid) {
-      event.target.value = null;
-    }
-  };
-
   return (
-    <div className=" h-full">
+    <div className="flex flex-col justify-start h-full">
       <label className="-mb-2  block text-md font-normal text-indigo-50 text-start">
         {t(name)}
+        <span className="px-1  text-rose-400">*</span>
       </label>
       <input
         onChange={(event) => {
@@ -28,13 +15,19 @@ const InputSteps = ({ type, name, formik }) => {
         }}
         type={type}
         {...formik.getFieldProps(name)}
-        className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40"
+        className={
+          formik.errors[name] && formik.touched[name]
+            ? `block w-full px-4 py-1 mt-2 text-indigo-700 bg-rose-100 border rounded-md focus:border-indigo-400 border-rose-400  focus:ring-rose-600 focus:outline-none focus:ring focus:ring-opacity-40`
+            : `block w-full px-4 py-1 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40`
+        }
       />
-      {formik.errors[name] && formik.touched[name] && (
-        <p className=" text-xs text-start text-rose-400">
-          {formik.errors[name]}
-        </p>
-      )}
+      <div className=" text-start h-4">
+        {formik.errors[name] && formik.touched[name] && (
+          <p className=" text-xs text-start text-rose-400">
+            {formik.errors[name]}
+          </p>
+        )}
+      </div>
     </div>
   );
 };
