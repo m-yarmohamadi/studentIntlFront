@@ -72,6 +72,12 @@ const english = {
 
   // -----------------------------------STEP03--------------------------
   highSchool: "High School",
+  grade: "Grade",
+  diploma: "Diploma",
+  associateDegree: "Associate Degree",
+  bachelor: "Bachelor",
+  phd: "pHd",
+
   start: "Start",
   end: "End",
   fieldOfStudy: "Field of Study",

@@ -10,6 +10,7 @@ const initialValues = {};
 const data = [
   {
     id: 1,
+    grade: "0",
     start: "0",
     end: "0",
     fieldOfStudy: "0",
@@ -42,6 +43,7 @@ const Step05 = () => {
   const [list, setList] = useState(data);
 
   const handleRowClick = (
+    grade,
     start,
     end,
     fieldOfStudy,
@@ -55,6 +57,7 @@ const Step05 = () => {
   const handleSubmit = (values, { resetForm }) => {
     const newItem = {
       id: list.length + 1,
+      grade: values.grade,
       start: values.start,
       end: values.end,
       fieldOfStudy: values.fieldOfStudy,
@@ -80,6 +83,7 @@ const Step05 = () => {
               <table className="      border border-1 border-indigo-300  w-full ">
                 <thead className="">
                   <tr className="bg-indigo-900 text-indigo-50 font-bold">
+                    <th>{t("grade")}</th>
                     <th>{t("start")}</th>
                     <th>{t("end")}</th>
                     <th>{t("fieldOfStudy")}</th>
@@ -90,12 +94,13 @@ const Step05 = () => {
                     <th>{t("outOf")}</th>
                   </tr>
                 </thead>
-                <tbody className="">
+                <tbody className=" text-indigo-50">
                   {list.map((item) => (
                     <tr
                       key={item.id}
                       onClick={() =>
                         handleRowClick(
+                          item.grade,
                           item.start,
                           item.end,
                           item.fieldOfStudy,
@@ -107,6 +112,7 @@ const Step05 = () => {
                         )
                       }
                     >
+                      <td>{item.grade}</td>
                       <td>{item.start}</td>
                       <td>{item.end}</td>
                       <td>{item.fieldOfStudy}</td>
@@ -119,7 +125,28 @@ const Step05 = () => {
                   ))}
                 </tbody>
               </table>
-              <div className="pt-28 grid grid-cols-4 gap-2">
+              <div className="pt-28 grid grid-cols-2 gap-2">
+                <div className="flex flex-col justify-start h-full">
+                  <label className="-mb-2  block text-md font-normal text-indigo-50 text-start">
+                    {t("grade")}
+                    <span className="px-1  text-rose-400">*</span>
+                  </label>
+                  <Field
+                    as="select"
+                    name="grade"
+                    className={`block w-full px-4 py-1 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40`}
+                  >
+                    <option value="diploma">{t("diploma")}</option>
+                    <option value="associateDegree">
+                      {t("associateDegree")}
+                    </option>
+                    <option value="bachelor">{t("bachelor")}</option>
+                    <option value="master">{t("master")}</option>
+                    <option value="phd">{t("phd")}</option>
+                  </Field>
+                </div>
+              </div>
+              <div className=" pt-4  grid grid-cols-4 gap-2">
                 <div className="flex flex-col justify-start h-full">
                   <label className="-mb-2  block text-md font-normal text-indigo-50 text-start">
                     {t("start")}
@@ -217,7 +244,12 @@ const Step05 = () => {
                   />
                 </div>
               </div>
-              <button type="submit">Submit</button>
+              <button
+                className="bg-indigo-900 hover:bg-indigo-950 p-2 rounded-md border border-indigo-50 hover:border-opacity-60 text-indigo-50 w-full my-3"
+                type="submit"
+              >
+                Submit
+              </button>
             </Form>
           )}
         </Formik>

@@ -70,6 +70,13 @@ const persian = {
 
   // -----------------------------------STEP03--------------------------
   highSchool: "دیپلم",
+  grade: "مقطع تحصیلی",
+  diploma: "دیپلم",
+  associateDegree: "کاردانی",
+  bachelor: "کارشناسی",
+  master: ";کارشناسی ارشد",
+  phd: "دکتری",
+
   start: "شروع ",
   end: "پایان ",
   fieldOfStudy: "رشته تحصیلی",

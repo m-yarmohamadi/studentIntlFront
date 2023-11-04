@@ -70,6 +70,12 @@ const arabic = {
 
   // -----------------------------------STEP03--------------------------
   highSchool: "",
+  grade: "",
+  diploma: "",
+  associateDegree: "",
+  bachelor: "",
+  phd: "",
+
   startDiploma: "",
   fieldOfStudyDiploma: "",
   countryDiploma: "",
