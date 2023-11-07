@@ -13,6 +13,7 @@ const arabic = {
   titleStep10: "عرض مسبق",
   nextStep: "المرحلة التالية",
   previusStep: "المرحلة السابقة",
+  submit: "سِجِلّ",
 
   // -----------------------------------STEP01--------------------------
   firstname: "الاسم الأول",
@@ -110,5 +111,35 @@ const arabic = {
   schoolOrUnivercityNamePhd: "",
   GPAPhd: "",
   outOfPhd: "",
+  clickToRegisterDegree: "الرجاء الضغط لتسجيل الدرجة المكتملة",
+  recordRegisterDegree: "يرجى تسجيل شهادتك في النموذج أدناه.",
+  // -----------------------------------STEP04--------------------------
+  languageName: "اسم اللغة",
+  nativeLanguage: "لغة الام",
+  reading: "القراءة",
+  writing: "الکتابة",
+  speaking: "المحادثة",
+  poor: "ضعیف",
+  fair: "متوسط",
+  good: "جید",
+  persian: "الفارسية",
+  english: "الانگلیسیه",
+  arabic: "العربیه",
+  france: "الفرانسویه",
+  other: "لغات أخری",
+  fileLanguage: "تحميل شهادة اللغة",
+  recordLanguageProficiency:
+    "يرجى تسجيل مستوى معرفتك باللغات الحية في العالم في النموذج أدناه.",
+  clickToLanguage: "الرجاء الضغط لإدخال الكفاءة اللغوية",
+
+  // -----------------------------------STEP05--------------------------
+
+  // -----------------------------------STEP06:"",--------------------------
+  publicationType: "نوع المنشور",
+  title: "العنوان",
+  publisher: "الناشر",
+  year: "السنة",
+  insertBooks: "الرجاء الضغط لإدراج المقالات والكتب وما إلى ذلك",
+  registerBook: "يرجى تسجيل مقالتك أو كتابك المؤلف في النموذج أدناه.",
 };
 export default arabic;

@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const validationSchema = Yup.object({
+export const Step01Validation = Yup.object({
   firstname: Yup.string()
     .required("This field is required")
     .min(3, "Enter at least 3 letters")
@@ -123,4 +123,19 @@ export const validationSchema = Yup.object({
   mobile: Yup.string()
     .required("This field is required")
     .matches(/^[0-9]{11}$/, "Invalid Mobile"),
+});
+export const Step04Validation = Yup.object({
+  languageName: Yup.string().required("Required"),
+  nativeLanguage: Yup.string().required("Required"),
+  reading: Yup.string().required("Required"),
+  writing: Yup.string().required("Required"),
+  speaking: Yup.string().required("Required"),
+  fileLanguage: Yup.string(),
+});
+
+export const Step06Validation = Yup.object({
+  publicationType: Yup.string().required("Required"),
+  title: Yup.string().required("Required"),
+  publisher: Yup.string().required("Required"),
+  year: Yup.string().required("Required"),
 });

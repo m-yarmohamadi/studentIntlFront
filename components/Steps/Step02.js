@@ -1,7 +1,6 @@
 import SelectSteps from "./SelectSteps";
 import { useFormik } from "formik";
 import { validationSchema } from "@/Validation/formValidate";
-import InputSteps from "./InputSteps";
 import NextStep from "./NextStep";
 import { useTranslation } from "react-i18next";
 import CheckboxStep from "./CheckboxStep";

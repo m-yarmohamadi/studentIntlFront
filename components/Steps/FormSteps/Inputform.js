@@ -17,7 +17,7 @@ const Inputform = ({ formik, name, type }) => {
         className={`block w-full px-4 py-1 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40`}
         type={type}
         {...formik.getFieldProps(name)}
-      />{" "}
+      />
       {formik.touched[name] && formik.errors[name] ? (
         <div className=" text-red-800 ">{formik.errors[name]}</div>
       ) : null}

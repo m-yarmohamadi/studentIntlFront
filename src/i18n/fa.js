@@ -13,6 +13,7 @@ const persian = {
   titleStep10: "پیش نمایش",
   nextStep: "مرحله بعد",
   previusStep: "مرحله قبل",
+  submit: "ثبت",
 
   // -----------------------------------STEP01--------------------------
   firstname: "نــام",
@@ -120,5 +121,37 @@ const persian = {
   schoolOrUnivercityNamePhd: "نام محل تحصیل",
   GPAPhd: "معدل ",
   outOfPhd: "کسب شده از",
+  clickToRegisterDegree: "لطفا برای ثبت یک مقطع تحصیلی گذرانده شده کلیک کنید",
+  recordRegisterDegree:
+    "لطفا مقطع تحصیلی گذرانده شده خود را در فرم زیر ثبت کنید. ",
+
+  // -----------------------------------STEP04--------------------------
+  languageName: "نام زبان",
+  nativeLanguage: "زبان مادری",
+  reading: "خواندن",
+  writing: "نوشتن",
+  speaking: "صحبت کردن",
+  poor: "ضعیف",
+  fair: "متوسط",
+  good: "خوب",
+  persian: "فارسی",
+  english: "انگلیسی",
+  arabic: "عربی",
+  france: "فرانسه",
+  other: "سایر",
+  fileLanguage: "آپلود مدرک زبان",
+  recordLanguageProficiency:
+    "لطفا میزان آشنایی خود با زبانهای زنده دنیا را در فرم زیر ثبت کنید.",
+  clickToLanguage: "لطفا برای درج تسلط بر یک زبان کلیک کنید",
+
+  // -----------------------------------STEP05--------------------------
+
+  // -----------------------------------STEP06:"",--------------------------
+  publicationType: "نوع مقاله یا کتاب",
+  title: "عنوان",
+  publisher: "ناشر",
+  year: "سال",
+  insertBooks: "لطفا برای درج مقاله، کتاب و... کلیک کنید",
+  registerBook: "لطفا مقاله یا کتاب تألیف شده خود را در فرم زیر ثبت کنید.",
 };
 export default persian;

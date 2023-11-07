@@ -1,9 +1,10 @@
 import SelectSteps from "./SelectSteps";
 import { useFormik } from "formik";
-import { validationSchema } from "@/Validation/formValidate";
+import { Step01Validation } from "@/Validation/formValidate";
 import InputSteps from "./InputSteps";
 import NextStep from "./NextStep";
 import { useTranslation } from "react-i18next";
+const validationSchema = Step01Validation;
 
 const initialValues = {
   firstname: "",
@@ -36,14 +37,7 @@ const initialValues = {
 const Step01 = () => {
   const { t } = useTranslation();
   const onSubmit = (values) => {
-    axios
-      .post("http://127.0.0.1:5000/students/step01", {
-        values,
-      })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err));
+    console.log(values);
   };
 
   const formik = useFormik({

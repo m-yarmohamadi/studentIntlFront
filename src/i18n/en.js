@@ -13,6 +13,7 @@ const english = {
   titleStep10: "Preview",
   nextStep: "Next Step",
   previusStep: "Previus Step",
+  submit: "Submit",
 
   // -----------------------------------STEP01--------------------------
   firstname: "Firstname",
@@ -76,6 +77,7 @@ const english = {
   diploma: "Diploma",
   associateDegree: "Associate Degree",
   bachelor: "Bachelor",
+  master: "Master",
   phd: "pHd",
 
   start: "Start",
@@ -121,5 +123,39 @@ const english = {
   schoolOrUnivercityNamePhd: "School or Univercity Name",
   GPAPhd: "GPA",
   outOfPhd: "Out Of",
+  clickToRegisterDegree: "Please click to register a completed degree",
+  recordRegisterDegree: "Please register your degree in the form below.  ",
+
+  // -----------------------------------STEP04--------------------------
+  languageName: "Language Name",
+  nativeLanguage: "Native Language",
+  reading: "Reading",
+  writing: "Writing",
+  speaking: "Speaking",
+  poor: "Poor",
+  fair: "Fair",
+  good: "Good",
+  persian: "Persian",
+  english: "English",
+  arabic: "Arabic",
+  france: "France",
+  other: "Other",
+  fileLanguage: "Upload language certificate",
+  recordLanguageProficiency:
+    "Please register your level of familiarity with the living languages ​​of the world in the form below.",
+  clickToLanguage: "Please click to enter a language proficiency",
+
+  // -----------------------------------STEP05--------------------------
+
+  // -----------------------------------STEP06--------------------------
+  publicationType: "Publication Type",
+  title: "Title",
+  publisher: "Publisher",
+  year: "Year",
+  insertBooks: "Please click to insert articles, books, etc",
+  registerBook:
+    "Please register your authored article or book in the form below.",
+
+  // -----------------------------------STEP07--------------------------
 };
 export default english;

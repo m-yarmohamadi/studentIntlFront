@@ -2,18 +2,19 @@ import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { MenuItem } from "semantic-ui-react";
+import { nanoid } from "@reduxjs/toolkit";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const MenuItems = [
-  { icon: "ChevronDownIcon", title: "داشبورد" },
-  { icon: "ChevronDownIcon", title: "پذیرش" },
-  { icon: "ChevronDownIcon", title: "لیست رشته ها" },
-  { icon: "ChevronDownIcon", title: "پروفایل" },
-  { icon: "ChevronDownIcon", title: "تیکت ها" },
-  { icon: "ChevronDownIcon", title: "گزارش مشکل فنی" },
-  { icon: "ChevronDownIcon", title: "ایمیل ها" },
+  { id: nanoid(), icon: "ChevronDownIcon", title: "داشبورد" },
+  { id: nanoid(), icon: "ChevronDownIcon", title: "پذیرش" },
+  { id: nanoid(), icon: "ChevronDownIcon", title: "لیست رشته ها" },
+  { id: nanoid(), icon: "ChevronDownIcon", title: "پروفایل" },
+  { id: nanoid(), icon: "ChevronDownIcon", title: "تیکت ها" },
+  { id: nanoid(), icon: "ChevronDownIcon", title: "گزارش مشکل فنی" },
+  { id: nanoid(), icon: "ChevronDownIcon", title: "ایمیل ها" },
 ];
 
 export default function Menuuser() {
@@ -41,10 +42,9 @@ export default function Menuuser() {
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-b-md bg-indigo-950 bg-opacity-95 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             {MenuItems.map((item) => (
-              <Menu.Item>
+              <Menu.Item key={item.id}>
                 {({ active }) => (
                   <a
-                    key={item.index}
                     href="#"
                     className={classNames(
                       active

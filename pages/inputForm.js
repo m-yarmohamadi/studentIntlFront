@@ -5,6 +5,7 @@ import Step03 from "@/components/Steps/Step03";
 import Step04 from "@/components/Steps/Step04";
 import Step05 from "@/components/Steps/Step05";
 import Step06 from "@/components/Steps/Step06";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -45,52 +46,82 @@ const inputForm = () => {
           <div>
             {stepform === 1 && (
               <div>
-                <Step01 />
+                <ErrorBoundary>
+                  {" "}
+                  <Step01 />
+                </ErrorBoundary>
               </div>
             )}
             {stepform === 2 && (
               <div>
-                <Step02 />
+                <ErrorBoundary>
+                  {" "}
+                  <Step02 />
+                </ErrorBoundary>
               </div>
             )}
             {stepform === 3 && (
               <div>
-                <Step03 />
+                <ErrorBoundary>
+                  {" "}
+                  <Step03 />
+                </ErrorBoundary>
               </div>
             )}
             {stepform === 4 && (
               <div>
-                <Step04 />
+                <ErrorBoundary>
+                  {" "}
+                  <Step04 />
+                </ErrorBoundary>
               </div>
             )}
             {stepform === 5 && (
               <div>
-                <Step05 />
+                <ErrorBoundary>
+                  {" "}
+                  <Step05 />
+                </ErrorBoundary>
               </div>
             )}
             {stepform === 6 && (
               <div>
-                <Step06 />
+                <ErrorBoundary>
+                  {" "}
+                  <Step06 />
+                </ErrorBoundary>
               </div>
             )}
             {stepform === 7 && (
               <div>
-                <Step07 />
+                <ErrorBoundary>
+                  {" "}
+                  <Step07 />
+                </ErrorBoundary>
               </div>
             )}
             {stepform === 8 && (
               <div>
-                <Step08 />
+                <ErrorBoundary>
+                  {" "}
+                  <Step08 />
+                </ErrorBoundary>
               </div>
             )}
             {stepform === 9 && (
               <div>
-                <Step09 />
+                <ErrorBoundary>
+                  {" "}
+                  <Step09 />
+                </ErrorBoundary>
               </div>
             )}
             {stepform === 10 && (
               <div>
-                <Step10 />
+                <ErrorBoundary>
+                  {" "}
+                  <Step10 />
+                </ErrorBoundary>
               </div>
             )}
           </div>

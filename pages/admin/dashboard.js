@@ -1,4 +1,3 @@
-import LineSpace from "@/components/LineSpace";
 import {
   Tabs,
   TabsHeader,
@@ -45,24 +44,6 @@ const dashboard = () => {
 
   return (
     <div className=" container mx-auto ">
-      <LineSpace division="داشبورد مدیریت" />
-      {/* <Tabs value="html" orientation="vertical">
-      <TabsHeader className=" bg-indigo-600">
-        {data.map(({ label, value }) => (
-          <Tab key={value} value={value}>
-            {label}
-          </Tab>
-        ))}
-      </TabsHeader>
-      <TabsBody className=" backdrop:bg-green-700">
-        {data.map(({ value, desc }) => (
-          <TabPanel key={value} value={value} className="py-5">
-            {desc}
-          </TabPanel>
-        ))}
-      </TabsBody>
-    </Tabs> */}
-
       <div className="relative rounded-lg grid    bg-indigo-200">
         <div className=" text-white font-black col-start-1 col-end-2  bg-indigo-200  p-4 ">
           <div className="text-center  border-4 border-double hover:border-solid bg-indigo-500 w-full py-3 my-1 px-0 rounded-md hover:bg-indigo-600 shadow-lg hover:shadow-md">
