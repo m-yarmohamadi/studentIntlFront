@@ -123,6 +123,19 @@ export const Step01Validation = Yup.object({
   mobile: Yup.string()
     .required("This field is required")
     .matches(/^[0-9]{11}$/, "Invalid Mobile"),
+  spouseFirstName: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  spouseLastName: Yup.string()
+    .required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  passportNo: Yup.string()
+    .required("This field is required")
+    .matches(/^[0-9]{10}$/, "Invalid Pasport Number"),
 });
 export const Step04Validation = Yup.object({
   languageName: Yup.string().required("Required"),

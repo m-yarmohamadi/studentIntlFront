@@ -10,20 +10,18 @@ import SelectForm from "./FormSteps/SelectForm";
 import Stepmodal from "./Stepmodal";
 const initialValues = {
   id: nanoid(),
-  languageName: "",
-  nativeLanguage: "",
-  reading: "",
-  writing: "",
-  speaking: "",
-  fileLanguage: "",
+  fullname: "",
+  position: "",
+  institute: "",
+  relationship: "",
+  email: "",
 };
 const validationSchema = Yup.object({
-  languageName: Yup.string().required("Required"),
-  nativeLanguage: Yup.string().required("Required"),
-  reading: Yup.string().required("Required"),
-  writing: Yup.string().required("Required"),
-  speaking: Yup.string().required("Required"),
-  fileLanguage: Yup.string(),
+  fullname: Yup.string().required("Required"),
+  position: Yup.string().required("Required"),
+  institute: Yup.string().required("Required"),
+  relationship: Yup.string().required("Required"),
+  email: Yup.string().required("Required").email("Invalid Email"),
 });
 const Step05 = () => {
   const [data, setData] = useState([]);
@@ -56,22 +54,19 @@ const Step05 = () => {
                 <thead className=" ">
                   <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center"></th>
                   <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("languageName")}
+                    {t("fullname")}
                   </th>
                   <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("nativeLanguage")}
+                    {t("position")}
                   </th>
                   <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("reading")}
+                    {t("institute")}
                   </th>
                   <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("writing")}
+                    {t("relationship")}
                   </th>
                   <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("speaking")}
-                  </th>
-                  <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("fileLanguage")}
+                    {t("email")}
                   </th>
                 </thead>
                 {data.map((item) => (
@@ -87,22 +82,19 @@ const Step05 = () => {
                       </button>
                     </td>
                     <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.languageName}
+                      {item.fullname}
                     </td>
                     <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.nativeLanguage}
+                      {item.position}
                     </td>
                     <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.reading}
+                      {item.institute}
                     </td>
                     <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.writing}
+                      {item.relationship}
                     </td>
                     <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.speaking}
-                    </td>
-                    <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.fileLanguage}
+                      {item.email}
                     </td>
                   </tbody>
                 ))}
@@ -117,7 +109,7 @@ const Step05 = () => {
               className=" shadow-md bg-indigo-900 hover:bg-indigo-800 p-2 text-lg text-indigo-50 font-extrabold w-full rounded-md border border-indigo-50 hover:border-indigo-950 my-5"
               type="button"
             >
-              {t("clickToLanguage")}
+              {t("clickReference")}
             </button>
           </div>
         </div>
@@ -127,43 +119,37 @@ const Step05 = () => {
             setModal={setModal}
             name={[
               {
-                name: "languageName",
-                model: "SelectForm",
-                value: ["book", "book2"],
-                type: "text",
-              },
-              {
-                name: "nativeLanguage",
-                model: "SelectForm",
-                value: ["book", "book2"],
-                type: "text",
-              },
-              {
-                name: "reading",
-                model: "SelectForm",
-                value: ["book", "book2"],
-                type: "text",
-              },
-              {
-                name: "writing",
-                model: "SelectForm",
-                value: ["book", "book2"],
-                type: "text",
-              },
-              {
-                name: "speaking",
-                model: "SelectForm",
-                value: ["book", "book2"],
-                type: "text",
-              },
-              {
-                name: "fileLanguage",
+                name: "fullname",
                 model: "Inputform",
                 value: "",
-                type: "file",
+                type: "text",
+              },
+              {
+                name: "position",
+                model: "Inputform",
+                value: "",
+                type: "text",
+              },
+              {
+                name: "institute",
+                model: "Inputform",
+                value: "",
+                type: "text",
+              },
+              {
+                name: "relationship",
+                model: "Inputform",
+                value: "",
+                type: "text",
+              },
+              {
+                name: "email",
+                model: "Inputform",
+                value: "",
+                type: "text",
               },
             ]}
-            title={"recordLanguageProficiency"}
+            title={"enterReference"}
           />
         )}
         <NextStep />

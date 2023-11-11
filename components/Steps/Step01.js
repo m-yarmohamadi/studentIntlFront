@@ -32,6 +32,11 @@ const initialValues = {
   email: "",
   fax: "",
   mobile: "",
+  spouseFirstName: "",
+  spouseLastName: "",
+  passportNo: "",
+  dateOfIssue: "",
+  dateOfExpire: "",
 };
 
 const Step01 = () => {
@@ -181,6 +186,24 @@ const Step01 = () => {
               <div className=" mb-2">
                 <InputSteps formik={formik} name={"mobile"} type={"text"} />
               </div>
+            </div>
+            <div className="text-indigo-50 font-extrabold text-start">
+              {t("spouseInformation")}
+            </div>
+            <div className="pt-5 pb-2 text-sm tracking-tight border border-1 border-white px-2  bg-indigo-900 bg-opacity-75 grid grid-cols-5 gap-2  mb-4">
+              <InputSteps
+                formik={formik}
+                name={"spouseFirstName"}
+                type={"text"}
+              />
+              <InputSteps
+                formik={formik}
+                name={"spouseLastName"}
+                type={"text"}
+              />
+              <InputSteps formik={formik} name={"passportNo"} type={"text"} />
+              <InputSteps formik={formik} name={"dateOfIssue"} type={"text"} />
+              <InputSteps formik={formik} name={"dateOfExpire"} type={"text"} />
             </div>
           </div>
           <NextStep />

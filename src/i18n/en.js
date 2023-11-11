@@ -8,9 +8,9 @@ const english = {
   titleStep05: "References (if any)",
   titleStep06: "Publications( book, ...)",
   titleStep07: "Iranian acquaintance",
-  titleStep08: "Family Information",
-  titleStep09: "Documents Upload",
-  titleStep10: "Preview",
+  titleStep08: "Preview",
+  titleStep09: "",
+  titleStep10: "",
   nextStep: "Next Step",
   previusStep: "Previus Step",
   submit: "Submit",
@@ -47,6 +47,12 @@ const english = {
   email: "Email",
   fax: "Fax Number",
   mobile: "Mobile",
+  spouseInformation: "Spouse Information",
+  spouseFirstName: "Spouse First Name",
+  spouseLastName: "Spouse Last Name",
+  passportNo: "Passport No",
+  dateOfIssue: "Date Of Issue",
+  dateOfExpire: "Date Of Expire",
 
   // -----------------------------------STEP02--------------------------
   applicationType: "Application Type",
@@ -146,6 +152,13 @@ const english = {
   clickToLanguage: "Please click to enter a language proficiency",
 
   // -----------------------------------STEP05--------------------------
+  clickReference: "If you have a reference(s), please enter their information.",
+  enterReference: "Please enter your referee or referee information.",
+  fullname: "ّFull Name",
+  position: "Position",
+  institute: "Institute",
+  relationship: "Relationship",
+  email: "Email",
 
   // -----------------------------------STEP06--------------------------
   publicationType: "Publication Type",
@@ -157,5 +170,17 @@ const english = {
     "Please register your authored article or book in the form below.",
 
   // -----------------------------------STEP07--------------------------
+  clickIranianAcquaintance:
+    "If you have a relative or a friend in Iran, please enter relevant information.",
+  enterIranianAcquaintance:
+    "Please let me know if you have any information related to it.",
+  fullname: "Full Name",
+  relationship: "Relationship",
+  tell: "Tell",
+  email: "Email",
+  address01: "Address 01",
+  address02: "Address 02",
+
+  // -----------------------------------STEP08--------------------------
 };
 export default english;
