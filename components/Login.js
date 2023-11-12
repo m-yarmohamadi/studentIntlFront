@@ -3,6 +3,8 @@ import { FaRegTimesCircle } from "react-icons/fa";
 import axios from "axios";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
+import SuccessRegister from "./SuccessRegister";
+
 import {
   toggleLoginPopup,
   toggleVerifyCodePopup,
@@ -14,6 +16,7 @@ import { setShowVerifyCode } from "@/fuchers/popup/popupSlice";
 
 import * as Yup from "yup";
 import Input from "../components/Input";
+import ErrorPopup from "./ErrorPopup";
 const initialValues = {
   email: "",
   password: "",
@@ -23,6 +26,9 @@ const Login = () => {
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
+  const showSuccessRegister = useSelector(
+    (state) => state.popupReducer.successRegister
+  );
 
   const onSubmit = (values) => {
     axios
@@ -137,6 +143,9 @@ const Login = () => {
           </div>
         </div>
       </div>
+      {showSuccessRegister && (
+        <SuccessRegister message={"ثبت نام شما با موفقیت انجام شد."} />
+      )}
     </div>
   );
 };

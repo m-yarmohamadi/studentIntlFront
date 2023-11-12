@@ -62,9 +62,6 @@ const index = () => {
 
       {/* پاپ اپ ریجیستر */}
       {showRegister && <Register />}
-
-      {/* پاپ اپ وریفای کد */}
-      {showVerifyCode && <VerifyCode />}
     </Layout>
   );
 };

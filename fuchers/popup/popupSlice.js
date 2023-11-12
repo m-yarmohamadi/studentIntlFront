@@ -3,11 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 export const popupSlice = createSlice({
   name: "popup",
   initialState: {
+    errorPopup: false,
     loginPopup: false,
     registerPopup: false,
     verifyCodePopup: false,
+    successRegister: false,
   },
   reducers: {
+    toggleSuccessRegister: (state) => {
+      state.successRegister = !state.successRegister;
+    },
+    toggleErrorPopup: (state) => {
+      state.errorPopup = !state.errorPopup;
+    },
     toggleLoginPopup: (state) => {
       state.loginPopup = !state.loginPopup;
     },
@@ -25,6 +33,8 @@ export const popupSlice = createSlice({
 });
 
 export const {
+  toggleSuccessRegister,
+  toggleErrorPopup,
   toggleLoginPopup,
   toggleRegisterPopup,
   toggleVerifyCodePopup,

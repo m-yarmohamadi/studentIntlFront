@@ -1,37 +1,49 @@
 import React from "react";
 import axios from "axios";
-
 import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
 
 import * as Yup from "yup";
 import Input from "../components/Input";
+import {
+  toggleSuccessRegister,
+  toggleErrorPopup,
+  toggleRegisterPopup,
+  toggleVerifyCodePopup,
+  toggleLoginToRegisterPopup,
+} from "../fuchers/popup/popupSlice";
 
-const initialValuesVerify = {
+const initialValues = {
   verifyCode: "",
 };
 
-const VerifyCode = () => {
-  const onSubmitVerify = (values) => {
+const VerifyCode = ({ email }) => {
+  const dispatch = useDispatch();
+
+  const onSubmit = (values) => {
     axios
-      .post("http://127.0.0.1:5000/auth/register", {
-        verifycode: values.verifycode,
+      .post("http://172.20.23.112:5000/auth/verifyCode", {
+        verifyCode: values.verifyCode,
+        email,
       })
       .then((res) => {
-        setShowLogin(true);
-        setShowRegister(false);
-        setShowVerifyCode(false);
+        console.log("SUCCESS");
+        dispatch(toggleVerifyCodePopup());
+        dispatch(toggleLoginToRegisterPopup());
+
+        dispatch(toggleSuccessRegister());
       })
       .catch((err) => console.log(err));
   };
-  const validationSchemaVerify = Yup.object({
+  const validationSchema = Yup.object({
     verifyCode: Yup.string()
       .required("Verifycode is Required")
       .matches(/^[0-9]{6}$/, "Invalid Verifycode"),
   });
-  const formikVerify = useFormik({
-    initialValuesVerify,
-    onSubmitVerify,
-    validationSchemaVerify,
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema,
     validateOnMount: true,
   });
 
@@ -50,19 +62,36 @@ const VerifyCode = () => {
               </div>
               <form
                 className="space-y-4 md:space-y-6"
-                onSubmit={formikVerify.handleSubmit}
+                onSubmit={formik.handleSubmit}
               >
-                <div className="flex justify-between gap-2 ">
-                  <Input
-                    formik={formikVerify}
-                    name="verifyCode"
-                    label="لطفا کد 6 رقمی ارسال شده به تلفن همراه یا ایمیلتان را درج نمایید."
-                  />
+                <div className="">
+                  <div className=" h-20">
+                    <label
+                      htmlFor="verifyCode"
+                      className=" flex justify-between text-sm font-bold text-indigo-50 dark:text-white"
+                    >
+                      لطفا کد 6 رقمی ارسال شده به تلفن همراه یا ایمیلتان را درج
+                      نمایید.
+                    </label>
+                    <input
+                      id="verifyCode"
+                      name="verifyCode"
+                      type="text"
+                      className=" shadow-md w-full bg-indigo-50 border border-indigo-300 text-indigo-900 sm:text-sm rounded-md focus:bg-white focus:ring-indigo-600 focus:border-indigo-600 block  p-2.5 dark:bg-indigo-700 dark:border-indigo-600 dark:placeholder-indigo-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      {...formik.getFieldProps("verifyCode")}
+                    />
+                    {formik.errors["verifyCode"] &&
+                      formik.touched["verifyCode"] && (
+                        <p className=" text-sm text-rose-400">
+                          {formik.errors["verifyCode"]}
+                        </p>
+                      )}
+                  </div>
                 </div>
 
                 <button
                   type="submit"
-                  disabled={!formikVerify.isValid}
+                  disabled={!formik.isValid}
                   className="w-full text-indigo-900 bg-indigo-50 hover:bg-indigo-100 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5   "
                 >
                   تأیید

@@ -4,6 +4,7 @@ import axios, { toFormData } from "axios";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  toggleErrorPopup,
   toggleRegisterPopup,
   toggleVerifyCodePopup,
   toggleLoginToRegisterPopup,
@@ -15,6 +16,8 @@ import Input from "../components/Input";
 import { toggleverifyCode } from "@/fuchers/resCode/resCodeSlice";
 import { validationSchema } from "@/Validation/Reg&LoginValidate";
 import { textarea } from "@material-tailwind/react";
+import ErrorPopup from "./ErrorPopup";
+import VerifyCode from "./VerifyCode";
 const initialValues = {
   firstname: "",
   lastname: "",
@@ -27,11 +30,15 @@ const initialValues = {
 const Register = () => {
   const { t } = useTranslation();
 
-  const dispatch = useDispatch();
+  const showError = useSelector((state) => state.popupReducer.errorPopup);
+  const showVerifyCode = useSelector(
+    (state) => state.popupReducer.verifyCodePopup
+  );
 
+  const dispatch = useDispatch();
   const onSubmit = (values) => {
     axios
-      .post("http://127.0.0.1:5000/auth/register", {
+      .post("http://172.20.23.112:5000/auth/register", {
         firstname: values.firstname,
         lastname: values.lastname,
         mobile: values.mobile,
@@ -42,10 +49,16 @@ const Register = () => {
         console.log(res.data.code);
         if (res.data.code) {
           dispatch(toggleVerifyCodePopup());
-          dispatch(toggleverifyCode(res.data.code));
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        const error = err.message;
+        console.log(err.message);
+        {
+          error == "Request failed with status code 400" &&
+            dispatch(toggleErrorPopup());
+        }
+      });
   };
 
   const formik = useFormik({
@@ -56,12 +69,12 @@ const Register = () => {
   });
 
   return (
-    <div className="fade-in justify-center  flex  overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-md">
+    <div className="  fade-in justify-center flex  overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-md">
       <div className="relative w-auto  ">
         {/*body*/}
 
-        <div className=" flex flex-col justify-start  px-6 pt-5 mx-auto  lg:pt-10">
-          <div className="text-start bg-indigo-50  shadow-lg shadow-indigo-900 w-full  rounded-lg  dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-indigo-800 dark:border-indigo-700">
+        <div className="top-0 flex flex-col justify-start  px-6 pt-5 mx-auto  lg:pt-10">
+          <div className="text-start bg-indigo-50 pt-0 shadow-lg shadow-indigo-900 w-full  rounded-lg  dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-indigo-800 dark:border-indigo-700">
             <div className="text-end">
               <button onClick={() => dispatch(toggleRegisterPopup())}>
                 <FaRegTimesCircle
@@ -81,7 +94,7 @@ const Register = () => {
                 className="space-y-4 md:space-y-6"
                 onSubmit={formik.handleSubmit}
               >
-                <div className="flex justify-between gap-2">
+                <div className=" grid grid-cols-1 md:grid-cols-2 gap-2">
                   <Input
                     formik={formik}
                     name="firstname"
@@ -94,13 +107,13 @@ const Register = () => {
                   />
                 </div>
 
-                <div className="flex justify-between gap-2">
+                <div className=" grid grid-cols-1 md:grid-cols-2 gap-2">
                   <Input formik={formik} name="mobile" label={t("mobile")} />
 
                   <Input formik={formik} name="email" label={t("email")} />
                 </div>
 
-                <div className="flex justify-between gap-2">
+                <div className=" grid grid-cols-1 md:grid-cols-2 gap-2">
                   <Input
                     formik={formik}
                     name="password"
@@ -160,6 +173,10 @@ const Register = () => {
           </div>
         </div>
       </div>
+      {showError && (
+        <ErrorPopup error={"ایمیل یا تلفن همراه وارد شده تکراری می باشد"} />
+      )}
+      {showVerifyCode && <VerifyCode email={formik.values.email} />}
     </div>
   );
 };
