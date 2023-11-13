@@ -8,3 +8,5 @@ export const postApi = async (url, data) => {
     console.error("Error:", error.response);
   }
 };
+
+export const login = () => {};

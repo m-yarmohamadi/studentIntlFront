@@ -1,17 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const resCodeSlice = createSlice({
-  name: "rescode",
+  name: "sequrity",
   initialState: {
-    verifyCode: "",
     token: "",
   },
   reducers: {
     toggleverifyCode: (state, action) => {
-      state.verifyCode = action.payload;
-    },
-    toggleToken: (state) => {
-      state.token = "aabbccwwwwwww";
+      state.token = action.payload;
     },
   },
 });
