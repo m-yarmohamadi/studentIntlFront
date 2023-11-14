@@ -4,13 +4,17 @@ export const resCodeSlice = createSlice({
   name: "sequrity",
   initialState: {
     token: "",
+    login: false,
   },
   reducers: {
-    toggleverifyCode: (state, action) => {
+    toggleToken: (state, action) => {
       state.token = action.payload;
+    },
+    toggleLogin: (state, action) => {
+      state.login = action.payload;
     },
   },
 });
 
-export const { toggleverifyCode, toggleToken } = resCodeSlice.actions;
+export const { toggleToken, toggleLogin } = resCodeSlice.actions;
 export default resCodeSlice.reducer;

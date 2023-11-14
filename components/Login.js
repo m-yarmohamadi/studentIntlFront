@@ -7,22 +7,23 @@ import SuccessRegister from "./SuccessRegister";
 
 import {
   toggleLoginPopup,
-  toggleVerifyCodePopup,
   toggleLoginToRegisterPopup,
 } from "../fuchers/popup/popupSlice";
-import { useTranslation } from "react-i18next";
+import { toggleToken } from "@/fuchers/resCode/resCodeSlice";
 
-import { setShowVerifyCode } from "@/fuchers/popup/popupSlice";
+import { useTranslation } from "react-i18next";
 
 import * as Yup from "yup";
 import Input from "../components/Input";
-import ErrorPopup from "./ErrorPopup";
+import LoginToken from "@/src/i18n/JWT/LoginToken";
+
 const initialValues = {
   email: "",
   password: "",
 };
 
 const Login = () => {
+  LoginToken;
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
@@ -34,9 +35,10 @@ const Login = () => {
     axios
       .post("http://172.20.23.112:5000/auth/login", values)
       .then((res) => {
-        console.log(res.data.token);
         if (res.data.message === "Logged in successfully") {
           dispatch(toggleLoginPopup());
+          dispatch(toggleToken(res.data.token));
+          console.log(res.data.token);
         }
       })
       .catch((err) => console.log(err));
