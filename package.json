@@ -19,6 +19,7 @@
     "formik": "^2.4.3",
     "i18next": "^23.6.0",
     "js-cookie": "^3.0.5",
+    "jsonwebtoken": "^9.0.2",
     "link": "^1.5.1",
     "mongodb": "^5.3.0",
     "mongoose": "^7.1.0",

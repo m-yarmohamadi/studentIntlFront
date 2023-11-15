@@ -3,12 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 export const resCodeSlice = createSlice({
   name: "sequrity",
   initialState: {
-    token: "",
+    refreshToken: "",
+    accessToken: "",
     login: false,
   },
   reducers: {
-    toggleToken: (state, action) => {
-      state.token = action.payload;
+    toggleRefreshToken: (state, action) => {
+      state.refreshToken = action.payload;
+    },
+    toggleAccessToken: (state, action) => {
+      state.accessToken = action.payload;
     },
     toggleLogin: (state, action) => {
       state.login = action.payload;
@@ -16,5 +20,6 @@ export const resCodeSlice = createSlice({
   },
 });
 
-export const { toggleToken, toggleLogin } = resCodeSlice.actions;
+export const { toggleRefreshToken, toggleAccessToken, toggleLogin } =
+  resCodeSlice.actions;
 export default resCodeSlice.reducer;

@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
+import jwt from "jsonwebtoken";
+import axios from "axios";
 
 import {
   FaCogs,
@@ -11,7 +13,41 @@ import {
 } from "react-icons/fa";
 import Menuuser from "./Menuuser";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
+import { toggleRefreshToken } from "@/fuchers/resCode/resCodeSlice";
 const Layout = ({ title, children }) => {
+  const accessToken = useSelector((state) => state.tokenReducer.accessToken);
+  const refreshToken = useSelector((state) => state.tokenReducer.refreshToken);
+  const userEmail = useSelector((state) => state.userReducer.User.email);
+  const FetchData = async () => {
+    try {
+      const response = await axios.post(
+        "http://172.20.23.112:5000/auth/refreshToken",
+        { refreshToken, email: userEmail }
+      );
+      const newAccessToken = response.data.accessToken;
+      console.log(newAccessToken);
+      dispatch(toggleRefreshToken(newAccessToken));
+    } catch (error) {
+      console.log("error:", error);
+    }
+  };
+  useEffect(() => {
+    if (accessToken) {
+      const decodedToken = jwt.decode(accessToken);
+      const currentTimestamp = Math.floor(Date.now() / 1000);
+      console.log("توکن منقضی نشده است");
+      console.log(decodedToken, "---", currentTimestamp);
+      if (decodedToken.exp < currentTimestamp) {
+        console.log("رفت برای پست");
+        FetchData;
+        console.log("پست شد");
+      }
+    } else {
+      console.log("NNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
+    }
+  }, []);
+
   const dispatch = useDispatch();
 
   const lang = useSelector((state) => state.languageReducer.value.languageName);

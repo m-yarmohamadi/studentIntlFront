@@ -9,13 +9,16 @@ import {
   toggleLoginPopup,
   toggleLoginToRegisterPopup,
 } from "../fuchers/popup/popupSlice";
-import { toggleToken } from "@/fuchers/resCode/resCodeSlice";
+import {
+  toggleAccessToken,
+  toggleRefreshToken,
+} from "@/fuchers/resCode/resCodeSlice";
 
 import { useTranslation } from "react-i18next";
 
 import * as Yup from "yup";
 import Input from "../components/Input";
-import LoginToken from "@/src/i18n/JWT/LoginToken";
+import { toggleUser } from "@/fuchers/user/UserSlice";
 
 const initialValues = {
   email: "",
@@ -23,7 +26,6 @@ const initialValues = {
 };
 
 const Login = () => {
-  LoginToken;
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
@@ -37,8 +39,10 @@ const Login = () => {
       .then((res) => {
         if (res.data.message === "Logged in successfully") {
           dispatch(toggleLoginPopup());
-          dispatch(toggleToken(res.data.token));
-          console.log(res.data.token);
+          dispatch(toggleAccessToken(res.data.accessToken));
+          dispatch(toggleRefreshToken(res.data.user.refreshToken));
+          dispatch(toggleUser(res.data.user));
+          console.log(res.data.accessToken, res.data.user);
         }
       })
       .catch((err) => console.log(err));
