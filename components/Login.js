@@ -5,6 +5,8 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import SuccessRegister from "./SuccessRegister";
 
+
+
 import {
   toggleLoginPopup,
   toggleLoginToRegisterPopup,
@@ -35,7 +37,7 @@ const Login = () => {
 
   const onSubmit = (values) => {
     axios
-      .post("http://172.20.23.112:5000/auth/login", values)
+      .post(`${process.env.NEXT_PUBLIC_URL}/auth/login`, values)
       .then((res) => {
         if (res.data.message === "Logged in successfully") {
           dispatch(toggleLoginPopup());

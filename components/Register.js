@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import { FaRegTimesCircle } from "react-icons/fa";
 import axios, { toFormData } from "axios";
 import { useFormik } from "formik";
@@ -26,6 +27,10 @@ const initialValues = {
   password: "",
   confirmPassword: "",
 };
+import { config as dotenvConfig } from 'dotenv';
+dotenvConfig();
+
+
 
 const Register = () => {
   const { t } = useTranslation();
@@ -38,7 +43,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const onSubmit = (values) => {
     axios
-      .post("http://172.20.23.112:5000/auth/register", {
+      .post(`${process.env.NEXT_PUBLIC_URL}/auth/register`, {
         firstname: values.firstname,
         lastname: values.lastname,
         mobile: values.mobile,

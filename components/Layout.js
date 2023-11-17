@@ -22,26 +22,33 @@ const Layout = ({ title, children }) => {
   const FetchData = async () => {
     try {
       const response = await axios.post(
-        "http://172.20.23.112:5000/auth/refreshToken",
+        `${process.env.NEXT_PUBLIC_URL}/auth/refreshToken`,
         { refreshToken, email: userEmail }
       );
-      const newAccessToken = response.data.accessToken;
-      console.log(newAccessToken);
-      dispatch(toggleRefreshToken(newAccessToken));
+      if (response) {
+        const newAccessToken = response.data.accessToken;
+        console.log(newAccessToken);
+        dispatch(toggleAccessToken(newAccessToken));
+      } else {
+        console.log("EEEEEEERRRRRRROOOOOOORRRRRRR=");
+      }
+      return "response",response
     } catch (error) {
       console.log("error:", error);
+      return "error",error
     }
   };
   useEffect(() => {
     if (accessToken) {
       const decodedToken = jwt.decode(accessToken);
       const currentTimestamp = Math.floor(Date.now() / 1000);
-      console.log("توکن منقضی نشده است");
-      console.log(decodedToken, "---", currentTimestamp);
+      console.log(decodedToken.exp, "---", currentTimestamp);
       if (decodedToken.exp < currentTimestamp) {
         console.log("رفت برای پست");
         FetchData;
         console.log("پست شد");
+      } else {
+        console.log("توکن منقضی نشده است");
       }
     } else {
       console.log("NNNNNNNNNNNNNNNNNNNNNNNNNNNNN");

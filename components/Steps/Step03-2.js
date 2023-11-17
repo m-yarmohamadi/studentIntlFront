@@ -18,7 +18,7 @@ const Step03 = () => {
   const { t } = useTranslation();
   const onSubmit = (values) => {
     axios
-      .post("http://127.0.0.1:5000/students/step01", {
+      .post(`${process.env.NEXT_PUBLIC_URL}/students/step011, {
         values,
       })
       .then((res) => {

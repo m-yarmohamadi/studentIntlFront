@@ -22,7 +22,7 @@ const VerifyCode = ({ email }) => {
 
   const onSubmit = (values) => {
     axios
-      .post("http://172.20.23.112:5000/auth/verifyCode", {
+      .post(`${process.env.NEXT_PUBLIC_URL}/auth/verifyCode`, {
         verifyCode: values.verifyCode,
         email,
       })

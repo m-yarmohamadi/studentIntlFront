@@ -15,6 +15,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "formic": "^0.0.10",
     "formik": "^2.4.3",
     "i18next": "^23.6.0",
