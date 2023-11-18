@@ -14,7 +14,10 @@ import {
 import Menuuser from "./Menuuser";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
-import { toggleRefreshToken } from "@/fuchers/resCode/resCodeSlice";
+import {
+  toggleLogin,
+  toggleRefreshToken,
+} from "@/fuchers/resCode/resCodeSlice";
 const Layout = ({ title, children }) => {
   const accessToken = useSelector((state) => state.tokenReducer.accessToken);
   const refreshToken = useSelector((state) => state.tokenReducer.refreshToken);
@@ -22,36 +25,30 @@ const Layout = ({ title, children }) => {
   const FetchData = async () => {
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_URL}/auth/refreshToken`,
-        { refreshToken, email: userEmail }
+        `${process.env.NEXT_PUBLIC_URL}/auth/loginToken`,
+        { loginToken: true }
       );
       if (response) {
-        const newAccessToken = response.data.accessToken;
-        console.log(newAccessToken);
-        dispatch(toggleAccessToken(newAccessToken));
+        const loginToken = response.data.loginToken;
+        console.log(loginToken);
       } else {
         console.log("EEEEEEERRRRRRROOOOOOORRRRRRR=");
       }
-      return "response",response
     } catch (error) {
       console.log("error:", error);
-      return "error",error
     }
   };
   useEffect(() => {
     if (accessToken) {
       const decodedToken = jwt.decode(accessToken);
       const currentTimestamp = Math.floor(Date.now() / 1000);
-      console.log(decodedToken.exp, "---", currentTimestamp);
       if (decodedToken.exp < currentTimestamp) {
-        console.log("رفت برای پست");
-        FetchData;
-        console.log("پست شد");
+        dispatch(toggleLogin(true));
       } else {
-        console.log("توکن منقضی نشده است");
+        dispatch(toggleLogin(false));
       }
     } else {
-      console.log("NNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
+      dispatch(toggleLogin(false));
     }
   }, []);
 
