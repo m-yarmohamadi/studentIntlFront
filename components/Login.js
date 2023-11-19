@@ -1,11 +1,11 @@
 import Link from "next/link";
+import Swal from "sweetalert2";
+
 import { FaRegTimesCircle } from "react-icons/fa";
 import axios from "axios";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import SuccessRegister from "./SuccessRegister";
-
-
 
 import {
   toggleLoginPopup,
@@ -39,15 +39,33 @@ const Login = () => {
     axios
       .post(`${process.env.NEXT_PUBLIC_URL}/auth/login`, values)
       .then((res) => {
-        if (res.data.message === "Logged in successfully") {
+        if (res.status === 200) {
+          console.log(res.status);
+
           dispatch(toggleLoginPopup());
-          dispatch(toggleAccessToken(res.data.accessToken));
-          dispatch(toggleRefreshToken(res.data.user.refreshToken));
-          dispatch(toggleUser(res.data.user));
-          console.log(res.data.accessToken, res.data.user);
+
+          Swal.fire({
+            position: "center-center",
+            icon: "success",
+            title: "شما با موفقیت وارد شدید",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        if (err.message == "Request failed with status code 400") {
+          Swal.fire({
+            position: "center-center",
+            icon: "error",
+            title: "نام کاربری یا کلمه عبور اشتباه است",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+
+        console.log(err);
+      });
   };
   const validationSchema = Yup.object({
     email: Yup.string()
