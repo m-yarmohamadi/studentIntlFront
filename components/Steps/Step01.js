@@ -6,6 +6,7 @@ import NextStep from "./NextStep";
 import { useTranslation } from "react-i18next";
 const validationSchema = Step01Validation;
 
+
 const initialValues = {
   firstname: "",
   middlename: "",
@@ -34,9 +35,9 @@ const initialValues = {
   mobile: "",
   spouseFirstName: "",
   spouseLastName: "",
-  passportNo: "",
-  dateOfIssue: "",
-  dateOfExpire: "",
+  passportNoSpouse: "",
+  dateOfIssueSpouse: "",
+  dateOfExpireSpouse: "",
 };
 
 const Step01 = () => {
@@ -201,9 +202,9 @@ const Step01 = () => {
                 name={"spouseLastName"}
                 type={"text"}
               />
-              <InputSteps formik={formik} name={"passportNo"} type={"text"} />
-              <InputSteps formik={formik} name={"dateOfIssue"} type={"text"} />
-              <InputSteps formik={formik} name={"dateOfExpire"} type={"text"} />
+              <InputSteps formik={formik} name={"passportNoSpouse"} type={"text"} />
+              <InputSteps formik={formik} name={"dateOfIssueSpouse"} type={"text"} />
+              <InputSteps formik={formik} name={"dateOfExpireSpouse"} type={"text"} />
             </div>
           </div>
           <NextStep />
