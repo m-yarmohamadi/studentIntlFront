@@ -6,6 +6,8 @@ import axios from "axios";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import SuccessRegister from "./SuccessRegister";
+import Cookies from "js-cookie";
+
 
 import {
   toggleLoginPopup,
@@ -20,7 +22,8 @@ import { useTranslation } from "react-i18next";
 
 import * as Yup from "yup";
 import Input from "../components/Input";
-import { toggleUser } from "@/fuchers/user/UserSlice";
+import { toggleEmail, toggleFirstname, toggleIdUser, toggleLastname, toggleLogin, toggleUser } from "@/fuchers/user/userSlice";
+import toast from './toast';
 
 const initialValues = {
   email: "",
@@ -40,7 +43,17 @@ const Login = () => {
       .post(`${process.env.NEXT_PUBLIC_URL}/auth/login`, values)
       .then((res) => {
         if (res.status === 200) {
+
+
+
+          dispatch(toggleAccessToken(res.data.accessToken))
+          dispatch(toggleIdUser(res.data.user.id))
+          dispatch(toggleFirstname(res.data.user.firstname))
+          dispatch(toggleLastname(res.data.user.lastname))
+          dispatch(toggleEmail(res.data.user.email))
+          dispatch(toggleLogin(true))
           console.log(res.status);
+          console.log(res.data);
 
           dispatch(toggleLoginPopup());
 
@@ -55,6 +68,10 @@ const Login = () => {
       })
       .catch((err) => {
         if (err.message == "Request failed with status code 400") {
+
+
+
+
           Swal.fire({
             position: "center-center",
             icon: "error",

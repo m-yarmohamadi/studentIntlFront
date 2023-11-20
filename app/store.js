@@ -3,7 +3,7 @@ import languageReducer from "../fuchers/language/languageSlice";
 import popupReducer from "../fuchers/popup/popupSlice";
 import tokenReducer from "../fuchers/resCode/resCodeSlice";
 import stepReducer from "@/fuchers/steps/StepSlice";
-import userReducer from "@/fuchers/user/UserSlice";
+import userReducer from "@/fuchers/user/userSlice";
 
 export const store = configureStore({
   reducer: {

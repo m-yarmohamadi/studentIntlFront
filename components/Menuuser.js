@@ -1,8 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { MenuItem } from "semantic-ui-react";
 import { nanoid } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -17,12 +19,12 @@ const MenuItems = [
   { id: nanoid(), icon: "ChevronDownIcon", title: "ایمیل ها" },
 ];
 
-export default function Menuuser() {
+export default function Menuuser({ firstname, lastname }) {
   return (
     <Menu as="div" className="relative inline-block  text-right">
       <div>
         <Menu.Button className="flex justify-between ">
-          Mahdi Yarmohamadi
+          {firstname}{" "}{lastname}
           <ChevronDownIcon
             className="mx-2 h-5 w-5 text-gray-400"
             aria-hidden="true"

@@ -17,6 +17,10 @@ import { useTranslation } from "react-i18next";
 
 const index = () => {
   const { t } = useTranslation();
+  const login = useSelector((state) => state.userReducer.login);
+  const firstname = useSelector((state) => state.userReducer.firstname);
+  const lastname = useSelector((state) => state.userReducer.lastname);
+
 
   const showLogin = useSelector((state) => state.popupReducer.loginPopup);
   const showRegister = useSelector((state) => state.popupReducer.registerPopup);
@@ -34,9 +38,9 @@ const index = () => {
             {t("RegistrationSystemForForeignStudents")}
           </p>
         </div>
-
         {/* دکمه های ورود و ریجیستر */}
-        <div className="  flex justify-center">
+
+        {!login ? <div className="  flex justify-center">
           <button
             type="button"
             onClick={() => dispatch(toggleLoginPopup())}
@@ -51,7 +55,8 @@ const index = () => {
           >
             {t("register")}
           </button>
-        </div>
+        </div> : <p className=" text-2xl">{firstname}{" "}{lastname}</p>}
+
         {/* اطلاعیه های ثبت نام */}
 
         <RegistrationNotices />

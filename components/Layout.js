@@ -1,61 +1,46 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import jwt from "jsonwebtoken";
-import axios from "axios";
+import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 
 import {
   FaCogs,
   FaHome,
   FaFileContract,
   FaPowerOff,
-  FaCaretDown,
 } from "react-icons/fa";
 import Menuuser from "./Menuuser";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
-import {
-  toggleLogin,
-  toggleRefreshToken,
-} from "@/fuchers/resCode/resCodeSlice";
+import { toggleAccessToken } from "@/fuchers/resCode/resCodeSlice";
+import { toggleLogin } from "@/fuchers/user/userSlice";
 const Layout = ({ title, children }) => {
-  const accessToken = useSelector((state) => state.tokenReducer.accessToken);
-  const refreshToken = useSelector((state) => state.tokenReducer.refreshToken);
-  const userEmail = useSelector((state) => state.userReducer.User.email);
-  const FetchData = async () => {
-    try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_URL}/auth/loginToken`,
-        { loginToken: true }
-      );
-      if (response) {
-        const loginToken = response.data.loginToken;
-        console.log(loginToken);
-      } else {
-        console.log("EEEEEEERRRRRRROOOOOOORRRRRRR=");
-      }
-    } catch (error) {
-      console.log("error:", error);
-    }
-  };
-  useEffect(() => {
-    if (accessToken) {
-      const decodedToken = jwt.decode(accessToken);
-      const currentTimestamp = Math.floor(Date.now() / 1000);
-      if (decodedToken.exp < currentTimestamp) {
-        dispatch(toggleLogin(true));
-      } else {
-        dispatch(toggleLogin(false));
-      }
-    } else {
-      dispatch(toggleLogin(false));
-    }
-  }, []);
-
   const dispatch = useDispatch();
 
-  const lang = useSelector((state) => state.languageReducer.value.languageName);
 
+  const accessToken = useSelector((state) => state.tokenReducer.accessToken);
+  const login = useSelector((state) => state.userReducer.login);
+  const firstname = useSelector((state) => state.userReducer.firstname);
+  const lastname = useSelector((state) => state.userReducer.lastname);
+
+
+
+
+  const logout = (e) => {
+
+    e.preventDefault()
+    dispatch(toggleLogin(false))
+
+    Swal.fire({
+      position: "center-center",
+      icon: "info",
+      title: "شما با موفقیت خارج شدید",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+  const lang = useSelector((state) => state.languageReducer.value.languageName);
   const { i18n } = useTranslation();
   function handleChange(event) {
     const lang2 = event.target.value;
@@ -80,8 +65,10 @@ const Layout = ({ title, children }) => {
         <div className="h-full  w-full bg-indigo-200 shadow-lg max-w-full  bg-opacity-70   ">
           <div className="p-2 text-indigo-50  flex  justify-between  bg-indigo-950 w-full h-10    text-center font-black ">
             <div className=" font-extrabold flex justify-start">
-              <FaPowerOff className=" me-2 h-6 w-6 " aria-hidden="true" />
-              <Menuuser />
+
+              {login && <><FaPowerOff onClick={logout} className=" me-2 h-6 w-6 p-1 cursor-pointer" aria-hidden="true" /><Menuuser firstname={firstname} lastname={lastname} /></>}
+
+
             </div>
             <div className=" text-indigo-950 flex gap-2 ">
               <select
