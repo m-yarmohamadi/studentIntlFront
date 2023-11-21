@@ -42,6 +42,8 @@ const Step02 = () => {
                 value={["nonScholarship", "scholarship"]}
               />
             </div>
+            {formik.values.applicationType}
+            {/* {applicationType.target.value === "scholarship" && } */}
             <div className=" mb-2">
               <SelectSteps
                 formik={formik}
@@ -53,6 +55,7 @@ const Step02 = () => {
                 ]}
               />
             </div>
+
           </div>
           <div className="mb-2 p-3 border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
             <div className=" mb-2">

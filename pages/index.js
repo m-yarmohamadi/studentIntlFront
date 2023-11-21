@@ -20,6 +20,7 @@ const index = () => {
   const login = useSelector((state) => state.userReducer.login);
   const firstname = useSelector((state) => state.userReducer.firstname);
   const lastname = useSelector((state) => state.userReducer.lastname);
+  const userId = useSelector((state) => state.userReducer.id);
 
 
   const showLogin = useSelector((state) => state.popupReducer.loginPopup);
@@ -59,7 +60,7 @@ const index = () => {
 
         {/* اطلاعیه های ثبت نام */}
 
-        <RegistrationNotices />
+        <RegistrationNotices userId={userId} />
       </div>
 
       {/* پاپ اپ لاگین */}

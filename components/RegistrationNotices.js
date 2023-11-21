@@ -2,10 +2,9 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 
-const RegistrationNotices = () => {
+const RegistrationNotices = ({ userId }) => {
   const router = useRouter();
   const { t } = useTranslation();
-
   return (
     <div className="w-full px-16 mx-8 md:mx-36">
       <div className=" text-indigo-100 pt-2 shadow-md h-10  bg-indigo-950 ">
@@ -21,7 +20,7 @@ const RegistrationNotices = () => {
               </td>
               <td>
                 <button
-                  onClick={() => router.push("inputForm")}
+                  onClick={() => router.push(`/inputForm/user:${userId}/form:5`)}
                   type="button"
                   className="w-64 hover:cursor-pointer  shadow-sm shadow-indigo-950 hover:shadow-indigo-900 text-indigo-100  m-1 bg-indigo-900 hover:bg-indigo-800 border border-1 border-indigo-50 rounded-md px-6 py-2"
                 >
