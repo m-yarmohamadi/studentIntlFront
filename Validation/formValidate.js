@@ -42,8 +42,7 @@ export const Step01Validation = Yup.object({
   dateOfBirth: Yup.string()
     .required("This field is required")
     .min(3, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters")
-    .matches(/^[A-Za-z ]*$/, "Please type English"),
+    .max(30, "Enter up to 30 characters"),
   country: Yup.string()
     .required("This field is required")
     .min(3, "Enter at least 3 letters")
@@ -66,9 +65,8 @@ export const Step01Validation = Yup.object({
     .matches(/^[A-Za-z ]*$/, "Please type English"),
   numOfChildren: Yup.string()
     .required("This field is required")
-    .min(3, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters")
-    .matches(/^[A-Za-z ]*$/, "Please type English"),
+    .min(1, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters"),
   religion: Yup.string()
     .required("This field is required")
     .min(3, "Enter at least 3 letters")
@@ -82,13 +80,11 @@ export const Step01Validation = Yup.object({
   dateOfIssue: Yup.string()
     .required("This field is required")
     .min(3, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters")
-    .matches(/^[A-Za-z ]*$/, "Please type English"),
+    .max(30, "Enter up to 30 characters"),
   dateOfExpire: Yup.string()
     .required("This field is required")
     .min(3, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters")
-    .matches(/^[A-Za-z ]*$/, "Please type English"),
+    .max(30, "Enter up to 30 characters"),
   placeOfIssue: Yup.string()
     .required("This field is required")
     .min(3, "Enter at least 3 letters")
@@ -139,13 +135,11 @@ export const Step01Validation = Yup.object({
   dateOfIssueSpouse: Yup.string()
     .required("This field is required")
     .min(3, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters")
-    .matches(/^[A-Za-z ]*$/, "Please type English"),
+    .max(30, "Enter up to 30 characters"),
   dateOfExpireSpouse: Yup.string()
     .required("This field is required")
     .min(3, "Enter at least 3 letters")
     .max(30, "Enter up to 30 characters")
-    .matches(/^[A-Za-z ]*$/, "Please type English"),
 });
 export const Step04Validation = Yup.object({
   languageName: Yup.string().required("Required"),

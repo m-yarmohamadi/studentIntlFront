@@ -14,6 +14,8 @@ const InputSteps = ({ type, name, formik }) => {
           validenglish;
         }}
         type={type}
+        id={name}
+        name={name}
         {...formik.getFieldProps(name)}
         className={
           formik.errors[name] && formik.touched[name]

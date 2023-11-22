@@ -86,11 +86,13 @@ const Layout = ({ title, children }) => {
                   aria-hidden="true"
                 />
               </Link>
+              <Link href="/admin">
 
-              <FaCogs
-                className="text-indigo-50 hover:text-indigo-100 ms-3 h-6 w-6 "
-                aria-hidden="true"
-              />
+                <FaCogs
+                  className="text-indigo-50 hover:text-indigo-100 ms-3 h-6 w-6 "
+                  aria-hidden="true"
+                />
+              </Link>
 
               <Link href="/">
                 <FaHome

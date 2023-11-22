@@ -3,6 +3,7 @@ import { FaTrashAlt, FaRegTimesCircle } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import SelectForm from "./FormSteps/SelectForm";
 import Inputform from "./FormSteps/Inputform";
+import Checkboxform from "./FormSteps/checkboxform";
 import { Select } from "semantic-ui-react";
 
 const Stepmodal = ({ formik, setModal, name, title }) => {
@@ -45,6 +46,13 @@ const Stepmodal = ({ formik, setModal, name, title }) => {
                       )}
                       {item.model == "Inputform" && (
                         <Inputform
+                          formik={formik}
+                          name={item.name}
+                          type={item.type}
+                        />
+                      )}
+                      {item.model == "Checkboxform" && (
+                        <Checkboxform
                           formik={formik}
                           name={item.name}
                           type={item.type}

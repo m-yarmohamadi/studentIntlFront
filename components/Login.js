@@ -38,8 +38,8 @@ const Login = () => {
     (state) => state.popupReducer.successRegister
   );
 
-  const onSubmit = (values) => {
-    axios
+  const onSubmit = async (values) => {
+    await axios
       .post(`${process.env.NEXT_PUBLIC_URL}/auth/login`, values)
       .then((res) => {
         if (res.status === 200) {

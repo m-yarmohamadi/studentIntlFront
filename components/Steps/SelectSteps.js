@@ -9,6 +9,10 @@ const SelectSteps = ({ value, name, formik }) => {
         {t(name)}
       </label>
       <select
+        id={name}
+        name={name}
+        {...formik.getFieldProps(name)}
+
         className={
           formik.errors[name] && formik.touched[name]
             ? `block w-full px-4 py-1 mt-2 text-indigo-700 bg-rose-100 border rounded-md focus:border-indigo-400 border-rose-400  focus:ring-rose-600 focus:outline-none focus:ring focus:ring-opacity-40`
@@ -16,7 +20,7 @@ const SelectSteps = ({ value, name, formik }) => {
         }
       >
         {value.map((item) => (
-          <option key={item.index} value={item}>
+          <option key={item.id} value={item} >
             {t(item)}
           </option>
         ))}

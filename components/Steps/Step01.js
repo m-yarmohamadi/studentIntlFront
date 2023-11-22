@@ -5,9 +5,15 @@ import InputSteps from "./InputSteps";
 import NextStep from "./NextStep";
 import { useTranslation } from "react-i18next";
 const validationSchema = Step01Validation;
+import axios from "axios"
+import { useDispatch, useSelector } from "react-redux";
+
+import { toggleStep } from "@/fuchers/steps/StepSlice";
 
 
 const initialValues = {
+  userId: "",
+  registrationNoticesId: "",
   firstname: "",
   middlename: "",
   lastname: "",
@@ -42,8 +48,25 @@ const initialValues = {
 
 const Step01 = () => {
   const { t } = useTranslation();
-  const onSubmit = (values) => {
-    console.log(values);
+  const stepform = useSelector((state) => state.stepReducer.step);
+  const dispatch = useDispatch();
+
+  const onSubmit = async (values) => {
+    await axios
+      .post(`${process.env.NEXT_PUBLIC_URL}/auth/step01`,
+        {
+          ...values,
+          userId: "2",
+          registrationNoticesId: "3"
+        },
+      )
+      .then((res) => {
+        dispatch(toggleStep(stepform + 1))
+        console.log(res.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const formik = useFormik({
@@ -207,7 +230,8 @@ const Step01 = () => {
               <InputSteps formik={formik} name={"dateOfExpireSpouse"} type={"text"} />
             </div>
           </div>
-          <NextStep />
+          <NextStep disableForm={!formik.isValid} type={"submit"} />
+
         </form>
       </div>
     </div>

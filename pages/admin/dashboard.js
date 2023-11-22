@@ -1,3 +1,4 @@
+import Students from "@/components/Steps/Students";
 import {
   Tabs,
   TabsHeader,
@@ -81,7 +82,7 @@ const dashboard = () => {
           id=""
           className="relative  col-start-2 col-end-12 border-2 bg-indigo-50 "
         >
-          43552
+          <Students />
         </div>
         <div className="  absolute top-0 right-0  border-2 col-start-2 col-end-12  bg-indigo-100 ">
           43553

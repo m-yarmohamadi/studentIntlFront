@@ -120,8 +120,7 @@ const Step08 = () => {
             <div className="p-2 col-span-2 flex flex-col border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
               <label
                 className="block text-md font-normal text-indigo-50 text-center"
-                for=""
-              >
+                htmlFor="reasonForStudyingInThisUniversity"              >
                 {t("reasonForStudyingInThisUniversity")}
               </label>
               <textarea></textarea>
