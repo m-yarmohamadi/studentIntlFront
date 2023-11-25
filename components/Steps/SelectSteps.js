@@ -12,13 +12,18 @@ const SelectSteps = ({ value, name, formik }) => {
         id={name}
         name={name}
         {...formik.getFieldProps(name)}
-
+        value={formik.values[name]}
+        onChange={(e) => {
+          formik.setFieldValue(name, e.target.value);
+          formik.setFieldTouched(name, true);
+        }}
         className={
           formik.errors[name] && formik.touched[name]
             ? `block w-full px-4 py-1 mt-2 text-indigo-700 bg-rose-100 border rounded-md focus:border-indigo-400 border-rose-400  focus:ring-rose-600 focus:outline-none focus:ring focus:ring-opacity-40`
             : `block w-full px-4 py-1 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40`
         }
       >
+        <option value="">{t('pleaseSelect')}</option>
         {value.map((item) => (
           <option key={item.id} value={item} >
             {t(item)}

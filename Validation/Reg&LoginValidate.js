@@ -22,4 +22,6 @@ export const validationSchema = Yup.object({
       [Yup.ref("password"), null],
       "The password and its repetition must be the same "
     ),
+  accept: Yup.bool().required("accept is Required"),
+
 });

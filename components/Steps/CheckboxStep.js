@@ -6,6 +6,7 @@ const CheckboxStep = ({ type, name, formik }) => {
   return (
     <div className="flex   h-full">
       <input
+        name={name}
         onChange={(event) => {
           validenglish;
         }}

@@ -132,14 +132,37 @@ const Register = () => {
                     />
                   </div>
                   <div className="flex items-start">
+
+
+
+
+
+
+
+
+
                     <div className="flex items-center h-5">
+
+
                       <input
                         id="accept"
-                        aria-describedby="accept"
-                        name="checkbox"
+                        name="accept"
                         type="checkbox"
+
                         className="w-4 h-4 border border-indigo-300 rounded bg-indigo-50 focus:ring-3 focus:ring-primary-300 dark:bg-indigo-700 dark:border-indigo-600 dark:focus:ring-primary-600 dark:ring-offset-indigo-800"
+                        {...formik.getFieldProps("accept")}
                       />
+                      {formik.errors["accept"] && formik.touched["accept"] && (
+                        <p className=" text-sm text-rose-800">{formik.errors["accept"]}</p>
+                      )}
+
+
+
+
+
+
+
+
                     </div>
                     <div className="ml-3 text-sm">
                       <label

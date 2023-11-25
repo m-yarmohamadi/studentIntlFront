@@ -44,29 +44,17 @@ export const Step01Validation = Yup.object({
     .min(3, "Enter at least 3 letters")
     .max(30, "Enter up to 30 characters"),
   country: Yup.string()
-    .required("This field is required")
-    .min(3, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters")
-    .matches(/^[A-Za-z ]*$/, "Please type English"),
+    .required("This field is required"),
   city: Yup.string()
-    .required("This field is required")
-    .min(3, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters")
-    .matches(/^[A-Za-z ]*$/, "Please type English"),
+    .required("This field is required"),
   sex: Yup.string()
-    .required("This field is required")
-    .min(3, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters")
-    .matches(/^[A-Za-z ]*$/, "Please type English"),
+    .required("This field is required"),
   maritalstatus: Yup.string()
-    .required("This field is required")
-    .min(3, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters")
-    .matches(/^[A-Za-z ]*$/, "Please type English"),
-  numOfChildren: Yup.string()
-    .required("This field is required")
-    .min(1, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters"),
+    .required("This field is required"),
+  numOfChildren: Yup.number().when('maritalStatus', {
+    is: 'married',
+    then: Yup.number().required("This field is required"),
+  }),
   religion: Yup.string()
     .required("This field is required")
     .min(3, "Enter at least 3 letters")
@@ -120,27 +108,74 @@ export const Step01Validation = Yup.object({
     .required("This field is required")
     .matches(/^[0-9]{11}$/, "Invalid Mobile"),
   spouseFirstName: Yup.string()
-    .required("This field is required")
-    .min(3, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters")
-    .matches(/^[A-Za-z ]*$/, "Please type English"),
+    .when('maritalStatus', {
+      is: 'married',
+      then: Yup.string().required("This field is required")
+        .min(3, "Enter at least 3 letters")
+        .max(30, "Enter up to 30 characters")
+        .matches(/^[A-Za-z0-9@. ]*$/, "Please type English")
+    }),
   spouseLastName: Yup.string()
-    .required("This field is required")
-    .min(3, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters")
-    .matches(/^[A-Za-z ]*$/, "Please type English"),
-  passportNoSpouse: Yup.string()
-    .required("This field is required")
-    .matches(/^[0-9]{10}$/, "Invalid Pasport Number"),
-  dateOfIssueSpouse: Yup.string()
-    .required("This field is required")
-    .min(3, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters"),
-  dateOfExpireSpouse: Yup.string()
-    .required("This field is required")
-    .min(3, "Enter at least 3 letters")
-    .max(30, "Enter up to 30 characters")
+    .when('maritalStatus', {
+      is: 'married',
+      then: Yup.string().required("This field is required")
+        .min(3, "Enter at least 3 letters")
+        .max(30, "Enter up to 30 characters")
+        .matches(/^[A-Za-z0-9@. ]*$/, "Please type English")
+      ,
+    }),
+  passportNoSpouse: Yup.string().when('maritalStatus', {
+    is: 'married',
+    then: Yup.string().required("This field is required")
+      .min(9, "Enter at least 9 letters")
+      .max(10, "Enter up to 10 characters")
+      .matches(/^[A-Za-z0-9@. ]*$/, "Please type English")
+  }),
+  dateOfIssueSpouse: Yup.string().when('maritalStatus', {
+    is: 'married',
+    then: Yup.string().required("This field is required")
+      .min(3, "Enter at least 3 letters")
+      .max(30, "Enter up to 30 characters")
+      .matches(/^[A-Za-z0-9@. ]*$/, "Please type English")
+  }),
+  dateOfExpireSpouse: Yup.string().when('maritalStatus', {
+    is: 'married',
+    then: Yup.string().required("This field is required")
+      .min(3, "Enter at least 3 letters")
+      .max(30, "Enter up to 30 characters")
+      .matches(/^[A-Za-z0-9@. ]*$/, "Please type English")
+  }),
 });
+
+export const Step02Validation = Yup.object({
+  applicationType: Yup.string()
+    .required("This field is required"),
+  scholarshipType: Yup.string().when('applicationType', {
+
+
+    is: (value) => value === 'scholarship',
+    then: (schema) => schema.required('This field is required'),
+    otherwise: (schema) => schema
+  }),
+  Degree: Yup.string()
+    .required("This field is required"),
+  firstPriority: Yup.string()
+    .required("This field is required"),
+  secondPriority: Yup.string(),
+  thirdPriority: Yup.string(),
+  sabbatical: Yup.bool(),
+  degreeAndGraduationConfirmationLetter: Yup.bool(),
+  studentExchangeProgram: Yup.bool(),
+  Other: Yup.bool(),
+  reasonForStudyingInThisUniversity: Yup.string().max(200)
+
+})
+
+
+
+
+
+
 export const Step04Validation = Yup.object({
   languageName: Yup.string().required("Required"),
   nativeLanguage: Yup.string().required("Required"),

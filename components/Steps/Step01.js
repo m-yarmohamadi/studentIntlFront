@@ -144,18 +144,27 @@ const Step01 = () => {
                   value={["man", "woman"]}
                 />
               </div>
-              <div className="tracking-tight px-2  grid grid-cols-2 gap-2 mb-2">
-                <SelectSteps
-                  formik={formik}
-                  name={"maritalstatus"}
-                  value={["single", "married"]}
-                />
-                <SelectSteps
-                  formik={formik}
-                  name={"numOfChildren"}
-                  value={["1", "2", "3", "4", "5", "6", "7"]}
-                />
-              </div>
+              {formik.values.maritalstatus !== "married" ?
+                <div className="tracking-tight px-2  grid grid-cols-1 gap-2 mb-2">
+                  <SelectSteps
+                    formik={formik}
+                    name={"maritalstatus"}
+                    value={["single", "married"]}
+                  />
+                </div>
+                : <div className="tracking-tight px-2  grid grid-cols-2 gap-2 mb-2">
+                  <SelectSteps
+                    formik={formik}
+                    name={"maritalstatus"}
+                    value={["single", "married"]}
+                  />
+                  <SelectSteps
+                    formik={formik}
+                    name={"numOfChildren"}
+                    value={[0, 1, 2, 3, 4, 5, 6, 7]}
+                  />
+                </div>
+              }
               <div className=" mb-2">
                 <InputSteps formik={formik} name={"religion"} type={"text"} />
               </div>
@@ -211,24 +220,33 @@ const Step01 = () => {
                 <InputSteps formik={formik} name={"mobile"} type={"text"} />
               </div>
             </div>
-            <div className="text-indigo-50 font-extrabold text-start">
-              {t("spouseInformation")}
-            </div>
-            <div className="pt-5 pb-2 text-sm tracking-tight border border-1 border-white px-2  bg-indigo-900 bg-opacity-75 grid grid-cols-5 gap-2  mb-4">
-              <InputSteps
-                formik={formik}
-                name={"spouseFirstName"}
-                type={"text"}
-              />
-              <InputSteps
-                formik={formik}
-                name={"spouseLastName"}
-                type={"text"}
-              />
-              <InputSteps formik={formik} name={"passportNoSpouse"} type={"text"} />
-              <InputSteps formik={formik} name={"dateOfIssueSpouse"} type={"text"} />
-              <InputSteps formik={formik} name={"dateOfExpireSpouse"} type={"text"} />
-            </div>
+
+
+
+            {formik.values.maritalstatus === "married" &&
+              <>
+                <div className="text-indigo-50 font-extrabold text-start">
+                  {t("spouseInformation")}
+                </div>
+                <div className="pt-5 pb-2 text-sm tracking-tight border border-1 border-white px-2  bg-indigo-900 bg-opacity-75 grid grid-cols-5 gap-2  mb-4">
+                  <InputSteps
+                    formik={formik}
+                    name={"spouseFirstName"}
+                    type={"text"}
+                  />
+                  <InputSteps
+                    formik={formik}
+                    name={"spouseLastName"}
+                    type={"text"}
+                  />
+                  <InputSteps formik={formik} name={"passportNoSpouse"} type={"text"} />
+                  <InputSteps formik={formik} name={"dateOfIssueSpouse"} type={"text"} />
+                  <InputSteps formik={formik} name={"dateOfExpireSpouse"} type={"text"} />
+                </div>
+
+              </>
+            }
+
           </div>
           <NextStep disableForm={!formik.isValid} type={"submit"} />
 

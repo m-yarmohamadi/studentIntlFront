@@ -1,4 +1,50 @@
 const persian = {
+  // -----------------------------------INDEX--------------------------
+
+
+  RegistrationSystemForForeignStudents: "سامانه ثبت نام دانشجویان خارجی",
+  login: "ورود",
+  password: "کلمه عبور",
+  confirmPassword: "تکرار کلمه عبور",
+  register: "ثبت نام",
+  rememberMe: "من را به خاطر بسپار",
+  iForgotMyPassword: "کلمه عبور خود را فراموش کرده ام.",
+  dontHaveAnAccount: "اکانت ندارید؟",
+  registrationNotices: "اطلاعیه های ثبت نام",
+  newStudentRegistrationForMehr: "ثبت نام دانشجوی جدید ورودی مهر",
+  theRegistrationPeriodHasEnded: "مهلت ثبت نام پایان یافته",
+  iAcceptTheTermsAndConditionsOfTheSite: "قوانین و شرایط سایت را می پذیرم.",
+  alreadyRegistered: "قبلا ثبت نام کرده اید؟",
+  verificationCodeReceived: "کد تأیید دریافت شده:",
+  confirmation: "تأیید",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  login: "ورود",
   // -----------------------------------STEPS--------------------------
   Step: "گــام",
   titleStep01: "اطلاعات شخصی",
@@ -14,6 +60,7 @@ const persian = {
   nextStep: "مرحله بعد",
   previusStep: "مرحله قبل",
   submit: "ثبت",
+  pleaseSelect: "یک گزینه را انتخاب کنید",
 
   // -----------------------------------STEP01--------------------------
   firstname: "نــام",
@@ -34,7 +81,11 @@ const persian = {
   country: "کشور",
   city: "شهر",
   sex: "جنسیت",
+  man: "مرد",
+  woman: "زن",
   maritalstatus: "وضعیت تأهل",
+  married: "متأهل",
+  single: "مجرد",
   numOfChildren: "تعداد فرزندان",
   religion: "مذهب",
   passportNumber: "شماره پاسپورت",

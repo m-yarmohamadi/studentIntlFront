@@ -119,7 +119,7 @@ const Login = () => {
               <div className="    sm:py-3 sm:px-7">
                 <div className="text-center">
                   <h1 className="-mt-8 pb-8 uppercase text-xl font-bold leading-tight tracking-tight text-indigo-900 md:text-2xl dark:text-white ">
-                    {"login"}
+                    {t("login")}
                   </h1>
                 </div>
                 <form

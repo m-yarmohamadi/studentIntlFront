@@ -1,24 +1,50 @@
 import SelectSteps from "./SelectSteps";
 import { useFormik } from "formik";
-import { validationSchema } from "@/Validation/formValidate";
+import { Step02Validation } from "@/Validation/formValidate";
 import NextStep from "./NextStep";
 import { useTranslation } from "react-i18next";
 import CheckboxStep from "./CheckboxStep";
-const initialValues = {};
+import axios from "axios"
+import { useDispatch, useSelector } from "react-redux";
+import { toggleStep } from "@/fuchers/steps/StepSlice";
+
+const validationSchema = Step02Validation;
+
+const initialValues = {
+  applicationType: "",
+  scholarshipType: "",
+  Degree: "",
+  firstPriority: "",
+  secondPriority: "",
+  thirdPriority: "",
+  sabbatical: false,
+  degreeAndGraduationConfirmationLetter: false,
+  studentExchangeProgram: false,
+  Other: false,
+  reasonForStudyingInThisUniversity: ""
+};
 
 const Step02 = () => {
   const { t } = useTranslation();
-  const onSubmit = (values) => {
-    axios
-      .post(`${process.env.NEXT_PUBLIC_URL}/students/step01`, {
-        values,
+  const stepform = useSelector((state) => state.stepReducer.step);
+  const dispatch = useDispatch();
+
+  const onSubmit = async (values) => {
+    console.log(values)
+    await axios
+      .post(`${process.env.NEXT_PUBLIC_URL}/auth/step02`, {
+        ...values,
+        userId: "2",
+        registrationNoticesId: "3"
       })
       .then((res) => {
-        console.log(res.data);
+        dispatch(toggleStep(stepform + 1))
+        console.log(res.data)
       })
-      .catch((err) => console.log(err));
-  };
-
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -33,7 +59,7 @@ const Step02 = () => {
           {t("titleStep02")}
         </div>
 
-        <form className="my-6">
+        <form onSubmit={formik.handleSubmit} className="  ">
           <div className=" p-2 mb-2 grid grid-cols-1 md:grid-cols-2 gap-4 border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
             <div className=" mb-2">
               <SelectSteps
@@ -42,9 +68,7 @@ const Step02 = () => {
                 value={["nonScholarship", "scholarship"]}
               />
             </div>
-            {formik.values.applicationType}
-            {/* {applicationType.target.value === "scholarship" && } */}
-            <div className=" mb-2">
+            {formik.values.applicationType === "scholarship" && <div className=" mb-2">
               <SelectSteps
                 formik={formik}
                 name={"scholarshipType"}
@@ -54,7 +78,8 @@ const Step02 = () => {
                   "scholarshipOfApplicantSCountry",
                 ]}
               />
-            </div>
+            </div>}
+
 
           </div>
           <div className="mb-2 p-3 border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
@@ -90,7 +115,7 @@ const Step02 = () => {
             </div>
           </div>
           <div className=" grid grid-cols-1 md:grid-cols-5 gap-2 ">
-            <div className="p-2 col-span-3 grid grid-cols-1 md:grid-cols-2 gap-2 border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
+            <div className="p-2 h-28 col-span-3 grid grid-cols-1 md:grid-cols-2 gap-2 border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
               <div className=" mb-2">
                 <CheckboxStep
                   formik={formik}
@@ -120,21 +145,38 @@ const Step02 = () => {
                 />
               </div>
             </div>
-            <div className="p-2 col-span-2 flex flex-col border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
+            <div className="p-2 h-28 col-span-2 flex flex-col border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
               <label
                 className="block text-md font-normal text-indigo-50 text-center"
                 htmlFor="reasonForStudyingInThisUniversity"
               >
                 {t("reasonForStudyingInThisUniversity")}
               </label>
-              <textarea></textarea>
+              <textarea
+                {...formik.getFieldProps("reasonForStudyingInThisUniversity")}
+                name="reasonForStudyingInThisUniversity"
+                className={
+                  formik.errors["reasonForStudyingInThisUniversity"] && formik.touched["reasonForStudyingInThisUniversity"]
+                    ? `block w-full px-4   text-indigo-700 bg-rose-100 border rounded-md focus:border-indigo-400 border-rose-400  focus:ring-rose-600 focus:outline-none focus:ring focus:ring-opacity-40`
+                    : `block w-full px-4   text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40`
+                }
+              ></textarea>
+              <div className=" text-start h-4">
+                {formik.errors["reasonForStudyingInThisUniversity"] && formik.touched["reasonForStudyingInThisUniversity"] && (
+                  <p className=" text-xs text-start text-rose-400">
+                    {formik.errors["reasonForStudyingInThisUniversity"]}
+                  </p>
+                )}
+              </div>
+
             </div>
           </div>
+          <NextStep disableForm={!formik.isValid} type={"submit"} />
+
         </form>
-        <NextStep />
       </div>
     </div>
   );
 };
 
-export default Step02;
+export default Step02
