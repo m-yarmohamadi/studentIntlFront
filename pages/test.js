@@ -45,10 +45,10 @@ const test = () => {
 
       {
         users.map((item) =>
-          <Fade left cascade>
+          <Fade left cascade key={item.id}>
 
-            <Alert className={`shadow-lg ${!open ? `bg-red-700` :`bg-gray-400` }  m-3 opacity-50`}>
-              <h1 key={item.id}>
+            <Alert className={`shadow-lg ${!open ? `bg-red-700` : `bg-gray-400`}  m-3 opacity-50`}>
+              <h1 >
                 {item.name} {item.lName}
               </h1>
 
@@ -110,7 +110,7 @@ const test = () => {
 
                     <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                       {disabled ? <Button onClick={() => handleUsers()} className="w-full bg-rose-700 text-rose-200 rounded-sm items-center p-4 m-3">
-                        انتخاب برنده شماره {index+1}
+                        انتخاب برنده شماره {index + 1}
                       </Button> : <Button onClick={() => setOpen(false)} className="w-full bg-blue-700 text-rose-200 rounded-sm items-center p-4 m-3">
                         پایان
                       </Button>}

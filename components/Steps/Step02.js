@@ -7,10 +7,13 @@ import CheckboxStep from "./CheckboxStep";
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux";
 import { toggleStep } from "@/fuchers/steps/StepSlice";
+import { useEffect, useState } from "react";
 
 const validationSchema = Step02Validation;
 
 const initialValues = {
+  userId: "",
+  registrationNoticesId: "",
   applicationType: "",
   scholarshipType: "",
   Degree: "",
@@ -28,6 +31,24 @@ const Step02 = () => {
   const { t } = useTranslation();
   const stepform = useSelector((state) => state.stepReducer.step);
   const dispatch = useDispatch();
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchStep02 = async () => {
+      await axios
+        .get(`${process.env.NEXT_PUBLIC_URL}/auth/getStep02`)
+        .then(
+          (res) => {
+            setData(res.data.data)
+            console.log(res.data)
+          }
+        ).catch(
+          (err) => {
+            console.log(err)
+          }
+        )
+    }
+    fetchStep02()
+  }, []);
 
   const onSubmit = async (values) => {
     console.log(values)
@@ -60,7 +81,7 @@ const Step02 = () => {
         </div>
 
         <form onSubmit={formik.handleSubmit} className="  ">
-          <div className=" p-2 mb-2 grid grid-cols-1 md:grid-cols-2 gap-4 border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
+          <div className="shadow-sm shadow-indigo-300 p-2 mb-2 grid grid-cols-1 md:grid-cols-2 gap-4 border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
             <div className=" mb-2">
               <SelectSteps
                 formik={formik}
@@ -82,7 +103,7 @@ const Step02 = () => {
 
 
           </div>
-          <div className="mb-2 p-3 border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
+          <div className="shadow-sm shadow-indigo-300 mb-2 p-3 border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
             <div className=" mb-2">
               <SelectSteps
                 formik={formik}
@@ -115,7 +136,7 @@ const Step02 = () => {
             </div>
           </div>
           <div className=" grid grid-cols-1 md:grid-cols-5 gap-2 ">
-            <div className="p-2 h-28 col-span-3 grid grid-cols-1 md:grid-cols-2 gap-2 border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
+            <div className="shadow-sm shadow-indigo-300 p-2 h-28 col-span-3 grid grid-cols-1 md:grid-cols-2 gap-2 border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
               <div className=" mb-2">
                 <CheckboxStep
                   formik={formik}
@@ -145,7 +166,7 @@ const Step02 = () => {
                 />
               </div>
             </div>
-            <div className="p-2 h-28 col-span-2 flex flex-col border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
+            <div className="shadow-sm shadow-indigo-300 p-2 h-28 col-span-2 flex flex-col border border-1 border-indigo-50 bg-indigo-950 bg-opacity-20">
               <label
                 className="block text-md font-normal text-indigo-50 text-center"
                 htmlFor="reasonForStudyingInThisUniversity"

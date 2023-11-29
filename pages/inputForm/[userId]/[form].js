@@ -5,6 +5,9 @@ import Step03 from "@/components/Steps/Step03";
 import Step04 from "@/components/Steps/Step04";
 import Step05 from "@/components/Steps/Step05";
 import Step06 from "@/components/Steps/Step06";
+import Step07 from "@/components/Steps/Step07";
+import Step08 from "@/components/Steps/Step08";
+
 import ErrorBoundary from "@/components/ErrorBoundary";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,10 +16,6 @@ import {
   TbArrowBigRightLinesFilled,
 } from "react-icons/tb";
 import ButtonStep from "@/components/Steps/ButtonStep";
-import Step07 from "@/components/Steps/Step07";
-import Step08 from "@/components/Steps/Step08";
-import Step09 from "@/components/Steps/Step09";
-import Step10 from "@/components/Steps/Step10";
 
 const inputForm = () => {
   const lang = useSelector((state) => state.languageReducer.value.languageName);
@@ -105,22 +104,6 @@ const inputForm = () => {
                 <ErrorBoundary>
                   {" "}
                   <Step08 />
-                </ErrorBoundary>
-              </div>
-            )}
-            {stepform === 9 && (
-              <div>
-                <ErrorBoundary>
-                  {" "}
-                  <Step09 />
-                </ErrorBoundary>
-              </div>
-            )}
-            {stepform === 10 && (
-              <div>
-                <ErrorBoundary>
-                  {" "}
-                  <Step10 />
                 </ErrorBoundary>
               </div>
             )}

@@ -24,8 +24,8 @@ const SelectSteps = ({ value, name, formik }) => {
         }
       >
         <option value="">{t('pleaseSelect')}</option>
-        {value.map((item) => (
-          <option key={item.id} value={item} >
+        {value.map((item, index) => (
+          <option key={index} value={item} >
             {t(item)}
           </option>
         ))}
@@ -33,7 +33,8 @@ const SelectSteps = ({ value, name, formik }) => {
       <div className=" h-4">
         {formik.errors[name] && formik.touched[name] && (
           <p className=" text-xs text-start text-rose-400">
-            {formik.errors[name]}
+            {t(formik.errors[name])}
+
           </p>
         )}
       </div>

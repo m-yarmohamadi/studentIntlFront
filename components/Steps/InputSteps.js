@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-const InputSteps = ({ type, name, formik }) => {
+const InputSteps = ({ type, name, formik, data }) => {
   const { t } = useTranslation();
-
+  console.log("DATAAAA=", data)
   return (
     <div className="flex flex-col justify-start h-full">
       <label className="-mb-2  block text-md font-normal text-indigo-50 text-start">
         {t(name)}
         <span className="px-1  text-rose-400">*</span>
       </label>
+
       <input
         onChange={(event) => {
           validenglish;
         }}
         type={type}
+        placeholder={data?.name}
         id={name}
         name={name}
         {...formik.getFieldProps(name)}
@@ -26,7 +28,7 @@ const InputSteps = ({ type, name, formik }) => {
       <div className=" text-start h-4">
         {formik.errors[name] && formik.touched[name] && (
           <p className=" text-xs text-start text-rose-400">
-            {formik.errors[name]}
+            {t(formik.errors[name])}
           </p>
         )}
       </div>

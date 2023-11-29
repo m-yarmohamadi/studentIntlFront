@@ -71,7 +71,7 @@ const Test = () => {
         >
           {images.map((image) => (
             <img
-              key={image.id}
+              key={image.index}
               src={`../images/${image.name}`}
               alt=""
               onMouseEnter={() => setImg(image.name)}

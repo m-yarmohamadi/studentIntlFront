@@ -17,14 +17,14 @@ const SelectForm = ({ formik, name, value }) => {
         {...formik.getFieldProps(name)}
         className={`block w-full px-4 py-1 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40`}
       >
-        {value.map((item) => (
-          <option key={item.index} value={item}>
+        {value.map((item, index) => (
+          <option key={index} value={item}>
             {t(item)}
           </option>
         ))}
       </select>
       {formik.touched[name] && formik.errors[name] ? (
-        <div className=" text-red-800 ">{formik.errors[name]}</div>
+        <div className="text-xs text-red-800 ">{t(formik.errors[name])}</div>
       ) : null}
     </div>
   );

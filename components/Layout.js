@@ -62,7 +62,7 @@ const Layout = ({ title, children }) => {
         <title>{`${title}-studentIntl`}</title>
       </Head>
       <div className="ttt  md:py-12 fexl items-center ">
-        <div className="h-full  w-full bg-indigo-200 shadow-lg max-w-full  bg-opacity-70   ">
+        <div className="h-full  w-full bg-indigo-200 shadow-sm shadow-indigo-600 max-w-full  bg-opacity-70   ">
           <div className="p-2 text-indigo-50  flex  justify-between  bg-indigo-950 w-full h-10    text-center font-black ">
             <div className=" font-extrabold flex justify-start">
 

@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import SuccessRegister from "./SuccessRegister";
 import Cookies from "js-cookie";
+import { validationSchema } from "@/Validation/Reg&LoginValidate";
 
 
 import {
@@ -84,18 +85,13 @@ const Login = () => {
         console.log(err);
       });
   };
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .email("Invalid Email Format")
-      .required("Email is Required"),
-    password: Yup.string().required("Password is Required"),
-  });
   const formik = useFormik({
     initialValues,
     onSubmit,
     validationSchema,
     validateOnMount: true,
   });
+
 
   return (
     <div className=" fade-in  justify-center  flex  overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-md">
@@ -135,6 +131,7 @@ const Login = () => {
                       formik={formik}
                       name="password"
                       label={t("password")}
+
                       type="password"
                     />
                   </div>

@@ -1,11 +1,10 @@
 const persian = {
   // -----------------------------------INDEX--------------------------
-
-
   RegistrationSystemForForeignStudents: "سامانه ثبت نام دانشجویان خارجی",
   login: "ورود",
   password: "کلمه عبور",
   confirmPassword: "تکرار کلمه عبور",
+  login: "ورود",
   register: "ثبت نام",
   rememberMe: "من را به خاطر بسپار",
   iForgotMyPassword: "کلمه عبور خود را فراموش کرده ام.",
@@ -18,33 +17,32 @@ const persian = {
   verificationCodeReceived: "کد تأیید دریافت شده:",
   confirmation: "تأیید",
 
+  // -----------------------------------ERRORS--------------------------
+  thisFieldIsRequired: "تکمیل این قسمت الزامی می باشد",
+  selectingAnOptionIsRequired: "انتخاب یک گزینه الزامی است",
+  enterAtLeast3Letters: "حداقل 3 کاراکتر تایپ کنید",
+  enterUpTo30Characters: "حداکثر 30 کاراکتر تایپ کنید",
+  pleaseTypeEnglish: "لطفا انگلیسی تایپ کنید",
+  pleaseTypePersian: "لطفا فارسی تایپ کنید",
+  pleaseTypeNumber: "لطفا فقط عدد تایپ کنید",
+  invalidMobile: "فرمت تلفن همراه نامعتبر است",
+  enterAtLeast9Letters: "حداقل 9 کاراکتر تایپ کنید",
+  enterUpTo10Characters: "حداکثر 10 کاراکتر تایپ کنید",
+  invalidEmailFormat: "فرمت پست الکترونیک نامعتبر است",
+
+  firstnameIsRequired: "درج نام الزامی می باشد",
+  lastnameIsRequired: "درج نام خانوادگی الزامی می باشد",
+  emailIsRequired: "درج پست الکترونیک الزامی می باشد",
+  mobileIsRequired: "درج تلفن همراه الزامی می باشد",
+  passwordIsRequired: "درج کلمه عبور الزامی می باشد",
+  confirmPasswordIsRequired: "درج تکرار کلمه عبور الزامی می باشد",
+  thePasswordAndItsRepetitionMustBeTheSame: "کلمه عبور و تکرار کلمه عبور باید یکسان باشند",
+  acceptIsRequired: "تأیید فرم الزامی می باشد",
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  login: "ورود",
   // -----------------------------------STEPS--------------------------
   Step: "گــام",
   titleStep01: "اطلاعات شخصی",

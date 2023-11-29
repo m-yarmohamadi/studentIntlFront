@@ -94,6 +94,7 @@ const Step04 = () => {
           <Stepmodal
             formik={formik}
             setModal={setModal}
+            disableForm={!formik.isValid}
             name={[
               {
                 name: "languageName",

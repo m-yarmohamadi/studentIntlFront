@@ -19,7 +19,7 @@ const Inputform = ({ formik, name, type }) => {
         {...formik.getFieldProps(name)}
       />
       {formik.touched[name] && formik.errors[name] ? (
-        <div className=" text-red-800 ">{formik.errors[name]}</div>
+        <div className="text-xs text-red-800 ">{t(formik.errors[name])}</div>
       ) : null}
     </div>
   );

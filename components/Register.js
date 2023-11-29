@@ -131,52 +131,37 @@ const Register = () => {
                       type="password"
                     />
                   </div>
-                  <div className="flex items-start">
-
-
-
-
-
-
-
-
-
-                    <div className="flex items-center h-5">
-
-
-                      <input
-                        id="accept"
-                        name="accept"
-                        type="checkbox"
-
-                        className="w-4 h-4 border border-indigo-300 rounded bg-indigo-50 focus:ring-3 focus:ring-primary-300 dark:bg-indigo-700 dark:border-indigo-600 dark:focus:ring-primary-600 dark:ring-offset-indigo-800"
-                        {...formik.getFieldProps("accept")}
-                      />
-                      {formik.errors["accept"] && formik.touched["accept"] && (
-                        <p className=" text-sm text-rose-800">{formik.errors["accept"]}</p>
-                      )}
-
-
-
-
-
-
-
-
-                    </div>
-                    <div className="ml-3 text-sm">
-                      <label
-                        htmlFor="accept"
-                        className="font-light text-indigo-900 dark:text-indigo-300"
-                      >
-                        <Link
-                          className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                          href="/Rules"
+                  <div>
+                    <div className="flex items-start">
+                      <div className="flex items-center h-5">
+                        <input
+                          id="accept"
+                          name="accept"
+                          type="checkbox"
+                          className="w-4 h-4 border border-indigo-300 rounded bg-indigo-50 focus:ring-3 focus:ring-primary-300 dark:bg-indigo-700 dark:border-indigo-600 dark:focus:ring-primary-600 dark:ring-offset-indigo-800"
+                          {...formik.getFieldProps("accept")}
+                        />
+                      </div>
+                      <div className="ml-3 text-sm">
+                        <label
+                          htmlFor="accept"
+                          className="font-light text-indigo-900 dark:text-indigo-300"
                         >
-                          {t("iAcceptTheTermsAndConditionsOfTheSite")}
-                        </Link>
-                      </label>
+                          <Link
+                            className="ps-1 font-medium text-primary-600 hover:underline dark:text-primary-500"
+                            href="/Rules"
+                          >
+                            {t("iAcceptTheTermsAndConditionsOfTheSite")}
+                          </Link>
+                        </label>
+                      </div>
+
+
                     </div>
+                    {formik.errors["accept"] && formik.touched["accept"] && (
+                      <p className=" text-xs text-rose-800">{t(formik.errors["accept"])}</p>
+                    )}
+
                   </div>
                   <button
                     type="submit"

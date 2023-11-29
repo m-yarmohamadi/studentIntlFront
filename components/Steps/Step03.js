@@ -1,17 +1,14 @@
-import SelectSteps from "./SelectSteps";
-import { useFormik, validateYupSchema } from "formik";
+import { useFormik } from "formik";
+import axios from "axios";
 import NextStep from "./NextStep";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
-import Inputform from "./FormSteps/Inputform";
+import { useEffect, useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
-import { Card } from "semantic-ui-react";
 import { FaTrashAlt, FaRegTimesCircle } from "react-icons/fa";
-import * as Yup from "yup";
-import SelectForm from "./FormSteps/SelectForm";
+import { Step03Validation } from "@/Validation/formValidate";
 import Stepmodal from "./Stepmodal";
+
 const initialValues = {
-  id: nanoid(),
   grade: "",
   start: "",
   end: "",
@@ -23,30 +20,57 @@ const initialValues = {
   outOf: "",
   fileGrade: "",
 };
-const validationSchema = Yup.object({
-  grade: Yup.string().required("Required"),
-  start: Yup.string().required("Required"),
-  end: Yup.string().required("Required"),
-  fieldOfStudy: Yup.string().required("Required"),
-  country: Yup.string().required("Required"),
-  city: Yup.string().required("Required"),
-  schoolOrUnivercityName: Yup.string().required("Required"),
-  GPA: Yup.number().max(100).required("Required"),
-  outOf: Yup.string().required("Required"),
-  fileGrade: Yup.string(),
-});
-const Step05 = () => {
+const validationSchema = Step03Validation
+const Step03 = () => {
   const [data, setData] = useState([]);
   const [showFormGrade, setShowFormGrade] = useState(false);
+  useEffect(() => {
+    const fetchStep03 = async () => {
+      await axios
+        .get(`${process.env.NEXT_PUBLIC_URL}/auth/getStep03`)
+        .then(
+          (res) => {
+            setData(res.data.data)
+            console.log(res.data)
+          }
+        ).catch(
+          (err) => {
+            console.log(err)
+          }
+        )
+    }
+    fetchStep03()
+  }, [showFormGrade]);
+
   const setModal = () => {
     setShowFormGrade(!showFormGrade);
   };
 
   const { t } = useTranslation();
-  const onSubmit = (values) => {
-    setData([...data, { ...values, id: nanoid() }]);
-    setShowFormGrade(false);
-    console.log(data);
+  const fetchData = () => {
+    dispatch(toggleStep(stepform + 1))
+  }
+  const handleDelete = async (itemId) => {
+    try {
+      const response = await axios.delete(`${process.env.NEXT_PUBLIC_URL}/auth/delStep03/${itemId}`);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const onSubmit = async (values) => {
+    await axios
+      .post(`${process.env.NEXT_PUBLIC_URL}/auth/step03`, {
+        ...values,
+        userId: "2",
+        registrationNoticesId: "3"
+      })
+      .then((res) => {
+        setShowFormGrade(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   const formik = useFormik({
     initialValues,
@@ -64,80 +88,85 @@ const Step05 = () => {
             <div className="border border-indigo-50 h-full w-full overflow-auto">
               <table className=" w-full min-w-max table-auto text-left">
                 <thead className=" ">
-                  <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center"></th>
-                  <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("grade")}
-                  </th>
-                  <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("start")}
-                  </th>
-                  <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("end")}
-                  </th>
-                  <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("fieldOfStudy")}
-                  </th>
-                  <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("country")}
-                  </th>
-                  <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("city")}
-                  </th>
-                  <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("schoolOrUnivercityName")}
-                  </th>
-                  <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("GPA")}
-                  </th>
-                  <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("outOf")}
-                  </th>
-                  <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
-                    {t("fileGrade")}
-                  </th>
+                  <tr>
+                    <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center"></th>
+                    <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
+                      {t("grade")}
+                    </th>
+                    <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
+                      {t("start")}
+                    </th>
+                    <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
+                      {t("end")}
+                    </th>
+                    <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
+                      {t("fieldOfStudy")}
+                    </th>
+                    <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
+                      {t("country")}
+                    </th>
+                    <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
+                      {t("city")}
+                    </th>
+                    <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
+                      {t("schoolOrUnivercityName")}
+                    </th>
+                    <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
+                      {t("GPA")}
+                    </th>
+                    <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
+                      {t("outOf")}
+                    </th>
+                    <th className="px-2 py-4 border border-indigo-50 bg-indigo-900 text-white font-extrabold text-center">
+                      {t("fileGrade")}
+                    </th>
+                  </tr>
                 </thead>
                 {data.map((item) => (
                   <tbody key={item.id} className="w-full">
-                    <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 items-center justify-center text-center">
-                      <button
-                        type=""
-                        onClick={() =>
-                          setData(data.filter((d) => d.id !== item.id))
-                        }
-                      >
-                        <FaTrashAlt className=" h-6 text-rose-800" />
-                      </button>
-                    </td>
-                    <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.grade}
-                    </td>
-                    <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.start}
-                    </td>
-                    <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.end}
-                    </td>
-                    <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.fieldOfStudy}
-                    </td>
-                    <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.country}
-                    </td>
-                    <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.city}
-                    </td>
-                    <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.schoolOrUnivercityName}
-                    </td>
-                    <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.GPA}
-                    </td>
-                    <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.outOf}
-                    </td>
-                    <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
-                      {item.fileGrade}
-                    </td>
+                    <tr>
+                      <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 items-center justify-center text-center">
+                        <button
+                          type=""
+                          onClick={() =>
+                            handleDelete(item.id)
+
+                          }
+                        >
+                          <FaTrashAlt className=" h-6 text-rose-800" />
+                        </button>
+                      </td>
+                      <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
+                        {item.grade}
+                      </td>
+                      <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
+                        {item.start}
+                      </td>
+                      <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
+                        {item.end}
+                      </td>
+                      <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
+                        {item.fieldOfStudy}
+                      </td>
+                      <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
+                        {item.country}
+                      </td>
+                      <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
+                        {item.city}
+                      </td>
+                      <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
+                        {item.schoolOrUnivercityName}
+                      </td>
+                      <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
+                        {item.GPA}
+                      </td>
+                      <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
+                        {item.outOf}
+                      </td>
+                      <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 text-center">
+                        {item.fileGrade}
+                      </td>
+                    </tr>
                   </tbody>
                 ))}
               </table>
@@ -159,6 +188,7 @@ const Step05 = () => {
           <Stepmodal
             formik={formik}
             setModal={setModal}
+            disableForm={!formik.isValid}
             name={[
               {
                 name: "grade",
@@ -200,9 +230,9 @@ const Step05 = () => {
             title={"recordRegisterDegree"}
           />
         )}
-        <NextStep />
+        <NextStep disableForm={!formik.isValid} type={"submit"} onClick={fetchData} />
       </div>
     </div>
   );
 };
-export default Step05;
+export default Step03;

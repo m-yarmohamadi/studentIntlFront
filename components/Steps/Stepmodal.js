@@ -6,7 +6,7 @@ import Inputform from "./FormSteps/Inputform";
 import Checkboxform from "./FormSteps/checkboxform";
 import { Select } from "semantic-ui-react";
 
-const Stepmodal = ({ formik, setModal, name, title }) => {
+const Stepmodal = ({ formik, setModal, name, title, disableForm }) => {
   const { t } = useTranslation();
 
   return (
@@ -35,8 +35,8 @@ const Stepmodal = ({ formik, setModal, name, title }) => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-                  {name.map((item) => (
-                    <div key={item.index}>
+                  {name.map((item, index) => (
+                    <div key={index}>
                       {item.model == "SelectForm" && (
                         <SelectForm
                           formik={formik}
@@ -66,6 +66,7 @@ const Stepmodal = ({ formik, setModal, name, title }) => {
                   <button
                     className="w-full p-2 my-3 rounded-md bg-indigo-800 hover:bg-indigo-900 text-indigo-50 text-lg"
                     type="submit"
+                    disabled={disableForm}
                   >
                     {t("submit")}
                   </button>
