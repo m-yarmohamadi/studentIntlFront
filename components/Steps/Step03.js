@@ -59,18 +59,33 @@ const Step03 = () => {
     }
   };
   const onSubmit = async (values) => {
-    await axios
-      .post(`${process.env.NEXT_PUBLIC_URL}/auth/step03`, {
-        ...values,
-        userId: "2",
-        registrationNoticesId: "3"
-      })
-      .then((res) => {
-        setShowFormGrade(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const formData = new FormData()
+    formData.append("grade", values.grade)
+    formData.append("start", values.start)
+    formData.append("end", values.end)
+    formData.append("fieldOfStudy", values.fieldOfStudy)
+    formData.append("country", values.country)
+    formData.append("city", values.city)
+    formData.append("schoolOrUnivercityName", values.schoolOrUnivercityName)
+    formData.append("GPA", values.GPA)
+    formData.append("outOf", values.outOf)
+    formData.append("fileGrade", values.fileGrade)
+    for (let [name, value] of formData) {
+      console.log(`${name} = ${value}`);
+
+      await axios
+        .post(`${process.env.NEXT_PUBLIC_URL}/auth/step03`, {
+          name, value,
+          // userId: "2",
+          // registrationNoticesId: "3"
+        })
+        .then((res) => {
+          setShowFormGrade(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   const formik = useFormik({
     initialValues,
@@ -222,7 +237,7 @@ const Step03 = () => {
               { name: "outOf", model: "Inputform", value: "", type: "number" },
               {
                 name: "fileGrade",
-                model: "Inputform",
+                model: "inputّFileForm",
                 value: "",
                 type: "file",
               },

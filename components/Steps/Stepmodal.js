@@ -5,6 +5,7 @@ import SelectForm from "./FormSteps/SelectForm";
 import Inputform from "./FormSteps/Inputform";
 import Checkboxform from "./FormSteps/checkboxform";
 import { Select } from "semantic-ui-react";
+import InputّFileForm from "./FormSteps/InputFileForm";
 
 const Stepmodal = ({ formik, setModal, name, title, disableForm }) => {
   const { t } = useTranslation();
@@ -53,6 +54,13 @@ const Stepmodal = ({ formik, setModal, name, title, disableForm }) => {
                       )}
                       {item.model == "Checkboxform" && (
                         <Checkboxform
+                          formik={formik}
+                          name={item.name}
+                          type={item.type}
+                        />
+                      )}
+                      {item.model == "inputّFileForm" && (
+                        <InputّFileForm
                           formik={formik}
                           name={item.name}
                           type={item.type}
