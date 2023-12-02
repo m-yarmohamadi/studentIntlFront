@@ -62,6 +62,7 @@ const Register = () => {
         {
           error == "Request failed with status code 400" &&
             dispatch(toggleErrorPopup());
+            
         }
       });
   };

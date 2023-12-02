@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
+import toast from 'react-hot-toast';
+import { useTranslation } from "react-i18next";
 
 import * as Yup from "yup";
 import Input from "../components/Input";
@@ -19,6 +21,7 @@ const initialValues = {
 
 const VerifyCode = ({ email }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const onSubmit = (values) => {
     axios
@@ -27,11 +30,14 @@ const VerifyCode = ({ email }) => {
         email,
       })
       .then((res) => {
+        const messageSuccess = res.data.message;
         console.log("SUCCESS");
         dispatch(toggleVerifyCodePopup());
         dispatch(toggleLoginToRegisterPopup());
 
-        dispatch(toggleSuccessRegister());
+        // dispatch(toggleSuccessRegister());
+        toast.success(t(messageSuccess))
+
       })
       .catch((err) => console.log(err));
   };

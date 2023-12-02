@@ -16,6 +16,13 @@ const persian = {
   alreadyRegistered: "قبلا ثبت نام کرده اید؟",
   verificationCodeReceived: "کد تأیید دریافت شده:",
   confirmation: "تأیید",
+  YouHaveSuccessfullyLoggedIn:"شما با موفقیت وارد شدید",
+  YouHaveSuccessfullyLoggedOut:"شما با موفقیت خارج شدید",
+
+  usernameOrPasswordIswrong:"نام کاربری یا کلمه عبور اشتباه می باشد",
+  yourRegistrationWasSuccessful:"ثبت نام شما موفقیت آمیز بود",
+
+
 
   // -----------------------------------ERRORS--------------------------
   thisFieldIsRequired: "تکمیل این قسمت الزامی می باشد",

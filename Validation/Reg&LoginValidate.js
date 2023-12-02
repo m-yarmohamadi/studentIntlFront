@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const validationSchema = Yup.object({
+export const registerValidation = Yup.object({
   firstname: Yup.string()
     .required("Firstname is Required")
     .min(3, "The length of this field should not be less than 3 characters")
@@ -23,5 +23,12 @@ export const validationSchema = Yup.object({
       "The password and its repetition must be the same "
     ),
   accept: Yup.bool().required("accept is Required"),
+
+});
+export const loginValidation = Yup.object({
+  email: Yup.string()
+    .email("Invalid Email Format")
+    .required("Email is Required"),
+  password: Yup.string().required("Password is Required"),
 
 });

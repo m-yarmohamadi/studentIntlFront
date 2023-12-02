@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
+import toast from 'react-hot-toast';
+
 
 import {
   FaCogs,
@@ -17,6 +19,7 @@ import { toggleAccessToken } from "@/fuchers/resCode/resCodeSlice";
 import { toggleLogin } from "@/fuchers/user/userSlice";
 const Layout = ({ title, children }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
 
   const accessToken = useSelector((state) => state.tokenReducer.accessToken);
@@ -32,13 +35,9 @@ const Layout = ({ title, children }) => {
     e.preventDefault()
     dispatch(toggleLogin(false))
 
-    Swal.fire({
-      position: "center-center",
-      icon: "info",
-      title: "شما با موفقیت خارج شدید",
-      showConfirmButton: false,
-      timer: 1500,
-    });
+
+    toast.success(t("YouHaveSuccessfullyLoggedOut"))
+
   }
   const lang = useSelector((state) => state.languageReducer.value.languageName);
   const { i18n } = useTranslation();

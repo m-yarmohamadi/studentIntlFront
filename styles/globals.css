@@ -118,6 +118,8 @@ body {
   background-position: left top;
   background-attachment: fixed;
   background-size: cover;
+  transition: all ;
+  transition-duration: 300;
 }
 .hiddenClass {
   backface-visibility: hidden;

@@ -15,6 +15,11 @@ const english = {
   alreadyRegistered: "Already Registered",
   verificationCodeReceived: "Verification Code Received",
   confirmation: "Confirmation",
+  YouHaveSuccessfullyLoggedIn:"You have successfully logged in",
+  YouHaveSuccessfullyLoggedOut:"You have successfully logged out",
+  usernameOrPasswordIswrong:"Username or password is wrong",
+  yourRegistrationWasSuccessful:"Your registration was successful",
+
   // -----------------------------------ERRORS--------------------------
   thisFieldIsRequired: "This field is required..",
   selectingAnOptionIsRequired: "Selecting an option is required",

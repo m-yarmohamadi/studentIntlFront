@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Swal from "sweetalert2";
+import toast from 'react-hot-toast';
 
 import { FaRegTimesCircle } from "react-icons/fa";
 import axios from "axios";
@@ -7,8 +8,8 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import SuccessRegister from "./SuccessRegister";
 import Cookies from "js-cookie";
-import { validationSchema } from "@/Validation/Reg&LoginValidate";
-
+import { loginValidation } from "@/Validation/Reg&LoginValidate";
+const validationSchema = loginValidation;
 
 import {
   toggleLoginPopup,
@@ -23,8 +24,14 @@ import { useTranslation } from "react-i18next";
 
 import * as Yup from "yup";
 import Input from "../components/Input";
-import { toggleEmail, toggleFirstname, toggleIdUser, toggleLastname, toggleLogin, toggleUser } from "@/fuchers/user/userSlice";
-import toast from './toast';
+import {
+  toggleEmail,
+  toggleFirstname,
+  toggleIdUser,
+  toggleLastname,
+  toggleLogin,
+  toggleUser,
+} from "@/fuchers/user/userSlice";
 
 const initialValues = {
   email: "",
@@ -40,49 +47,31 @@ const Login = () => {
   );
 
   const onSubmit = async (values) => {
+    
     await axios
       .post(`${process.env.NEXT_PUBLIC_URL}/auth/login`, values)
       .then((res) => {
         if (res.status === 200) {
-
-
-
-          dispatch(toggleAccessToken(res.data.accessToken))
-          dispatch(toggleIdUser(res.data.user.id))
-          dispatch(toggleFirstname(res.data.user.firstname))
-          dispatch(toggleLastname(res.data.user.lastname))
-          dispatch(toggleEmail(res.data.user.email))
-          dispatch(toggleLogin(true))
+          console.log(res.data.message);
+const messageSuccess = res.data.message
+          dispatch(toggleAccessToken(res.data.accessToken));
+          dispatch(toggleIdUser(res.data.user.id));
+          dispatch(toggleFirstname(res.data.user.firstname));
+          dispatch(toggleLastname(res.data.user.lastname));
+          dispatch(toggleEmail(res.data.user.email));
+          dispatch(toggleLogin(true));
           console.log(res.status);
-          console.log(res.data);
 
           dispatch(toggleLoginPopup());
-
-          Swal.fire({
-            position: "center-center",
-            icon: "success",
-            title: "شما با موفقیت وارد شدید",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          toast.success(t(messageSuccess))
         }
       })
       .catch((err) => {
-        if (err.message == "Request failed with status code 400") {
+          const messageError = err.response.data.message;
+          console.log(messageError);
+          toast.error(t(messageError))
 
 
-
-
-          Swal.fire({
-            position: "center-center",
-            icon: "error",
-            title: "نام کاربری یا کلمه عبور اشتباه است",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-
-        console.log(err);
       });
   };
   const formik = useFormik({
@@ -91,7 +80,6 @@ const Login = () => {
     validationSchema,
     validateOnMount: true,
   });
-
 
   return (
     <div className=" fade-in  justify-center  flex  overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-md">
@@ -131,7 +119,6 @@ const Login = () => {
                       formik={formik}
                       name="password"
                       label={t("password")}
-
                       type="password"
                     />
                   </div>
