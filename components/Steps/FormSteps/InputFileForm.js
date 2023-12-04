@@ -1,8 +1,9 @@
-import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const InputFileform = ({ formik, name, type }) => {
+const InputFileform = ({ formik, name, type, handlechange }) => {
     const { t } = useTranslation();
+
+
     return (
         <div className=" h-20">
             <label
@@ -15,10 +16,8 @@ const InputFileform = ({ formik, name, type }) => {
             <input
                 className={`block w-full px-4 py-1 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none focus:ring focus:ring-opacity-40`}
                 type={type}
-                onChange={(event) => {
-                    formik.setFieldValue('fileGrade', event.currentTarget.files[0]);
-                }}
-                {...formik.getFieldProps(name)}
+                name={name}
+                onChange={handlechange}
             />
             {formik.touched[name] && formik.errors[name] ? (
                 <div className="text-xs text-red-800 ">{t(formik.errors[name])}</div>

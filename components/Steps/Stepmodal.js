@@ -1,14 +1,92 @@
-import React from "react";
-import { FaTrashAlt, FaRegTimesCircle } from "react-icons/fa";
+import React, { useState } from "react";
+import { useFormik } from "formik";
+
+import { FaRegTimesCircle } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import SelectForm from "./FormSteps/SelectForm";
 import Inputform from "./FormSteps/Inputform";
-import Checkboxform from "./FormSteps/checkboxform";
-import { Select } from "semantic-ui-react";
-import InputّFileForm from "./FormSteps/InputFileForm";
+import InputFileform from "./FormSteps/InputFileForm";
+import { Step03Validation } from "@/Validation/formValidate";
+import axios from "axios";
 
-const Stepmodal = ({ formik, setModal, name, title, disableForm }) => {
+const nameGrade = [
+  'diploma',
+  'associateDegree',
+  'bachelor',
+  'master',
+  'phd',
+]
+const initialValues = {
+  grade: "",
+  start: "",
+  end: "",
+  fieldOfStudy: "",
+  country: "",
+  city: "",
+  schoolOrUnivercityName: "",
+  GPA: "",
+  outOf: "",
+  fileGrade: "",
+};
+const validationSchema = Step03Validation
+
+
+const Stepmodal = ({ setModal, title, disableForm, setShowFormGrade }) => {
   const { t } = useTranslation();
+  const [file, setFile] = useState("")
+  const [preview, setPreview] = useState("")
+
+  const handlechange = (e) => {
+    console.log("ferfgerfgvg")
+    const image = e.target.files[0]
+    setFile(image)
+    setPreview(URL.createObjectURL(image))
+    console.log('FILE=', file)
+    console.log(preview)
+  }
+  const onSubmit = async (values) => {
+    const formData = new FormData()
+    formData.append("userId", "2")
+    formData.append("registrationNoticesId", "3")
+    formData.append("grade", values.grade)
+    formData.append("start", values.start)
+    formData.append("end", values.end)
+    formData.append("fieldOfStudy", values.fieldOfStudy)
+    formData.append("country", values.country)
+    formData.append("city", values.city)
+    formData.append("schoolOrUnivercityName", values.schoolOrUnivercityName)
+    formData.append("GPA", values.GPA)
+    formData.append("outOf", values.outOf)
+    formData.append("fileGrade", file)
+    const data = Object.fromEntries(formData)
+    console.log(data)
+    await axios
+      .post(`${process.env.NEXT_PUBLIC_URL}/auth/step03`, data)
+      .then((res) => {
+        setModal(false);
+        console.log(res)
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
+
+      });
+
+  };
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema,
+  });
+  // console.log(formik.values)
 
   return (
     <div className=" fade-in  justify-center  flex  overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-md">
@@ -18,6 +96,7 @@ const Stepmodal = ({ formik, setModal, name, title, disableForm }) => {
             <div className="p-1">
               <form
                 onSubmit={formik.handleSubmit}
+                enctype="multipart/form-data"
                 className="bg-indigo-900 bg-opacity-50 p-4 m-2 border border-indigo-950 rounded-lg shadow-md "
               >
                 <div className=" text-end">
@@ -36,40 +115,20 @@ const Stepmodal = ({ formik, setModal, name, title, disableForm }) => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-                  {name.map((item, index) => (
-                    <div key={index}>
-                      {item.model == "SelectForm" && (
-                        <SelectForm
-                          formik={formik}
-                          name={item.name}
-                          value={item.value}
-                        />
-                      )}
-                      {item.model == "Inputform" && (
-                        <Inputform
-                          formik={formik}
-                          name={item.name}
-                          type={item.type}
-                        />
-                      )}
-                      {item.model == "Checkboxform" && (
-                        <Checkboxform
-                          formik={formik}
-                          name={item.name}
-                          type={item.type}
-                        />
-                      )}
-                      {item.model == "inputّFileForm" && (
-                        <InputّFileForm
-                          formik={formik}
-                          name={item.name}
-                          type={item.type}
-                        />
-                      )}
-                    </div>
-                  ))}
-                </div>
+                  <SelectForm formik={formik} name={'grade'} value={nameGrade} />
+                  <Inputform formik={formik} name={'start'} type={'date'} />
+                  <Inputform formik={formik} name={'end'} type={'date'} />
+                  <Inputform formik={formik} name={'fieldOfStudy'} type={'text'} />
+                  <Inputform formik={formik} name={'country'} type={'text'} />
+                  <Inputform formik={formik} name={'city'} type={'text'} />
+                  <Inputform formik={formik} name={'schoolOrUnivercityName'} type={'text'} />
+                  <Inputform formik={formik} name={'GPA'} type={'number'} />
+                  <Inputform formik={formik} name={'outOf'} type={'number'} />
+                  <InputFileform formik={formik} name={'fileGrade'} type={'file'} handlechange={handlechange} />
+                  <div>
 
+                  </div>
+                </div>
                 <div>
                   <button
                     className="w-full p-2 my-3 rounded-md bg-indigo-800 hover:bg-indigo-900 text-indigo-50 text-lg"

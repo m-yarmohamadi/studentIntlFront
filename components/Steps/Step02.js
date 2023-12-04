@@ -10,7 +10,6 @@ import { toggleStep } from "@/fuchers/steps/StepSlice";
 import { useEffect, useState } from "react";
 
 const validationSchema = Step02Validation;
-
 const initialValues = {
   userId: "",
   registrationNoticesId: "",
@@ -32,6 +31,8 @@ const Step02 = () => {
   const stepform = useSelector((state) => state.stepReducer.step);
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
+  const [formValues, setFormValues] = useState(null);
+
   useEffect(() => {
     const fetchStep02 = async () => {
       await axios
@@ -39,6 +40,8 @@ const Step02 = () => {
         .then(
           (res) => {
             setData(res.data.data)
+            setFormValues(res.data.data[0]);
+
             console.log(res.data)
           }
         ).catch(
@@ -67,10 +70,12 @@ const Step02 = () => {
       });
   }
   const formik = useFormik({
-    initialValues,
+    initialValues: formValues || initialValues,
     onSubmit,
     validationSchema,
     validateOnMount: true,
+    enableReinitialize: true
+
   });
 
   return (

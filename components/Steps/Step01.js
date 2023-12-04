@@ -4,35 +4,33 @@ import { Step01Validation } from "@/Validation/formValidate";
 import InputSteps from "./InputSteps";
 import NextStep from "./NextStep";
 import { useTranslation } from "react-i18next";
-const validationSchema = Step01Validation;
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-
 import { toggleStep } from "@/fuchers/steps/StepSlice";
 import { useEffect, useState } from "react";
+
+const validationSchema = Step01Validation;
+const initialValues = {}
 
 const Step01 = () => {
   const { t } = useTranslation();
   const stepform = useSelector((state) => state.stepReducer.step);
   const dispatch = useDispatch();
 
-  const [initialValues, setInitialValues] = useState({
-  });
-  const [dataa, setData] = useState([{}]);
+  const [formValues, setFormValues] = useState(null);
   useEffect(() => {
     const fetchStep01 = async () => {
       await axios
         .get(`${process.env.NEXT_PUBLIC_URL}/auth/getStep01`)
         .then((res) => {
-          setData(res.data.data);
-          setInitialValues(dataa);
-          console.log( dataa );
+          setFormValues(res.data.data[0]);
         })
         .catch((err) => {
           console.log(err);
         });
     };
     fetchStep01();
+    (res) => console.log(res.params)
   }, []);
   const onSubmit = async (values) => {
     await axios
@@ -51,11 +49,12 @@ const Step01 = () => {
   };
 
   const formik = useFormik({
-    initialValues,
+    initialValues: formValues || initialValues,
 
     onSubmit,
     validationSchema,
     validateOnMount: true,
+    enableReinitialize: true
   });
 
   return (
@@ -72,19 +71,16 @@ const Step01 = () => {
                   formik={formik}
                   name={"firstname"}
                   type={"text"}
-                  data={dataa[0]?.firstname}
                 />
                 <InputSteps
                   formik={formik}
                   name={"middlename"}
                   type={"text"}
-                  data={dataa[0]?.middlename}
                 />
                 <InputSteps
                   formik={formik}
                   name={"lastname"}
                   type={"text"}
-                  data={dataa[0]?.lastname}
                 />
               </div>
               <div className="pt-5 pb-2 text-sm tracking-tight border border-1 border-white px-2  bg-indigo-900 bg-opacity-75 grid grid-cols-3 gap-2  mb-4">
@@ -92,19 +88,17 @@ const Step01 = () => {
                   formik={formik}
                   name={"firstnamepersian"}
                   type={"text"}
-                  data={dataa[0]?.firstnamepersian}
                 />
                 <InputSteps
                   formik={formik}
                   name={"middlenamepersian"}
                   type={"text"}
-                  data={dataa[0]?.middlenamepersian}
+
                 />
                 <InputSteps
                   formik={formik}
                   name={"lastnamepersian"}
                   type={"text"}
-                  data={dataa[0]?.lastnamepersian}
                 />
               </div>
             </div>
@@ -115,7 +109,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"fathername"}
                   type={"text"}
-                  data={dataa[0]?.fathername}
                 />
               </div>
               <div className=" mb-2">
@@ -123,7 +116,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"mothername"}
                   type={"text"}
-                  data={dataa[0]?.mothername}
                 />
               </div>
               <div className=" mb-2">
@@ -131,7 +123,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"dateOfBirth"}
                   type={"date"}
-                  data={dataa[0]?.dateOfBirth}
                 />
               </div>
               <div className=" mb-2">
@@ -139,7 +130,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"country"}
                   value={["Iran", "Iraq"]}
-                  data={dataa[0]?.country}
                 />
               </div>
               <div className=" mb-2">
@@ -147,7 +137,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"city"}
                   value={["Tehran", "Ahvaz"]}
-                  data={dataa[0]?.city}
                 />
               </div>
               <div className=" mb-2">
@@ -155,7 +144,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"sex"}
                   value={["man", "woman"]}
-                  data={dataa[0]?.sex}
                 />
               </div>
               {formik.values.maritalstatus !== "married" ? (
@@ -164,7 +152,6 @@ const Step01 = () => {
                     formik={formik}
                     name={"maritalstatus"}
                     value={["single", "married"]}
-                    data={dataa[0]?.maritalstatus}
                   />
                 </div>
               ) : (
@@ -173,13 +160,11 @@ const Step01 = () => {
                     formik={formik}
                     name={"maritalstatus"}
                     value={["single", "married"]}
-                    data={dataa[0]?.maritalstatus}
                   />
                   <SelectSteps
                     formik={formik}
                     name={"numOfChildren"}
                     value={[0, 1, 2, 3, 4, 5, 6, 7]}
-                    data={dataa[0]?.numOfChildren}
                   />
                 </div>
               )}
@@ -188,7 +173,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"religion"}
                   type={"text"}
-                  data={dataa[0]?.religion}
                 />
               </div>
               <div className=" mb-2">
@@ -196,7 +180,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"passportNumber"}
                   type={"text"}
-                  data={dataa[0]?.passportNumber}
                 />
               </div>
 
@@ -205,7 +188,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"dateOfIssue"}
                   type={"date"}
-                  data={dataa[0]?.dateOfIssue}
                 />
               </div>
               <div className=" mb-2">
@@ -213,7 +195,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"dateOfExpire"}
                   type={"date"}
-                  data={dataa[0]?.dateOfExpire}
                 />
               </div>
               <div className=" mb-2">
@@ -221,7 +202,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"placeOfIssue"}
                   type={"text"}
-                  data={dataa[0]?.placeOfIssue}
                 />
               </div>
               <div className=" mb-2">
@@ -229,7 +209,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"nationalities"}
                   type={"text"}
-                  data={dataa[0]?.nationalities}
                 />
               </div>
               <div className=" mb-2">
@@ -237,7 +216,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"address"}
                   type={"text"}
-                  data={dataa[0]?.address}
                 />
               </div>
               <div className=" mb-2">
@@ -245,7 +223,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"tel"}
                   type={"text"}
-                  data={dataa[0]?.tel}
                 />
               </div>
               <div className=" mb-2">
@@ -253,7 +230,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"email"}
                   type={"email"}
-                  data={dataa[0]?.email}
                 />
               </div>
               <div className=" mb-2">
@@ -261,7 +237,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"fax"}
                   type={"text"}
-                  data={dataa[0]?.fax}
                 />
               </div>
               <div className=" mb-2">
@@ -269,7 +244,6 @@ const Step01 = () => {
                   formik={formik}
                   name={"mobile"}
                   type={"text"}
-                  data={dataa[0]?.mobile}
                 />
               </div>
             </div>
@@ -284,31 +258,28 @@ const Step01 = () => {
                     formik={formik}
                     name={"spouseFirstName"}
                     type={"text"}
-                    data={dataa[0]?.spouseFirstName}
                   />
                   <InputSteps
                     formik={formik}
                     name={"spouseLastName"}
                     type={"text"}
-                    data={dataa[0]?.spouseLastName}
                   />
                   <InputSteps
                     formik={formik}
                     name={"passportNoSpouse"}
                     type={"text"}
-                    data={dataa[0]?.passportNoSpouse}
                   />
                   <InputSteps
                     formik={formik}
                     name={"dateOfIssueSpouse"}
                     type={"text"}
-                    data={dataa[0]?.dateOfIssueSpouse}
+
                   />
                   <InputSteps
                     formik={formik}
                     name={"dateOfExpireSpouse"}
                     type={"text"}
-                    data={dataa[0]?.dateOfExpireSpouse}
+
                   />
                 </div>
               </>
