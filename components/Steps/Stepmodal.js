@@ -26,7 +26,7 @@ const initialValues = {
   schoolOrUnivercityName: "",
   GPA: "",
   outOf: "",
-  fileGrade: "",
+  fileGrade: null,
 };
 const validationSchema = Step03Validation
 
@@ -37,10 +37,9 @@ const Stepmodal = ({ setModal, title, disableForm, setShowFormGrade }) => {
   const [preview, setPreview] = useState("")
 
   const handlechange = (e) => {
-    console.log("ferfgerfgvg")
     const image = e.target.files[0]
-    setFile(image)
     setPreview(URL.createObjectURL(image))
+    setFile(image)
     console.log('FILE=', file)
     console.log(preview)
   }
@@ -59,16 +58,21 @@ const Stepmodal = ({ setModal, title, disableForm, setShowFormGrade }) => {
     formData.append("outOf", values.outOf)
     formData.append("fileGrade", file)
     const data = Object.fromEntries(formData)
-    console.log(data)
-    await axios
-      .post(`${process.env.NEXT_PUBLIC_URL}/auth/step03`, data)
+    await axios({
+      method: 'post',
+      url: `${process.env.NEXT_PUBLIC_URL}/auth/step03`,
+      data: formData,
+      headers: {
+        'Content-Type': `multipart/form-data`,
+      },
+    })
       .then((res) => {
         setModal(false);
         console.log(res)
       })
       .catch((error) => {
         if (error.response) {
-          console.log(error.response.data);
+          // console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
         } else if (error.request) {
