@@ -15,10 +15,10 @@ const english = {
   alreadyRegistered: "Already Registered",
   verificationCodeReceived: "Verification Code Received",
   confirmation: "Confirmation",
-  YouHaveSuccessfullyLoggedIn:"You have successfully logged in",
-  YouHaveSuccessfullyLoggedOut:"You have successfully logged out",
-  usernameOrPasswordIswrong:"Username or password is wrong",
-  yourRegistrationWasSuccessful:"Your registration was successful",
+  YouHaveSuccessfullyLoggedIn: "You have successfully logged in",
+  YouHaveSuccessfullyLoggedOut: "You have successfully logged out",
+  usernameOrPasswordIswrong: "Username or password is wrong",
+  yourRegistrationWasSuccessful: "Your registration was successful",
 
   // -----------------------------------ERRORS--------------------------
   thisFieldIsRequired: "This field is required..",
@@ -193,6 +193,8 @@ const english = {
   recordLanguageProficiency:
     "Please register your level of familiarity with the living languages ​​of the world in the form below.",
   clickToLanguage: "Please click to enter a language proficiency",
+  yes: "Yes",
+  no: "No",
 
   // -----------------------------------STEP05--------------------------
   clickReference: "If you have a reference(s), please enter their information.",

@@ -171,10 +171,34 @@ export const Step02Validation = Yup.object({
 
 })
 
-
-
-
-
+export const Step03Validation = Yup.object({
+  grade: Yup.string()
+    .required("This field is required"),
+  start: Yup.string().required("This field is required"),
+  end: Yup.string().required("This field is required"),
+  fieldOfStudy: Yup.string().required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  country: Yup.string().required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  city: Yup.string().required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z ]*$/, "Please type English"),
+  schoolOrUnivercityName: Yup.string().required("This field is required")
+    .min(3, "Enter at least 3 letters")
+    .max(30, "Enter up to 30 characters")
+    .matches(/^[A-Za-z0-9 ]*$/, "Please type English"),
+  GPA: Yup.number().required("This field is required")
+    .min(0, "Please enter a number greater than 0")
+    .max(100, "Please enter a number less than 100"),
+  outOf: Yup.number().required("This field is required")
+    .min(0, "Please enter a number greater than 0")
+    .max(100, "Please enter a number less than 100"),
+});
 
 export const Step04Validation = Yup.object({
   languageName: Yup.string().required("Required"),

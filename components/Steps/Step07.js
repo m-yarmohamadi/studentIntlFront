@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import NextStep from "./NextStep";
 import Inputform from "./FormSteps/Inputform";
 import SelectForm from "./FormSteps/SelectForm";
-import Stepmodal from "./Stepmodal";
+import Stepmodal from "./Step03Modal";
 const initialValues = {
   id: nanoid(),
   fullname: "",

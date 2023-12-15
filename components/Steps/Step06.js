@@ -4,11 +4,10 @@ import { useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import { FaTrashAlt, FaRegTimesCircle } from "react-icons/fa";
 import NextStep from "./NextStep";
-import Stepmodal from "./Stepmodal";
+import Stepmodal from "./Step03Modal";
 import { Step06Validation } from "@/Validation/formValidate";
 import { td, th } from "./Classes/classSteps";
 const initialValues = {
-  id: nanoid(),
   publicationType: "",
   title: "",
   publisher: "",

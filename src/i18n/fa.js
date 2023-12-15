@@ -16,11 +16,11 @@ const persian = {
   alreadyRegistered: "قبلا ثبت نام کرده اید؟",
   verificationCodeReceived: "کد تأیید دریافت شده:",
   confirmation: "تأیید",
-  YouHaveSuccessfullyLoggedIn:"شما با موفقیت وارد شدید",
-  YouHaveSuccessfullyLoggedOut:"شما با موفقیت خارج شدید",
+  YouHaveSuccessfullyLoggedIn: "شما با موفقیت وارد شدید",
+  YouHaveSuccessfullyLoggedOut: "شما با موفقیت خارج شدید",
 
-  usernameOrPasswordIswrong:"نام کاربری یا کلمه عبور اشتباه می باشد",
-  yourRegistrationWasSuccessful:"ثبت نام شما موفقیت آمیز بود",
+  usernameOrPasswordIswrong: "نام کاربری یا کلمه عبور اشتباه می باشد",
+  yourRegistrationWasSuccessful: "ثبت نام شما موفقیت آمیز بود",
 
 
 
@@ -53,7 +53,7 @@ const persian = {
   // -----------------------------------STEPS--------------------------
   Step: "گــام",
   titleStep01: "اطلاعات شخصی",
-  titleStep02: "انتخاب اولویت های تحصیلی",
+  titleStep02: "اولویت های تحصیلی",
   titleStep03: "اطلاعات سوابق تحصیلی",
   titleStep04: "میزان تسلط بر انواع زبان ها",
   titleStep05: "اطلاعات داور (در صورت وجود)",
@@ -205,6 +205,9 @@ const persian = {
   recordLanguageProficiency:
     "لطفا میزان آشنایی خود با زبانهای زنده دنیا را در فرم زیر ثبت کنید.",
   clickToLanguage: "لطفا برای درج تسلط بر یک زبان کلیک کنید",
+  yes: "بلی",
+  no: "خیر",
+
 
   // -----------------------------------STEP05--------------------------
   clickReference: "در صورت وجود داور یا معرف اطلاعات مربوطه را وارد نمایید.  ",

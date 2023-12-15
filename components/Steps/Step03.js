@@ -3,8 +3,12 @@ import NextStep from './NextStep';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
-import Stepmodal from './Stepmodal';
+import Stepmodal from './Step03Modal';
 import { td, th, step03Td, step03Th } from './Classes/classSteps';
+import toast from 'react-hot-toast';
+const minLengh = 1
+const maxLengh = 3
+
 const Step03 = () => {
 	const [data, setData] = useState([]);
 	const [showFormGrade, setShowFormGrade] = useState(false);
@@ -21,7 +25,7 @@ const Step03 = () => {
 				});
 		};
 		fetchStep03();
-	}, [showFormGrade]);
+	}, [showFormGrade, data]);
 
 	const setModal = () => {
 		setShowFormGrade(!showFormGrade);
@@ -45,11 +49,13 @@ const Step03 = () => {
 		<div className=' fade-in  h-full w-full'>
 			<div className='  vh70 rounded-md m-1 px-8 text-center bg-indigo-900 bg-opacity-60 flex flex-col justify-between'>
 				<div className=' w-full'>
-					<div className=' py-4 text-3xl text-white font-black'>{t('titleStep03')}</div>
+					<div className=' py-4 text-3xl text-white font-black'>
+						{t('titleStep03')}
+					</div>
 					<div>
 						<div className='border border-indigo-50 h-full w-full overflow-auto'>
-							<table className=' w-full min-w-max table-auto text-left'>
-								<thead className=' '>
+							<table className='w-full min-w-max table-auto text-left'>
+								<thead >
 									<tr>
 										<th className={step03Th}></th>
 										<th className={step03Th}>{t('grade')}</th>
@@ -78,17 +84,10 @@ const Step03 = () => {
 											<td className={step03Td}>{item.fieldOfStudy}</td>
 											<td className={step03Td}>{item.country}</td>
 											<td className={step03Td}>{item.city}</td>
-											<td className={step03Td}>
-												{item.schoolOrUnivercityName}
-											</td>
+											<td className={step03Td}>{item.schoolOrUnivercityName}</td>
 											<td className={step03Td}>{item.GPA}</td>
 											<td className={step03Td}>{item.outOf}</td>
-											<td className={step03Td}>
-												<img
-													src={`${process.env.NEXT_PUBLIC_URL}/${item.fileGrade}`}
-													alt=''
-												/>
-											</td>
+											<td className={step03Td}><img src={`${process.env.NEXT_PUBLIC_URL}/${item.fileGrade}`} alt='' /></td>
 										</tr>
 									</tbody>
 								))}
@@ -96,7 +95,16 @@ const Step03 = () => {
 						</div>
 					</div>
 					<div>
-						<button
+
+						{data.length > maxLengh ? <button
+
+							onClick={() => { toast.error("شما مجاز به ثبت بیش از 4 رکورد نمی باشید") }
+							}
+							className=' shadow-md bg-indigo-900 hover:bg-indigo-800 p-2 text-lg text-indigo-50 font-extrabold w-full rounded-md border border-indigo-50 hover:border-indigo-950 my-5'
+							type='button'
+						>
+							{t('clickToRegisterDegree')}
+						</button> : <button
 							onClick={() => {
 								setShowFormGrade(true);
 							}}
@@ -104,11 +112,12 @@ const Step03 = () => {
 							type='button'
 						>
 							{t('clickToRegisterDegree')}
-						</button>
+						</button>}
+
 					</div>
 				</div>
 				{showFormGrade && <Stepmodal setModal={setModal} title={'recordRegisterDegree'} />}
-				<NextStep disableForm={data.length < 1} type={'submit'} onClick={fetchData} />
+				<NextStep disableForm={data.length < minLengh} type={'submit'} onClick={fetchData} />
 			</div>
 		</div>
 	);

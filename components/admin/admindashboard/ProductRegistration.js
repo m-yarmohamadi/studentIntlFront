@@ -7,7 +7,7 @@ import { useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import { FaTrashAlt, FaRegTimesCircle } from "react-icons/fa";
 import * as Yup from "yup";
-import Stepmodal from "@/components/Steps/Stepmodal";
+import Stepmodal from "@/components/Steps/Step03Modal";
 const initialValues = {
   id: nanoid(),
   title: "",

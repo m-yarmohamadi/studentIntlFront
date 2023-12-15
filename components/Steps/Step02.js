@@ -197,7 +197,7 @@ const Step02 = () => {
 
             </div>
           </div>
-          <NextStep disableForm={!formik.isValid} type={"submit"} />
+          <NextStep disableForm={!formik.isValid} type={"submit"} onSubmit={onSubmit} />
 
         </form>
       </div>

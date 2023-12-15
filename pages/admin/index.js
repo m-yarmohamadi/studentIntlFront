@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 import Dashboard from "/components/admin/admindashboard/Dashboard";
 import ProductRegistration from "/components/admin/admindashboard/ProductRegistration";

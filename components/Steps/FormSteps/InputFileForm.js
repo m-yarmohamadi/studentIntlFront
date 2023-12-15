@@ -18,6 +18,9 @@ const InputFileform = ({ formik, name, type, handlechange }) => {
                 type={type}
                 name={name}
                 onChange={handlechange}
+                required
+            // {...formik.getFieldProps(name)}
+
             />
             {formik.touched[name] && formik.errors[name] ? (
                 <div className="text-xs text-red-800 ">{t(formik.errors[name])}</div>

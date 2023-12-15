@@ -1,41 +1,54 @@
-import { useFormik } from "formik";
+import axios from "axios";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
-import { nanoid } from "@reduxjs/toolkit";
+import { useState, useEffect } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import NextStep from "./NextStep";
-import Stepmodal from "./Stepmodal";
-import { td, th } from "./Classes/classSteps";
-import { Step04Validation } from "@/Validation/formValidate";
+import Stepmodal from "./Step04Modal";
+import { step03Td, td, th } from "./Classes/classSteps";
+import toast from 'react-hot-toast';
 
-const initialValues = {
-  id: nanoid(),
-  languageName: "",
-  nativeLanguage: "",
-  reading: "",
-  writing: "",
-  speaking: "",
-  fileLanguage: "",
-};
-const validationSchema = Step04Validation;
+
+
+const minLengh = 1
+const maxLengh = 3
+
 const Step04 = () => {
   const [data, setData] = useState([]);
-  const [showFormGrade, setShowFormGrade] = useState(false);
+  const [showFormLanguage, setShowFormLanguage] = useState(false);
+  useEffect(() => {
+    const fetchStep04 = async () => {
+      await axios
+        .get(`${process.env.NEXT_PUBLIC_URL}/auth/getStep04`)
+        .then((res) => {
+          setData(res.data.data);
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    fetchStep04();
+  }, [showFormLanguage]);
+
   const setModal = () => {
-    setShowFormGrade(!showFormGrade);
+    setShowFormLanguage(!showFormLanguage);
   };
 
   const { t } = useTranslation();
-  const onSubmit = (values) => {
-    setData([...data, { ...values, id: nanoid() }]);
-    setShowFormGrade(false);
-    console.log(data);
+  const fetchData = () => {
+    dispatch(toggleStep(stepform + 1));
   };
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validationSchema,
-  });
+  const handleDelete = async (itemId) => {
+    try {
+      const response = await axios.delete(
+        `${process.env.NEXT_PUBLIC_URL}/auth/delStep04/${itemId}`
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className=" fade-in  h-full w-full">
       <div className="  vh70 rounded-md m-1 px-8 text-center bg-indigo-900 bg-opacity-60 flex flex-col justify-between">
@@ -45,8 +58,8 @@ const Step04 = () => {
           </div>
           <div>
             <div className="border border-indigo-50 h-full w-full overflow-auto">
-              <table className=" w-full min-w-max table-auto text-left">
-                <thead className=" ">
+              <table className="w-full min-w-max table-auto text-left">
+                <thead >
                   <th className={th}></th>
                   <th className={th}>{t("languageName")}</th>
                   <th className={th}>{t("nativeLanguage")}</th>
@@ -57,86 +70,49 @@ const Step04 = () => {
                 </thead>
                 {data.map((item) => (
                   <tbody key={item.id} className="w-full">
-                    <td className="p-1 border border-x-indigo-200 border-y-indigo-900 bg-indigo-100 items-center justify-center text-center">
-                      <button
-                        type=""
-                        onClick={() =>
-                          setData(data.filter((d) => d.id !== item.id))
-                        }
-                      >
-                        <FaTrashAlt className=" h-6 text-rose-800" />
-                      </button>
-                    </td>
-                    <td className={td}>{item.languageName}</td>
-                    <td className={td}>{item.nativeLanguage}</td>
-                    <td className={td}>{item.reading}</td>
-                    <td className={td}>{item.writing}</td>
-                    <td className={td}>{item.speaking}</td>
-                    <td className={td}>{item.fileLanguage}</td>
+                    <tr>
+                      <td className={step03Td}>
+                        <button onClick={() => handleDelete(item.id)}>
+                          <FaTrashAlt className=' h-6 text-rose-800' />
+                        </button>
+                      </td>
+                      <td className={td}>{item.languageName}</td>
+                      <td className={td}>{item.nativeLanguage}</td>
+                      <td className={td}>{item.reading}</td>
+                      <td className={td}>{item.writing}</td>
+                      <td className={td}>{item.speaking}</td>
+                      <td className={step03Td}><img src={`${process.env.NEXT_PUBLIC_URL}/${item.fileLanguage}`} alt='' /></td>
+                    </tr>
                   </tbody>
                 ))}
               </table>
             </div>
           </div>
           <div>
-            <button
-              onClick={() => {
-                setShowFormGrade(true);
-              }}
-              className=" shadow-md bg-indigo-900 hover:bg-indigo-800 p-2 text-lg text-indigo-50 font-extrabold w-full rounded-md border border-indigo-50 hover:border-indigo-950 my-5"
-              type="button"
+
+
+            {data.length > maxLengh ? <button
+
+              onClick={() => { toast.error("شما مجاز به ثبت بیش از 4 رکورد نمی باشید") }
+              }
+              className=' shadow-md bg-indigo-900 hover:bg-indigo-800 p-2 text-lg text-indigo-50 font-extrabold w-full rounded-md border border-indigo-50 hover:border-indigo-950 my-5'
+              type='button'
             >
-              {t("clickToLanguage")}
-            </button>
+              {t('clickToLanguage')}
+            </button> : <button
+              onClick={() => {
+                setShowFormLanguage(true);
+              }}
+              className=' shadow-md bg-indigo-900 hover:bg-indigo-800 p-2 text-lg text-indigo-50 font-extrabold w-full rounded-md border border-indigo-50 hover:border-indigo-950 my-5'
+              type='button'
+            >
+              {t('clickToLanguage')}
+            </button>}
+
           </div>
         </div>
-        {showFormGrade && (
-          <Stepmodal
-            formik={formik}
-            setModal={setModal}
-            disableForm={!formik.isValid}
-            name={[
-              {
-                name: "languageName",
-                model: "SelectForm",
-                value: ["persian", "english", "arabic", "france", "other"],
-                type: "text",
-              },
-              {
-                name: "nativeLanguage",
-                model: "SelectForm",
-                value: ["poor", "fair", "good"],
-                type: "text",
-              },
-              {
-                name: "reading",
-                model: "SelectForm",
-                value: ["poor", "fair", "good"],
-                type: "text",
-              },
-              {
-                name: "writing",
-                model: "SelectForm",
-                value: ["poor", "fair", "good"],
-                type: "text",
-              },
-              {
-                name: "speaking",
-                model: "SelectForm",
-                value: ["poor", "fair", "good"],
-                type: "text",
-              },
-              {
-                name: "fileLanguage",
-                model: "Inputform",
-                value: "",
-                type: "file",
-              },
-            ]}
-            title={"recordLanguageProficiency"}
-          />
-        )}
-        <NextStep />
+        {showFormLanguage && <Stepmodal setModal={setModal} title={'recordRegisterDegree'} />}
+        <NextStep disableForm={data.length < minLengh} type={'submit'} onClick={fetchData} />
       </div>
     </div>
   );
