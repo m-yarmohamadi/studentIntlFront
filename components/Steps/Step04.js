@@ -2,6 +2,7 @@ import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 import { FaTrashAlt } from "react-icons/fa";
+
 import NextStep from "./NextStep";
 import Stepmodal from "./Step04Modal";
 import { step03Td, td, th } from "./Classes/classSteps";
@@ -13,6 +14,7 @@ const minLengh = 1
 const maxLengh = 3
 
 const Step04 = () => {
+
   const [data, setData] = useState([]);
   const [showFormLanguage, setShowFormLanguage] = useState(false);
   useEffect(() => {

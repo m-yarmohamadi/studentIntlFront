@@ -8,6 +8,8 @@ import axios from "axios"
 import { useDispatch, useSelector } from "react-redux";
 import { toggleStep } from "@/fuchers/steps/StepSlice";
 import { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
+
 
 const validationSchema = Step02Validation;
 const initialValues = {
@@ -27,6 +29,8 @@ const initialValues = {
 };
 
 const Step02 = () => {
+  const router = useRouter()
+
   const { t } = useTranslation();
   const stepform = useSelector((state) => state.stepReducer.step);
   const dispatch = useDispatch();
@@ -58,8 +62,8 @@ const Step02 = () => {
     await axios
       .post(`${process.env.NEXT_PUBLIC_URL}/auth/step02`, {
         ...values,
-        userId: "2",
-        registrationNoticesId: "3"
+        userId: router.query.userId,
+        registrationNoticesId: router.query.form,
       })
       .then((res) => {
         dispatch(toggleStep(stepform + 1))

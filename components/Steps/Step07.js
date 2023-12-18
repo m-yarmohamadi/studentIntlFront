@@ -8,6 +8,7 @@ import NextStep from "./NextStep";
 import Inputform from "./FormSteps/Inputform";
 import SelectForm from "./FormSteps/SelectForm";
 import Stepmodal from "./Step03Modal";
+
 const initialValues = {
   id: nanoid(),
   fullname: "",
@@ -26,6 +27,7 @@ const validationSchema = Yup.object({
   address02: Yup.string().required("Required"),
 });
 const Step07 = () => {
+
   const [data, setData] = useState([]);
   const [showFormGrade, setShowFormGrade] = useState(false);
   const setModal = () => {

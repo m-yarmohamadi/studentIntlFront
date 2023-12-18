@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
-
+import { useRouter } from 'next/router';
 
 
 import { FaRegTimesCircle } from 'react-icons/fa';
@@ -27,11 +27,10 @@ const initialValues = {
 const validationSchema = Step03Validation;
 
 const Step03Modal = ({ setModal, title, disableForm, setShowFormGrade }) => {
+	const router = useRouter();
 	const { t } = useTranslation();
 	const [file, setFile] = useState('');
 	const [preview, setPreview] = useState('');
-
-
 
 	const handlechange = (e) => {
 		const image = e.target.files[0];
@@ -42,8 +41,8 @@ const Step03Modal = ({ setModal, title, disableForm, setShowFormGrade }) => {
 	};
 	const onSubmit = async (values) => {
 		const formData = new FormData();
-		formData.append('userId', '2');
-		formData.append('registrationNoticesId', '3');
+		formData.append('userId', router.query.userId);
+		formData.append('registrationNoticesId', router.query.form);
 		formData.append('grade', values.grade);
 		formData.append('start', values.start);
 		formData.append('end', values.end);

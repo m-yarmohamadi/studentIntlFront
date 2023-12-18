@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
+
 import { useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import { FaTrashAlt, FaRegTimesCircle } from "react-icons/fa";
@@ -7,6 +8,7 @@ import NextStep from "./NextStep";
 import Stepmodal from "./Step03Modal";
 import { Step06Validation } from "@/Validation/formValidate";
 import { td, th } from "./Classes/classSteps";
+
 const initialValues = {
   publicationType: "",
   title: "",
@@ -15,6 +17,7 @@ const initialValues = {
 };
 const validationSchema = Step06Validation;
 const Step06 = () => {
+
   const [data, setData] = useState([]);
   const [showFormGrade, setShowFormGrade] = useState(false);
   const setModal = () => {

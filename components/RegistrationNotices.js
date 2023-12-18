@@ -20,7 +20,7 @@ const RegistrationNotices = ({ userId }) => {
               </td>
               <td>
                 <button
-                  onClick={() => router.push(`/inputForm/user:${userId}/form:5`)}
+                  onClick={() => router.push(`/inputForm/${userId}/5`)}
                   type="button"
                   className="w-64 hover:cursor-pointer  shadow-sm shadow-indigo-950 hover:shadow-indigo-900 text-indigo-100  m-1 bg-indigo-900 hover:bg-indigo-800 border border-1 border-indigo-50 rounded-md px-6 py-2"
                 >

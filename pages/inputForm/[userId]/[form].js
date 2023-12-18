@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from 'next/router';
+
 
 import Layout from "@/components/Layout";
 import Step01 from "@/components/Steps/Step01";
@@ -16,6 +18,9 @@ import { TbArrowBigLeftLinesFilled, TbArrowBigRightLinesFilled } from "react-ico
 import ButtonStep from "@/components/Steps/ButtonStep";
 
 const inputForm = () => {
+  const router = useRouter()
+
+  console.log(router.query.userId);
   const lang = useSelector((state) => state.languageReducer.value.languageName);
   const stepform = useSelector((state) => state.stepReducer.step);
   const [data01, setData01] = useState()
