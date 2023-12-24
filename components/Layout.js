@@ -15,8 +15,8 @@ import {
 import Menuuser from "./Menuuser";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
-import { toggleAccessToken } from "@/fuchers/resCode/resCodeSlice";
-import { toggleLogin } from "@/fuchers/user/userSlice";
+import { toggleAccessToken } from "../fuchers/resCode/resCodeSlice";
+import { toggleLogin } from "../fuchers/user/UserSlice";
 const Layout = ({ title, children }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();

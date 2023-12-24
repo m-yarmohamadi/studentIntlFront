@@ -31,7 +31,7 @@ import {
   toggleLastname,
   toggleLogin,
   toggleUser,
-} from "@/fuchers/user/userSlice";
+} from "../fuchers/user/UserSlice";
 
 const initialValues = {
   email: "",

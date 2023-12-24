@@ -2,8 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import languageReducer from "../fuchers/language/languageSlice";
 import popupReducer from "../fuchers/popup/popupSlice";
 import tokenReducer from "../fuchers/resCode/resCodeSlice";
-import stepReducer from "@/fuchers/steps/StepSlice";
-import userReducer from "@/fuchers/user/userSlice";
+import stepReducer from "../fuchers/steps/StepSlice";
+import userReducer from "../fuchers/user/UserSlice";
 
 export const store = configureStore({
   reducer: {
