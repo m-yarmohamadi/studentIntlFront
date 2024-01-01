@@ -1,11 +1,6 @@
 import React from 'react';
 
 const NewForm = () => {
-    return (
-        <div>
-            <h1>ثبت فرم جدید</h1>
-        </div>
-    );
+	return <h1>ثبت فرم جدید</h1>;
 };
-
 export default NewForm;
