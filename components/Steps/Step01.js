@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 const validationSchema = Step01Validation;
 const initialValues = {};
 
-const Step01 = () => {
+const Step01 = ({data}) => {
 	const router = useRouter();
 
 	const { t } = useTranslation();
@@ -22,17 +22,8 @@ const Step01 = () => {
 
 	const [formValues, setFormValues] = useState(null);
 	useEffect(() => {
-		const fetchStep01 = async () => {
-			try {
-				const response = await axios.get(`${process.env.NEXT_PUBLIC_URL}/auth/getStep01`);
-				setFormValues(response.data.data[0]);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-		fetchStep01();
-		(res) => console.log(res.params);
-	}, []);
+		setFormValues(data)
+	}, [data]);
 	const onSubmit = async (values) => {
 		try {
 			const response = await axios.post(`${process.env.NEXT_PUBLIC_URL}/auth/step01`, {

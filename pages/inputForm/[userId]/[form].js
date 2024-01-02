@@ -20,109 +20,42 @@ import ButtonStep from "@/components/Steps/ButtonStep";
 const inputForm = () => {
   const router = useRouter()
 
-  console.log(router.query.userId);
   const lang = useSelector((state) => state.languageReducer.value.languageName);
   const stepform = useSelector((state) => state.stepReducer.step);
+  const [allData, setAllData] = useState()
   const [data01, setData01] = useState()
-  const [data02, setData02] = useState()
-  const [data03, setData03] = useState()
-  const [data04, setData04] = useState()
-  const [data05, setData05] = useState()
-  const [data06, setData06] = useState()
-  const [data07, setData07] = useState()
+  const [data02, setData02] = useState([])
+  const [data03, setData03] = useState([])
+  const [data04, setData04] = useState([])
+  const [data05, setData05] = useState([])
+  const [data06, setData06] = useState([])
+  const [data07, setData07] = useState([])
+  const params = {
+    userId: router.query.userId,
+    courceId:router.query.form,
+  }
 
   useEffect(() => {
-    const fetchStep01 = async () => {
+    const fetchData = async () => {
       await axios
-        .get(`${process.env.NEXT_PUBLIC_URL}/auth/getStep01`)
+        .get(`${process.env.NEXT_PUBLIC_URL}/auth/getDataById`,{params})
         .then((res) => {
-          setData01(res.data.data);
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    const fetchStep02 = async () => {
-      await axios
-        .get(`${process.env.NEXT_PUBLIC_URL}/auth/getStep02`)
-        .then((res) => {
-          setData02(res.data.data);
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    const fetchStep03 = async () => {
-      await axios
-        .get(`${process.env.NEXT_PUBLIC_URL}/auth/getStep03`)
-        .then((res) => {
-          setData03(res.data.data);
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    const fetchStep04 = async () => {
-      await axios
-        .get(`${process.env.NEXT_PUBLIC_URL}/auth/getStep04`)
-        .then((res) => {
-          setData04(res.data.data);
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    const fetchStep05 = async () => {
-      await axios
-        .get(`${process.env.NEXT_PUBLIC_URL}/auth/getStep05`)
-        .then((res) => {
-          setData05(res.data.data);
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    const fetchStep06 = async () => {
-      await axios
-        .get(`${process.env.NEXT_PUBLIC_URL}/auth/getStep06`)
-        .then((res) => {
-          setData06(res.data.data);
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    const fetchStep07 = async () => {
-      await axios
-        .get(`${process.env.NEXT_PUBLIC_URL}/auth/getStep07`)
-        .then((res) => {
-          setData07(res.data.data);
-          console.log(res.data);
+          setAllData(res.data.dataById);
+          setData01(res.data.dataById.cource[0].step01[0]);
+          setData02(res.data.dataById.cource[0].step02[0]);
+          setData03(res.data.dataById.cource[0].step03);
+          setData04(res.data.dataById.cource[0].step04);
+          setData05(res.data.dataById.cource[0].step05);
+          setData06(res.data.dataById.cource[0].step06);
+          setData07(res.data.dataById.cource[0].step07);
         })
         .catch((err) => {
           console.log(err);
         });
     };
 
-
-
-    fetchStep01();
-    fetchStep02();
-    fetchStep03();
-    fetchStep04();
-    fetchStep05();
-    fetchStep06();
-    fetchStep07();
-
-
-  }, []);
-
+    fetchData();
+  }, [allData]);
 
   return (
     <Layout title="فرم ثبت نام">
@@ -133,14 +66,14 @@ const inputForm = () => {
           <div
             className={` font-normal max-w-full grid grid-cols-3 md:grid-cols-9 gap-1 p-1`}
           >
-            <ButtonStep step={1} titleStep={"titleStep01"} Step={"Step"} data={data01} />
-            <ButtonStep step={2} titleStep={"titleStep02"} Step={"Step"} data={data02} />
-            <ButtonStep step={3} titleStep={"titleStep03"} Step={"Step"} data={data03} />
-            <ButtonStep step={4} titleStep={"titleStep04"} Step={"Step"} data={data04} />
-            <ButtonStep step={5} titleStep={"titleStep05"} Step={"Step"} data={data05} />
-            <ButtonStep step={6} titleStep={"titleStep06"} Step={"Step"} data={data06} />
-            <ButtonStep step={7} titleStep={"titleStep07"} Step={"Step"} data={data07} />
-            <ButtonStep step={8} titleStep={"titleStep08"} Step={"Step"} />
+            <ButtonStep step={1} titleStep={"titleStep01"} Step={"Step"} data={data01}  />
+            <ButtonStep step={2} titleStep={"titleStep02"} Step={"Step"} data={data02}  />
+            <ButtonStep step={3} titleStep={"titleStep03"} Step={"Step"} data={data03}  />
+            <ButtonStep step={4} titleStep={"titleStep04"} Step={"Step"} data={data04}  />
+            <ButtonStep step={5} titleStep={"titleStep05"} Step={"Step"} data={data05}  />
+            <ButtonStep step={6} titleStep={"titleStep06"} Step={"Step"} data={data06}  />
+            <ButtonStep step={7} titleStep={"titleStep07"} Step={"Step"} data={data07}  />
+            <ButtonStep step={8} titleStep={"titleStep08"} Step={"Step"} data={allData} />
             {/* <ButtonStep step={9} titleStep={"titleStep09"} Step={"Step"} />
             <ButtonStep step={10} titleStep={"titleStep10"} Step={"Step"} /> */}
           </div>
@@ -149,15 +82,15 @@ const inputForm = () => {
               <div>
                 <ErrorBoundary>
                   {" "}
-                  <Step01 />
-                </ErrorBoundary>
+                  <Step01 data={data01}/>
+                </ErrorBoundary> 
               </div>
             )}
             {stepform === 2 && (
               <div>
                 <ErrorBoundary>
                   {" "}
-                  <Step02 />
+                  <Step02 data={data02}/>
                 </ErrorBoundary>
               </div>
             )}
